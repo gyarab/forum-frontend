@@ -1,3 +1,8 @@
+$width: 100vw;
+$ratio: $width / 1.618;
+$rest: $width - $ratio;
+$border: 0.5px solid #4A4949;
+
 .App {
   text-align: center;
 }
@@ -8,7 +13,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #192a56;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,6 +21,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  width: $ratio;
+  
 }
 
 .App-link {
