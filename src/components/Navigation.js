@@ -10,19 +10,30 @@ class Navigation extends Component {
 
     static propTypes = {};
 
-    state = {};
+    constructor(){
+        super();
+
+        this.state = {
+            display: "none"
+        }
+    }
+
+
 
     render() {
         return (
-
-            <div className={"w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"} style={{width:450+'px'}}>
+<div>
+    <button className="w3-button w3-teal w3-xlarge w3-hide-large" onClick={()=>{this.setState({display:"block"})}}>&#9776;</button>
+            <div className={"w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"} style={{width:450+'px', display: this.state.display}}>
+                <button className="w3-bar-item w3-button w3-large w3-hide-large"
+                        onClick={()=>{this.setState({display:"none"})}}>Close &times;</button>
                 <div className={"nav-search-box"}>
                     <input className={"nav-search-text"}/>
                 <span className={"nav-search-icon"}>
                     <i className="fas fa-search"></i>
                 </span>
                 </div>
-            </div>
+            </div></div>
         );
     }
 }
