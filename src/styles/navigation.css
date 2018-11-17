@@ -1,11 +1,3 @@
-.nav-container {
-    padding-top: 20px;
-    height: 100vh;
-    width: 450px;
-    position: fixed;
-    background: #00a8ff;
-}
-
 .nav-search-box {
     position: absolute;
     left: 50%;
@@ -16,14 +8,15 @@
 }
 .nav-search-text:focus{
     width: 180px;
-    padding: 0 6px;
+    transition: 0s;
+    padding-left: 20px;
 }
 .nav-search-box:hover > .nav-search-icon{
     color: #dcdde1;
 }
 .nav-search-box:hover > .nav-search-text {
     width: 180px;
-    padding: 0 6px;
+    padding-left: 20px;
 }
 
 .nav-search-icon {
@@ -36,7 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.4s;
+    transition: 0.3s;
     cursor: pointer;
 
 }
@@ -49,6 +42,6 @@
     padding: 0;
     color: white;
     font-size: 16px;
-    transition: 0.4s;
+    transition: 0.3s;
     line-height: 40px
 }
