@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.scss';
-import {connect, Provider} from "react-redux";
+import './App.css';
+import {Provider} from "react-redux";
 import configureStore from "./store";
-import Title from "./components/Title";
+// import Title from "./components/Title";
+import Navigation from "./components/Navigation";
 
 class App extends Component {
     render() {
@@ -11,7 +11,7 @@ class App extends Component {
             <Provider store={configureStore()}>
                 <div className="App">
                     <header className="App-header">
-                        <Title ahoj={"jkvsvhsf"}/>
+                        <Navigation/>
                     </header>
 
                 </div>
