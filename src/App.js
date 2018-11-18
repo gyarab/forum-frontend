@@ -11,6 +11,8 @@ class App extends Component {
         return (
             <Provider store={configureStore()}>
                 <div className="App">
+
+                        <Navigation/>
                     <header className="App-header">
                     </header>
                     <LilPost />
