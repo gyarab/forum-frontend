@@ -1,0 +1,59 @@
+.lilpost-wrapper{
+  background:   #f5f6fa;
+  padding: 1.25rem;
+}
+
+.lilpost {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  font-family: "adelle-sans", sans-serif;
+  font-weight: 100;
+  margin: 0 auto;
+  width: 20rem;
+  display: block;
+  z-index: -1;
+  border: solid 2px #fff;
+  @media screen and (min-width: 480px) {
+      width: 28rem;
+  }
+  @media screen and (min-width: 767px) {
+      width: 40rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 50rem;
+  }
+
+}
+
+.lilpost-header{
+  font-size: 20px;
+  text-align: center;
+  border-bottom: solid 2px #192a56;
+  width: 80%;
+  margin: 1px auto;
+  padding: .5rem;
+  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;;
+}
+
+.lilpost-body{
+  margin: 0 auto;
+  padding: 0 0 0 0;
+  width: 80%;
+  overflow: hidden;
+  text-align: justify;
+  max-height: 12.5rem;
+  border-bottom: solid 2px #192a56;
+  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;;
+}
+
+.lilpost-footer{
+  width: 80%;
+  margin: 1px auto;
+  padding: 0 0 1.5rem 0;
+  min-height: 3rem;
+}
+
+.lilpost:hover{
+  border: solid 2px #192a56;
+}
