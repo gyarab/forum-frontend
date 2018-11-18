@@ -25,7 +25,7 @@ class Navigation extends Component {
 
 
                 {/*Open Button*/}
-                <button className="nav-toggle-icon w3-xlarge w3-hide-large"
+                <button className="nav-toggle-icon w3-xlarge w3-hide-medium"
                         style={{display: !this.state.display ? "block" : "none"}} id={"open"}
                         onClick={() => {
                             this.setState({display: true})
@@ -38,7 +38,7 @@ class Navigation extends Component {
                      style={{width: 350 + 'px', display: this.state.display ? "block" : "none"}}>
 
                     {/*Close Button*/}
-                    <button className="nav-toggle-icon w3-xlarge w3-hide-large" id={"close"}
+                    <button className="nav-toggle-icon w3-xlarge w3-hide-medium" id={"close"}
                             onClick={() => {
                                 this.setState({display: false})
                             }}>

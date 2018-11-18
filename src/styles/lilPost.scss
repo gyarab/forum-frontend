@@ -33,10 +33,11 @@
   width: 80%;
   margin: 1px auto;
   padding: .5rem;
-  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;;
+  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  cursor: default;
 }
 
-.lilpost-body{
+.lilpost-body {
   margin: 0 auto;
   padding: 0 0 0 0;
   width: 80%;
@@ -44,16 +45,55 @@
   text-align: justify;
   max-height: 12.5rem;
   border-bottom: solid 2px #192a56;
-  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  cursor: default;
 }
 
 .lilpost-footer{
   width: 80%;
   margin: 1px auto;
-  padding: 0 0 1.5rem 0;
   min-height: 3rem;
+  padding: 0.5rem;
+}
+
+.lilpost-footer, .lilpost-body, .lilpost-header {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .lilpost:hover{
   border: solid 2px #192a56;
+}
+
+.lilpost-footer ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 0;
+}
+
+.lilpost-footer ul li + li{
+  margin: auto 0 auto 1.5rem;
+}
+
+.fas.fa-comments:hover{
+  color: #fff;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000;
+}
+
+.fas.fa-thumbs-up:hover{
+  color: #4cd137;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000;
+}
+
+.fas.fa-thumbs-down:hover{
+  color: #e84118;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000;
 }

@@ -11,10 +11,11 @@ class App extends Component {
         return (
             <Provider store={configureStore()}>
                 <div className="App">
-                    <header className="App-header">
-                    </header>
-                    <LilPost />
 
+                    <Navigation />
+                    <LilPost />
+                    <LilPost />
+                    <LilPost />
 
                 </div>
             </Provider>
