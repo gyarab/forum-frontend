@@ -10,9 +10,8 @@ class App extends Component {
         return (
             <Provider store={configureStore()}>
                 <div className="App">
-                    <header className="App-header">
+
                         <Navigation/>
-                    </header>
 
                 </div>
             </Provider>
