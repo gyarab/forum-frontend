@@ -1,79 +1,111 @@
-.nav-toggle-icon {
-    outline: none;
-    border: #dcdde1;
-    margin: 10px;
-    border-radius: 50%;
-    background: #dcdde1;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
+/*hides the page when needed*/
+#sidebar-wrapper {
+    display: block;
 }
 
-#close {
-    float: right;
-    padding:0 10px;
-}
-#close:hover {
-    color: #dcdde1;
-    background:  #718093 ;
-}
-
-#open {
-    float: left;
-    padding: 2px 10px;
-}
-
-.nav-search-box {
-     position: absolute;
-     margin: 50px 25px 25px;
-     background: #7f8fa6;
-     height: 40px;
-     border-radius: 45px;
- }
-
-.nav-search-text:focus {
+/*stays,when page is scrolled, is 100% of the page tall and 250px wide. It is in front of everything else.*/
+#sidebar {
+    z-index: 100;
     width: 250px;
-    transition: 0s;
-    padding-left: 20px;
+    height: 100vh;
+    position: fixed;
+    background: #9c88ff;
 }
 
-.nav-search-box:hover > .nav-search-icon {
-    color: #dcdde1;
-    background: #718093;
+/*focuses the user on the sidebar*/
+.sidebar-opaciter {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
 }
 
-.nav-search-box:hover > .nav-search-text {
-    width: 250px;
-    padding-left: 20px;
+.sidebar-opaciter :active {
+    display: block;
+    opacity: 1;
 }
 
-.nav-search-icon {
-    color: #192a56;
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #dcdde1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
-    cursor: pointer;
-
-}
-
-.nav-search-text {
-    width: 0;
-    background: none;
-    border: none;
-    outline: none;
-    padding: 0;
+.sbtn {
+    display: block;
     color: white;
-    font-size: 16px;
-    transition: 0.5s;
-    line-height: 40px
+    height: 35px;
+    width: 35px;
+    padding: 10px;
+    transition: 0.2s;
+}
+.sclose:hover{
+    box-shadow: 4px 4px 4px #575757;
 }
 
-.forum-list{
-    margin-top: 100px;
+.sclose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #9c88ff;
+}
+
+.sclose:hover {
+    background-color: #f5f6fa;
+    color: #8c7ae6;
+}
+
+.sidebar-header {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    padding: 20px;
+    background-color: #8c7ae6;
+}
+
+.search-wrapper {
+    background-color: #8c7ae6;
+    /*margin-top: 5px;*/
+    font-family: 'Poppins', sans-serif;
+}
+
+#sidebar-search-text {
+    outline: none;
+    border: none;
+    background: none;
+    color: white;
+    width: 213px;
+    padding-left: 8px;
+}
+
+.sidebar-item {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.3em;
+    color: white;
+    background-color: #9c88ff;
+}
+
+.sidebar-item:hover {
+    text-decoration: none;
+    background-color: #f5f6fa;
+    color: #9c88ff;
+}
+
+.sopen{
+    position: absolute;
+    top: 10px;
+    right:8px;
+    background-color: #9c88ff;
+}
+.sopen:hover{
+    box-shadow: 4px 4px 4px grey;
+}
+
+.sider {
+    position: fixed;
+    z-index: 100;
+    width: 51px;
+    height: 100vh;
+    /*background-color: #8c7ae6;*/
 }
