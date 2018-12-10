@@ -3,5 +3,5 @@ import forumReducer from "./forumReducer";
 
 
 export default combineReducers({
-    forumReducer
+    forums: forumReducer
 });

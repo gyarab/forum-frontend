@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import '../styles/navigation.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'w3-css/w3.css';
+import {connect} from "react-redux";
+import {fetchAllForums} from "../action-creators/forumActionCreator";
+import {NavLink} from 'react-router-dom'
+
 
 class Navigation extends Component {
     static defaultProps = {};
@@ -14,63 +18,58 @@ class Navigation extends Component {
         super();
 
         this.state = {
-            display: true
-        }
+            toggle: false
+        };
+
     }
 
-
     render() {
+        let toggled = this.state.toggle ? 'block' : 'none';
+        let reversed = !this.state.toggle ? 'block' : 'none';
         return (
-            <div style={{background: "#f5f6fa"}}>
-
-
-                {/*Open Button*/}
-                <button className="nav-toggle-icon w3-xlarge w3-hide-large"
-                        style={{display: !this.state.display ? "block" : "none"}} id={"open"}
-                        onClick={() => {
-                            this.setState({display: true})
-                        }}>
-                    <i className="fas fa-bars"></i>
-                </button>
-
-                {/*Sidebar*/}
-                <div className={"w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"}
-                     style={{width: 350 + 'px', display: this.state.display ? "block" : "none"}}>
-
-                    {/*Close Button*/}
-                    <button className="nav-toggle-icon w3-xlarge w3-hide-large" id={"close"}
-                            onClick={() => {
-                                this.setState({display: false})
-                            }}>
-                        <i className="fas fa-times"></i>
-                    </button>
-
-                    {/*Search box*/}
-                    <div className={"nav-search-box"}>
-                        <input className={"nav-search-text"}/>
-                        <span className={"nav-search-icon"}>
-                            <i className="fas fa-search"></i>
-                        </span>
-                    </div>
-                    <div className={"forum-list"}>
-                        <ul className="w3-ul">
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li>Forum</li>
-                            <li >Ahoj mami</li>
-
-                        </ul>
-                    </div>
-
+            <div>
+                <div className="closed-sidebar">
+                <div className="sider" style={{display: reversed}}>
+                    <i onClick={() => this.setState({toggle: !this.state.toggle})} className="sbtn sopen fas fa-arrow-right"/>
                 </div>
+                </div>
+
+                <div className="opened-sidebar" style={{display: toggled}}>
+                    <div className="sidebar-opaciter"/>
+                    <div id="sidebar-wrapper">
+                        <div id="sidebar">
+                            <div className="sidebar-header">
+                                <i onClick={() => this.setState({toggle: !this.state.toggle})}
+                                   className="sbtn sclose fas fa-arrow-left"/>
+                                <h1>Gyarab Forum</h1>
+                            </div>
+                            <div className={"search-wrapper"}>
+                                <input placeholder="Search..." id="sidebar-search-text"/>
+                                <i className="sbtn fas fa-search"/>
+                            </div>
+                            <NavLink to="/home" className="sidebar-item">Home</NavLink>
+                            <NavLink to="/about" className="sidebar-item">About</NavLink>
+                            <NavLink to="/about" className="sidebar-item">Hello</NavLink>
+                            <NavLink to="/about" className="sidebar-item">World</NavLink>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         );
     }
 }
 
-export default Navigation;
+Navigation.propTypes = {
+    fetchAllForums: PropTypes.func.isRequired,
+    forums: PropTypes.array.isRequired,
+};
+
+const mapStateToProps = state => ({
+    forums: state.forums.storage
+});
+const mapDispatchToProps = dispatch => ({
+    fetchAllForums: () => dispatch(fetchAllForums())
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+

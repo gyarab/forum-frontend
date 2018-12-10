@@ -1,0 +1,99 @@
+.lilpost-wrapper{
+  background:   #f5f6fa;
+  padding: 1.25rem;
+}
+
+.lilpost {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  font-family: "adelle-sans", sans-serif;
+  font-weight: 100;
+  margin: 0 auto;
+  width: 20rem;
+  display: block;
+  z-index: -1;
+  border: solid 2px #fff;
+  @media screen and (min-width: 480px) {
+      width: 28rem;
+  }
+  @media screen and (min-width: 767px) {
+      width: 40rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 50rem;
+  }
+
+}
+
+.lilpost-header{
+  font-size: 20px;
+  text-align: center;
+  border-bottom: solid 2px #192a56;
+  width: 80%;
+  margin: 1px auto;
+  padding: .5rem;
+  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  cursor: default;
+}
+
+.lilpost-body {
+  margin: 0 auto;
+  padding: 0 0 0 0;
+  width: 80%;
+  overflow: hidden;
+  text-align: justify;
+  max-height: 12.5rem;
+  border-bottom: solid 2px #192a56;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  cursor: default;
+}
+
+.lilpost-footer{
+  width: 80%;
+  margin: 1px auto;
+  min-height: 3rem;
+  padding: 0.5rem;
+}
+
+.lilpost-footer, .lilpost-body, .lilpost-header {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.lilpost:hover{
+  border: solid 2px #192a56;
+}
+
+.lilpost-footer ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 0;
+}
+
+.lilpost-footer ul li + li{
+  margin: auto 0 auto 1.5rem;
+}
+
+.fas.fa-comments:hover{
+  color: #fff;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000;
+}
+
+.fas.fa-thumbs-up:hover{
+  color: #4cd137;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000;
+}
+
+.fas.fa-thumbs-down:hover{
+  color: #e84118;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000;
+}
