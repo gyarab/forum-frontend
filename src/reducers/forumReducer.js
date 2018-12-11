@@ -1,4 +1,10 @@
-export default (state = {}, action) => {
+
+const initialState = {
+    storage:[]
+
+};
+
+export default function (state = initialState, action) {
     switch (action.type) {
         case 'ALL_FORUMS':
             return {
@@ -6,9 +12,11 @@ export default (state = {}, action) => {
             };
         case 'FETCH_ALL_FORUMS':
             return{
+                ...state,
                 storage: action.payload
             };
         default:
             return state
     }
-};
+
+}

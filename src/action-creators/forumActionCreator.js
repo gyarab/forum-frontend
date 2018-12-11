@@ -11,13 +11,8 @@ export const getForumsById = () => dispatch => {
     })
 };
 export const fetchAllForums = () => dispatch => {
-    fetch('http://192.168.1.3:7373/forum/all').then(function(response) {
-        if(response.ok) {
-            return response.blob();
-        }
-        throw new Error('Network response was not ok.');
-    })
-        .then(res => res.json())
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
         .then(forums => dispatch({
             type: 'FETCH_ALL_FORUMS',
             payload: forums

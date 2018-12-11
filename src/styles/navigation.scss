@@ -6,11 +6,13 @@
 
 /*stays,when page is scrolled, is 100% of the page tall and 250px wide. It is in front of everything else.*/
 #sidebar {
+    display: flex;
     z-index: 100;
     width: 250px;
     height: 100vh;
     position: fixed;
     background: #9c88ff;
+    flex-direction: column;
 }
 
 /*focuses the user on the sidebar*/
@@ -23,12 +25,12 @@
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 1;
 }
-
+//dims background
 .sidebar-opaciter :active {
     display: block;
     opacity: 1;
 }
-
+//css for all buttons
 .sbtn {
     display: block;
     color: white;
@@ -37,10 +39,8 @@
     padding: 10px;
     transition: 0.2s;
 }
-.sclose:hover{
-    box-shadow: 4px 4px 4px #575757;
-}
 
+//style for the closing arrow
 .sclose {
     position: absolute;
     top: 10px;
@@ -48,24 +48,26 @@
     background-color: #9c88ff;
 }
 
-.sclose:hover {
+//hover style for the closing arrow
+.sclose:hover{
+    box-shadow: 4px 4px 4px #575757;
     background-color: #f5f6fa;
     color: #8c7ae6;
 }
-
+//Gyarab Forum
 .sidebar-header {
     font-family: 'Poppins', sans-serif;
     color: white;
     padding: 20px;
     background-color: #8c7ae6;
 }
-
+// searchbox wrapper
 .search-wrapper {
     background-color: #8c7ae6;
     /*margin-top: 5px;*/
     font-family: 'Poppins', sans-serif;
 }
-
+//text field of the search area
 #sidebar-search-text {
     outline: none;
     border: none;
@@ -74,7 +76,11 @@
     width: 213px;
     padding-left: 8px;
 }
-
+//creates scrollbar when there is not enough space on the display to show all forums
+.forums{
+    overflow-y: auto;
+}
+//Each forum is one item
 .sidebar-item {
     text-decoration: none;
     display: block;
@@ -85,27 +91,27 @@
     color: white;
     background-color: #9c88ff;
 }
-
+//styles for items' behaviour on hover
 .sidebar-item:hover {
     text-decoration: none;
     background-color: #f5f6fa;
     color: #9c88ff;
 }
-
+//style for the opening arrow
 .sopen{
     position: absolute;
     top: 10px;
     right:8px;
     background-color: #9c88ff;
 }
+//...and it's behaviour upon hover
 .sopen:hover{
     box-shadow: 4px 4px 4px grey;
 }
-
+//small container on the left side holding the opening arrow
 .sider {
     position: fixed;
     z-index: 100;
     width: 51px;
     height: 100vh;
-    /*background-color: #8c7ae6;*/
 }
