@@ -1,14 +1,16 @@
 
 const initialState = {
-    storage:[]
+    storage:[],
+    singleItem:{},
 
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case 'ALL_FORUMS':
+        case 'FETCH_FORUM_BY_ID':
             return {
-                storage: action.payload
+                ...state,
+                singleItem: action.payload
             };
         case 'FETCH_ALL_FORUMS':
             return{

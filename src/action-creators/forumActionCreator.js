@@ -4,11 +4,13 @@ export const getAllForums = () => dispatch => {
         payload: 'This is working',
     })
 };
-export const getForumsById = () => dispatch => {
-    dispatch({
-        type: 'FORUMS_BY_ID',
-        payload: 'ID:1',
-    })
+export const fetchForumById = (id) => dispatch => {
+    fetch('https://jsonplaceholder.typicode.com/todos/'+id)
+        .then(response => response.json())
+        .then(item => dispatch({
+            type: 'FETCH_FORUM_BY_ID',
+            payload: item
+        }));
 };
 export const fetchAllForums = () => dispatch => {
     fetch('https://jsonplaceholder.typicode.com/todos')

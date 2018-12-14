@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import {Provider} from "react-redux";
 import configureStore from "./store";
-import Navigation from "./components/Navigation";
-import LilPost from "./components/LilPost"
 import {BrowserRouter as Router} from 'react-router-dom';
+import ForumRouter from "./components/ForumRouter";
 
 
 class App extends Component {
@@ -12,13 +11,10 @@ class App extends Component {
         return (
             <Provider store={configureStore()}>
                 <Router>
-                    <div className="App">
-                        <Navigation/>
-                        <LilPost/>
-                        <LilPost/>
-                        <LilPost/>
-                    </div>
-                </Router>
+                <div className="App">
+                    <ForumRouter/>
+                </div>
+            </Router>
             </Provider>
         );
     }

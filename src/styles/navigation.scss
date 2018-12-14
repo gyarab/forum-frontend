@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
-/*hides the page when needed*/
-#sidebar-wrapper {
-    display: block;
-}
-
 /*stays,when page is scrolled, is 100% of the page tall and 250px wide. It is in front of everything else.*/
 #sidebar {
     display: flex;
@@ -25,13 +20,10 @@
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 1;
 }
-//dims background
-.sidebar-opaciter :active {
-    display: block;
-    opacity: 1;
-}
+
 //css for all buttons
 .sbtn {
+    cursor: pointer;
     display: block;
     color: white;
     height: 35px;
@@ -87,7 +79,7 @@
     position: relative;
     width: 100%;
     padding: 10px;
-    font-size: 1.3em;
+    font-size: 1.1em;
     color: white;
     background-color: #9c88ff;
 }
