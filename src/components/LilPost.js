@@ -28,11 +28,11 @@ class Navigation extends Component {
                     </div>
                     <div className={"lilpost-footer"}>
                         <ul>
-                            <li><i className="fas fa-comments fa-2x"></i></li>
+                            <li><i className="far fa-comment-alt fa-2x p-btn"/></li>
                             <li>{this.state.comments}</li>
-                            <li><i className="fas fa-thumbs-up fa-2x"></i></li>
+                            <li><i className="fas fa-angle-up fa-2x p-btn"/></li>
                             <li>{this.state.thumbsUp}</li>
-                            <li><i className="fas fa-thumbs-down fa-2x"></i></li>
+                            <li><i className="fas fa-angle-down fa-2x p-btn"/></li>
                             <li>{this.state.thumbsDown}</li>
                         </ul>
                     </div>

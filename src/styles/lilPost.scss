@@ -77,23 +77,11 @@
 }
 
 .lilpost-footer ul li + li{
-  margin: auto 0 auto 1.5rem;
+  margin: auto 0 auto 1rem;
 }
 
-.fas.fa-comments:hover{
-  color: #fff;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
-}
-
-.fas.fa-thumbs-up:hover{
-  color: #4cd137;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
-}
-
-.fas.fa-thumbs-down:hover{
-  color: #e84118;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
+.p-btn:hover{
+  color: #9c88ff;
+  //-webkit-text-stroke-width: 2px;
+  //-webkit-text-stroke-color: #000;
 }
