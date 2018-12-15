@@ -9,9 +9,6 @@ import {NavLink} from 'react-router-dom'
 
 
 class Navigation extends Component {
-    static defaultProps = {};
-
-    static propTypes = {};
 
     componentDidMount() {
         this.props.fetchAllForums();
@@ -20,10 +17,10 @@ class Navigation extends Component {
 
     //prevent those mEmoRy LeAkS
     componentWillUnmount() {
-        document.removeEventListener("keydown", this.keyPressListener(this), false);
+        document.removeEventListener("keydown", this.keyPressListener, false);
     }
 
-    keyPressListener(event,l) {
+    keyPressListener(event) {
         if (event.keyCode === 27) {
 
         }
@@ -54,8 +51,7 @@ class Navigation extends Component {
     }
 
     render() {
-        let forumNames = {...this.state.forumNames};
-        forumNames = this.props.forums.map(forum => (
+        let forumNames = this.props.forums.map(forum => (
             <div key={forum.id}>
                 <NavLink to="/home" className="sidebar-item">{forum.title}</NavLink>
             </div>

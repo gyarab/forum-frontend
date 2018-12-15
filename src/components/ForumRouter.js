@@ -9,7 +9,7 @@ class ForumRouter extends Component {
         return (
             <div>
                 <Route path="/" component={Navigation}/>
-                <Route path="/front" component={Front}/>
+                <Route path="/" exact component={Front}/>
             </div>
         );
     }
