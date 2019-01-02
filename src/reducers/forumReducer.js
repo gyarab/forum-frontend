@@ -1,7 +1,7 @@
-
 const initialState = {
-    storage:[],
-    singleItem:{},
+    logged: false,
+    storage: [],
+    singleItem: {},
 
 };
 
@@ -13,9 +13,14 @@ export default function (state = initialState, action) {
                 singleItem: action.payload
             };
         case 'FETCH_ALL_FORUMS':
-            return{
+            return {
                 ...state,
                 storage: action.payload
+            };
+        case 'LOG_IN':
+            return{
+                ...state,
+                logged: action.payload,
             };
         default:
             return state

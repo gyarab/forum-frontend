@@ -1,0 +1,31 @@
+@import "themes";
+.parent{
+  background: $background;
+  height: 100vh;
+  display: flex;
+}
+
+.auth-wrapper {
+  display: block;
+  margin:auto;
+  width: 300px;
+}
+
+.input{
+  padding: 10px;
+  border-radius: 25px;
+  margin-top: 10px;
+  border: none;
+  width: 100%;
+}
+
+.button-submit{
+  background-color: $primary-color;
+  color: white;
+}
+
+.button-submit:hover{
+  background-color: $secondary-color;
+  color: white;
+  cursor: pointer;
+}

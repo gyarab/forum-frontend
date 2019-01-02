@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import '../styles/navigation.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import 'w3-css/w3.css';
 import {connect} from "react-redux";
 import {fetchAllForums, fetchForumById} from "../action-creators/forumActionCreator";
 import {NavLink} from 'react-router-dom'
@@ -84,7 +83,9 @@ class Navigation extends Component {
                             <i onClick={() => this.setState({toggle: !this.state.toggle})}
                                className="sbtn sclose fas fa-arrow-left"/>
                             <h1>Gyarab Forum</h1>
+                            <NavLink onClick={()=>{this.setState({toggle:false});}} to="/login" className="sidebar-item"><i className="far fa-user"/>  Log in / Register</NavLink>
                         </div>
+
 
                         <div className={"search-wrapper"}>
                             <input placeholder="Search..." id="sidebar-search-text"

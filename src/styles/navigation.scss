@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
+@import "themes";
 /*stays,when page is scrolled, is 100% of the page tall and 250px wide. It is in front of everything else.*/
 #sidebar {
     display: flex;
     z-index: 100;
-    width: 250px;
+    width: 300px;
     height: 100vh;
     position: fixed;
-    background: #9c88ff;
+    background: $primary-color;
     flex-direction: column;
 }
 
@@ -37,25 +38,25 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #9c88ff;
+    background-color: $primary-color;
 }
 
 //hover style for the closing arrow
 .sclose:hover{
     box-shadow: 4px 4px 4px #575757;
-    background-color: #f5f6fa;
-    color: #8c7ae6;
+    background-color: $background;
+    color:  $secondary-color;
 }
 //Gyarab Forum
 .sidebar-header {
     font-family: 'Poppins', sans-serif;
     color: white;
     padding: 20px;
-    background-color: #8c7ae6;
+    background-color:  $secondary-color;
 }
 // searchbox wrapper
 .search-wrapper {
-    background-color: #8c7ae6;
+    background-color: $secondary-color;
     /*margin-top: 5px;*/
     font-family: 'Poppins', sans-serif;
 }
@@ -65,7 +66,7 @@
     border: none;
     background: none;
     color: white;
-    width: 213px;
+    width: 263px;
     padding-left: 8px;
 }
 //creates scrollbar when there is not enough space on the display to show all forums
@@ -79,22 +80,22 @@
     position: relative;
     width: 100%;
     padding: 10px;
-    font-size: 1.1em;
+    //font-size: 1.1em;
     color: white;
-    background-color: #9c88ff;
+    background-color: $primary-color;
 }
 //styles for items' behaviour on hover
 .sidebar-item:hover {
     text-decoration: none;
     background-color: #f5f6fa;
-    color: #9c88ff;
+    color: $primary-color;
 }
 //style for the opening arrow
 .sopen{
     position: absolute;
     top: 10px;
     right:8px;
-    background-color: #9c88ff;
+    background-color: $primary-color;
 }
 //...and it's behaviour upon hover
 .sopen:hover{
