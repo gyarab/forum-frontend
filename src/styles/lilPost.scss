@@ -1,17 +1,9 @@
-.lilpost-wrapper{
-  background:   #f5f6fa;
-  padding: 1.25rem;
-}
-
 .lilpost {
   background: #fff;
-  //border-radius: 10px;
   box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
   font-family: "adelle-sans", sans-serif;
-  font-weight: 100;
   margin: 0 auto;
   width: 20rem;
-  display: block;
   z-index: -1;
   border: solid 2px #fff;
   @media screen and (min-width: 480px) {
@@ -33,20 +25,15 @@
   width: 80%;
   margin: 1px auto;
   padding: .5rem;
-  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;
-  cursor: default;
 }
 
 .lilpost-body {
   margin: 0 auto;
-  padding: 0 0 0 0;
   width: 80%;
   overflow: hidden;
   text-align: justify;
   max-height: 12.5rem;
   border-bottom: solid 2px #192a56;
-  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
-  cursor: default;
 }
 
 .lilpost-footer{
@@ -56,32 +43,42 @@
   padding: 0.5rem;
 }
 
-.lilpost-footer, .lilpost-body, .lilpost-header {
+.lilpost-wrapper {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background:   #f5f6fa;
+  padding: 1.25rem;
 }
 
+
 .lilpost:hover{
-  border: solid 2px #192a56;
+  /*Shadow requires some feedback from you*/
+  box-shadow: 10px 10px 8px grey;
+  cursor: pointer;
 }
 
 .lilpost-footer ul{
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  padding-left: 0;
 }
 
-.lilpost-footer ul li + li{
-  margin: auto 0 auto 1rem;
+.lilpost-footer li {
+  margin: auto 0;
 }
 
-.p-btn:hover{
+
+.interactive-button{
+  color: black;
+  margin: auto 0.6rem auto 1.8rem;
+}
+
+.interactive-button:hover{
   color: #9c88ff;
-  //-webkit-text-stroke-width: 2px;
-  //-webkit-text-stroke-color: #000;
+  /*alternative look in comments
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 2px;*/
 }
