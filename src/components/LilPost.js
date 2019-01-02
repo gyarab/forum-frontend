@@ -21,18 +21,18 @@ class Navigation extends Component {
 
         return (
             <div className="lilpost-wrapper">
-                <div className={"lilpost"}>
-                    <div className={"lilpost-header"}>{this.state.title}</div>
-                    <div className={"lilpost-body"}>
+                <div className="lilpost">
+                    <div className="lilpost-header">{this.state.title}</div>
+                    <div className="lilpost-body">
                         <p>{this.state.content}</p>
                     </div>
-                    <div className={"lilpost-footer"}>
+                    <div className="lilpost-footer">
                         <ul>
-                            <li><i className="fas fa-comments fa-2x"></i></li>
+                            <li><i className="fas fa-comments fa-2x interactive-button" /></li>
                             <li>{this.state.comments}</li>
-                            <li><i className="fas fa-thumbs-up fa-2x"></i></li>
+                            <li><i className="fas fa-angle-up fa-2x interactive-button" /></li>
                             <li>{this.state.thumbsUp}</li>
-                            <li><i className="fas fa-thumbs-down fa-2x"></i></li>
+                            <li><i className="fas fa-angle-down fa-2x interactive-button" /></li>
                             <li>{this.state.thumbsDown}</li>
                         </ul>
                     </div>
