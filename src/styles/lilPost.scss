@@ -1,4 +1,5 @@
 .lilpost {
+  transition: 0.2s;
   background: #fff;
   box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
   font-family: "adelle-sans", sans-serif;
@@ -56,7 +57,7 @@
 
 .lilpost:hover{
   /*Shadow requires some feedback from you*/
-  box-shadow: 10px 10px 8px grey;
+  box-shadow: 4px 4px 4px grey;
   cursor: pointer;
 }
 

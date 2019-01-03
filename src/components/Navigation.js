@@ -11,19 +11,9 @@ class Navigation extends Component {
 
     componentDidMount() {
         this.props.fetchAllForums();
-        document.addEventListener("keydown", this.keyPressListener, false);
     }
 
-    //prevent those mEmoRy LeAkS
-    componentWillUnmount() {
-        document.removeEventListener("keydown", this.keyPressListener, false);
-    }
 
-    keyPressListener(event) {
-        if (event.keyCode === 27) {
-
-        }
-    }
 
 
     constructor() {
