@@ -1,0 +1,36 @@
+@import "themes";
+
+//Centers and stlyes the button
+.load-more{
+  background-color: $primary-color;
+  cursor: pointer;
+  display: block;
+  height: 2.5rem;
+  width: 20rem;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  transition: 0.2s;
+  border: none;
+}
+
+//Creates some space between the button and other components, removes white background and user can't select text inside of the button
+.load-more-wrapper{
+  padding: 1.25rem 0 2.5rem 0;
+  background: #f5f6fa;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+//Shows grey shadow wehenever user hovers over the button
+.load-more:hover{
+  box-shadow: 4px 4px 4px grey;
+}
+
+//Removes blue outline after clicking the button
+.load-more:focus{
+  outline:0;
+}
