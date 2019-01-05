@@ -1,14 +1,29 @@
-export default (state = {}, action) => {
+const initialState = {
+    logged: false,
+    storage: [],
+    singleItem: {},
+
+};
+
+export default function (state = initialState, action) {
     switch (action.type) {
-        case 'ALL_FORUMS':
+        case 'FETCH_FORUM_BY_ID':
             return {
-                storage: action.payload
+                ...state,
+                singleItem: action.payload
             };
         case 'FETCH_ALL_FORUMS':
-            return{
+            return {
+                ...state,
                 storage: action.payload
+            };
+        case 'LOG_IN':
+            return{
+                ...state,
+                logged: action.payload,
             };
         default:
             return state
     }
-};
+
+}

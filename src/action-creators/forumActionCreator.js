@@ -4,23 +4,34 @@ export const getAllForums = () => dispatch => {
         payload: 'This is working',
     })
 };
-export const getForumsById = () => dispatch => {
-    dispatch({
-        type: 'FORUMS_BY_ID',
-        payload: 'ID:1',
-    })
+export const fetchForumById = (id) => dispatch => {
+    fetch('https://jsonplaceholder.typicode.com/todos/' + id)
+        .then(response => response.json())
+        .then(item => dispatch({
+            type: 'FETCH_FORUM_BY_ID',
+            payload: item
+        }));
 };
 export const fetchAllForums = () => dispatch => {
-    fetch('http://192.168.1.3:7373/forum/all').then(function(response) {
-        if(response.ok) {
-            return response.blob();
-        }
-        throw new Error('Network response was not ok.');
-    })
-        .then(res => res.json())
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
         .then(forums => dispatch({
             type: 'FETCH_ALL_FORUMS',
             payload: forums
         }));
 
+};
+export const logIn = (creds) => dispatch => {
+    let formData = new FormData();
+    formData.append("username", "cool");
+    formData.append("password", "prase");
+    fetch("http://localhost:7373/login", {
+        method: 'POST',
+        body: formData
+    }).then(response => console.log(response.json())).then(response =>
+        dispatch({
+        type: 'LOG_IN',
+        payload: response
+    })
+    ).catch(e=>console.log(e))
 };

@@ -1,16 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
-/*hides the page when needed*/
-#sidebar-wrapper {
-    display: block;
-}
-
+@import "themes";
 /*stays,when page is scrolled, is 100% of the page tall and 250px wide. It is in front of everything else.*/
 #sidebar {
+    display: flex;
     z-index: 100;
-    width: 250px;
+    width: 300px;
     height: 100vh;
     position: fixed;
-    background: #9c88ff;
+    background: $primary-color;
+    flex-direction: column;
 }
 
 /*focuses the user on the sidebar*/
@@ -24,12 +22,9 @@
     opacity: 1;
 }
 
-.sidebar-opaciter :active {
-    display: block;
-    opacity: 1;
-}
-
+//css for all buttons
 .sbtn {
+    cursor: pointer;
     display: block;
     color: white;
     height: 35px;
@@ -37,75 +32,79 @@
     padding: 10px;
     transition: 0.2s;
 }
-.sclose:hover{
-    box-shadow: 4px 4px 4px #575757;
-}
 
+//style for the closing arrow
 .sclose {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #9c88ff;
+    background-color: $primary-color;
 }
 
-.sclose:hover {
-    background-color: #f5f6fa;
-    color: #8c7ae6;
+//hover style for the closing arrow
+.sclose:hover{
+    box-shadow: 4px 4px 4px #575757;
+    background-color: $background;
+    color:  $secondary-color;
 }
-
+//Gyarab Forum
 .sidebar-header {
     font-family: 'Poppins', sans-serif;
     color: white;
     padding: 20px;
-    background-color: #8c7ae6;
+    background-color:  $secondary-color;
 }
-
+// searchbox wrapper
 .search-wrapper {
-    background-color: #8c7ae6;
+    background-color: $secondary-color;
     /*margin-top: 5px;*/
     font-family: 'Poppins', sans-serif;
 }
-
+//text field of the search area
 #sidebar-search-text {
     outline: none;
     border: none;
     background: none;
     color: white;
-    width: 213px;
+    width: 263px;
     padding-left: 8px;
 }
-
+//creates scrollbar when there is not enough space on the display to show all forums
+.forums{
+    overflow-y: auto;
+}
+//Each forum is one item
 .sidebar-item {
     text-decoration: none;
     display: block;
     position: relative;
     width: 100%;
     padding: 10px;
-    font-size: 1.3em;
+    //font-size: 1.1em;
     color: white;
-    background-color: #9c88ff;
+    background-color: $primary-color;
 }
-
+//styles for items' behaviour on hover
 .sidebar-item:hover {
     text-decoration: none;
     background-color: #f5f6fa;
-    color: #9c88ff;
+    color: $primary-color;
 }
-
+//style for the opening arrow
 .sopen{
     position: absolute;
     top: 10px;
     right:8px;
-    background-color: #9c88ff;
+    background-color: $primary-color;
 }
+//...and it's behaviour upon hover
 .sopen:hover{
     box-shadow: 4px 4px 4px grey;
 }
-
+//small container on the left side holding the opening arrow
 .sider {
     position: fixed;
     z-index: 100;
     width: 51px;
     height: 100vh;
-    /*background-color: #8c7ae6;*/
 }

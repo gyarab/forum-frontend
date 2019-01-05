@@ -1,19 +1,13 @@
-.lilpost-wrapper{
-  background:   #f5f6fa;
-  padding: 1.25rem;
-}
+@import "themes";
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
 
+//Defines style shared by all of the sub-divs, centers the LilPost
 .lilpost {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
-  font-family: "adelle-sans", sans-serif;
-  font-weight: 100;
+  transition: 0.2s;
+  background: white;
+  font-family: 'Poppins', sans-serif;
   margin: 0 auto;
-  width: 20rem;
-  display: block;
   z-index: -1;
-  border: solid 2px #fff;
   @media screen and (min-width: 480px) {
       width: 28rem;
   }
@@ -25,75 +19,70 @@
   }
 
 }
-
+//Styles the title and creates the line at the bottom of the header
 .lilpost-header{
   font-size: 20px;
   text-align: center;
   border-bottom: solid 2px #192a56;
   width: 80%;
   margin: 1px auto;
-  padding: .5rem;
-  box-shadow:  hsla(0, 0, 0, .2) 0 4px 2px -2px;
-  cursor: default;
+  padding: 0.5rem;
 }
 
+//Styles the previewed content and creates the line at the bottom of the previewed conent
 .lilpost-body {
   margin: 0 auto;
-  padding: 0 0 0 0;
   width: 80%;
   overflow: hidden;
   text-align: justify;
   max-height: 12.5rem;
   border-bottom: solid 2px #192a56;
-  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
-  cursor: default;
 }
 
+//Determines the position of the pictures in the footer
 .lilpost-footer{
   width: 80%;
-  margin: 1px auto;
-  min-height: 3rem;
+  margin: 0 auto;
+  height: 3.5rem;
   padding: 0.5rem;
 }
 
-.lilpost-footer, .lilpost-body, .lilpost-header {
+//Denies the selection of the text inside the LilPost, removes white background and adds some space
+.lilpost-wrapper {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background:   #f5f6fa;
+  padding: 1.25rem;
 }
 
+//Shows shadow when hovered over, cursor changes to pointer for the LilPost is supposed to be a link
 .lilpost:hover{
-  border: solid 2px #192a56;
+  box-shadow: 4px 4px 4px grey;
+  cursor: pointer;
 }
 
+//Prevents default look of a list, shows the contents at right-hand side
 .lilpost-footer ul{
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  padding-left: 0;
 }
 
-.lilpost-footer ul li + li{
-  margin: auto 0 auto 1.5rem;
+//Centers the items in the list (from bottom and top)
+.lilpost-footer li {
+  margin: auto 0;
 }
 
-.fas.fa-comments:hover{
-  color: #fff;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
+//Alternates the default look of the buttons (comments, likes, dislikes)
+.interactive-button{
+  color: black;
+  margin: auto 0.6rem auto 1.8rem;
 }
 
-.fas.fa-thumbs-up:hover{
-  color: #4cd137;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
-}
-
-.fas.fa-thumbs-down:hover{
-  color: #e84118;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #000;
+//Buttons change color whenever hovered over
+.interactive-button:hover{
+  color: $primary-color;
 }
