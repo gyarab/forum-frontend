@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // eslint-disable-next-line
 import PropTypes from 'prop-types';
-import RenderLilPosts from "./RenderLilPosts"
+import LilPost from "./LilPost";
 
 class Front extends Component {
     static defaultProps = {};
@@ -12,7 +12,7 @@ class Front extends Component {
 
     render() {
         return (
-            <div><RenderLilPosts/></div>
+            <div><LilPost/><LilPost/><LilPost/><LilPost/></div>
         );
     }
 }

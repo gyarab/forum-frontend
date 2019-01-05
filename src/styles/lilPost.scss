@@ -1,13 +1,12 @@
-@import "themes";
-@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
-
-//Defines style shared by all of the sub-divs, centers the LilPost
 .lilpost {
   transition: 0.2s;
-  background: white;
-  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  font-family: "adelle-sans", sans-serif;
   margin: 0 auto;
+  width: 20rem;
   z-index: -1;
+  border: solid 2px #fff;
   @media screen and (min-width: 480px) {
       width: 28rem;
   }
@@ -19,17 +18,16 @@
   }
 
 }
-//Styles the title and creates the line at the bottom of the header
+
 .lilpost-header{
   font-size: 20px;
   text-align: center;
   border-bottom: solid 2px #192a56;
   width: 80%;
   margin: 1px auto;
-  padding: 0.5rem;
+  padding: .5rem;
 }
 
-//Styles the previewed content and creates the line at the bottom of the previewed conent
 .lilpost-body {
   margin: 0 auto;
   width: 80%;
@@ -39,15 +37,13 @@
   border-bottom: solid 2px #192a56;
 }
 
-//Determines the position of the pictures in the footer
 .lilpost-footer{
   width: 80%;
-  margin: 0 auto;
-  height: 3.5rem;
+  margin: 1px auto;
+  min-height: 3rem;
   padding: 0.5rem;
 }
 
-//Denies the selection of the text inside the LilPost, removes white background and adds some space
 .lilpost-wrapper {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -58,31 +54,32 @@
   padding: 1.25rem;
 }
 
-//Shows shadow when hovered over, cursor changes to pointer for the LilPost is supposed to be a link
+
 .lilpost:hover{
+  /*Shadow requires some feedback from you*/
   box-shadow: 4px 4px 4px grey;
   cursor: pointer;
 }
 
-//Prevents default look of a list, shows the contents at right-hand side
 .lilpost-footer ul{
   list-style: none;
   display: flex;
   justify-content: flex-end;
 }
 
-//Centers the items in the list (from bottom and top)
 .lilpost-footer li {
   margin: auto 0;
-}
+ }
 
-//Alternates the default look of the buttons (comments, likes, dislikes)
+
 .interactive-button{
   color: black;
   margin: auto 0.6rem auto 1.8rem;
 }
 
-//Buttons change color whenever hovered over
 .interactive-button:hover{
-  color: $primary-color;
+  color: #9c88ff;
+  /*alternative look in comments
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 2px;*/
 }
