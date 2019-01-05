@@ -1,0 +1,45 @@
+.Bigpost{
+  background: white;
+  font-family: "adelle-sans", sans-serif;
+  width:800px;
+  align:right;
+  margin-left: 300px;
+}
+.Bigpost-Header {
+  width: 90%;
+  text-align: center;
+  font-size: 20px;
+  border-bottom: solid 2px #000000;
+  color:#2ecc71;
+  font-weight:bold;
+  background-color: white;
+  margin:0 auto;
+}
+.Bigpost-Body{
+  font-size:15px;
+  overflow:hidden;
+  width:90%;
+  margin:0 auto;
+  text-align:justify;
+  padding: 10px 0px 0px 10px;
+}
+.Bigpost-Footer{
+  width:90%;
+  margin:0 auto;
+
+}
+.Bigpost-Footer ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  font-size:12px
+}
+.Bigpost-Form{
+  width:90%;
+  margin:0 auto;
+}
+
+
+.input[type=text]{
+border:none;
+}
