@@ -7,10 +7,16 @@ class Bigpost extends Component {
         content:"BLAALBLBLALLBLBLBBL",
         thumbsUp:6,
         thumbsDown:65,
-        comments:[]
+        comments:""
     };
 
+    onChange(event) {
+        let input = event.target.value;
+        if (input.length >= 1) {
+            this.setState({comments: input});
+        }
 
+    }
     render(){
         return(
             <div className="Bigpost">
@@ -26,11 +32,12 @@ class Bigpost extends Component {
                     </ul>
                 </div>
                 <div className="Bigpost-Form">
-                    <form value="" onSubmit="addComment(this.value)">
-                        <input type="text"  placeholder="Type a comment here" name="negr"></input>
+                    <form>
+                        <input type="text" onChange={this.onChange.bind(this)}  placeholder="Type a comment here" name="negr"></input>
                         <input type="submit" value="Submit comment" ></input>
 
                     </form>
+                    <p>{this.state.comments}</p>
                 </div>
             </div>
 
@@ -42,10 +49,9 @@ class Bigpost extends Component {
         );
         }
 }
-    function addComment(element) {
-    return false;
-    this.setState({
-            comments: this.state.arr.concat(element)
-        });
-    }
+    // function addComment(element) {
+    // this.setState({
+    //         comments: this.state.arr.concat(element)
+    //     });
+    // }
 export default Bigpost;

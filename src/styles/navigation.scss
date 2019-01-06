@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
 @import "themes";
-/*stays,when page is scrolled, is 100% of the page tall and 250px wide. It is in front of everything else.*/
+
+//Fixes the sidebar to the side, regardless the scroll or the wibdow size
 #sidebar {
     display: flex;
     z-index: 100;
@@ -11,7 +12,7 @@
     flex-direction: column;
 }
 
-/*focuses the user on the sidebar*/
+//Used to keep the user's focus on the sidebar
 .sidebar-opaciter {
     visibility: visible;
     height: 100vh;
@@ -22,7 +23,7 @@
     opacity: 1;
 }
 
-//css for all buttons
+//Defines the style of the buttons
 .sbtn {
     cursor: pointer;
     display: block;
@@ -33,7 +34,7 @@
     transition: 0.2s;
 }
 
-//style for the closing arrow
+//Specific style for the closing button on the top right of the sidebar
 .sclose {
     position: absolute;
     top: 10px;
@@ -41,26 +42,27 @@
     background-color: $primary-color;
 }
 
-//hover style for the closing arrow
+//Specific hover style for the closing button
 .sclose:hover{
     box-shadow: 4px 4px 4px #575757;
     background-color: $background;
     color:  $secondary-color;
 }
-//Gyarab Forum
+//Styling for the upper part of the sidebar, containing the name of the site and auth. button
 .sidebar-header {
     font-family: 'Poppins', sans-serif;
     color: white;
     padding: 20px;
     background-color:  $secondary-color;
 }
-// searchbox wrapper
+
+//Styling for the container of the search box
 .search-wrapper {
     background-color: $secondary-color;
     /*margin-top: 5px;*/
     font-family: 'Poppins', sans-serif;
 }
-//text field of the search area
+//Styling for the input inside the wrapper
 #sidebar-search-text {
     outline: none;
     border: none;
@@ -69,39 +71,39 @@
     width: 263px;
     padding-left: 8px;
 }
-//creates scrollbar when there is not enough space on the display to show all forums
+//Shows a scrollbar in case there is not enough space to show all sidebar-items
 .forums{
     overflow-y: auto;
 }
-//Each forum is one item
+//Styling for each individual forum NavLink
 .sidebar-item {
     text-decoration: none;
     display: block;
     position: relative;
     width: 100%;
     padding: 10px;
-    //font-size: 1.1em;
     color: white;
     background-color: $primary-color;
 }
-//styles for items' behaviour on hover
+
+//Styles for sidebar-item's behaviour on hover
 .sidebar-item:hover {
     text-decoration: none;
     background-color: #f5f6fa;
     color: $primary-color;
 }
-//style for the opening arrow
+//Styling for the button shown only when the sidebar is closed
 .sopen{
     position: absolute;
     top: 10px;
     right:8px;
     background-color: $primary-color;
 }
-//...and it's behaviour upon hover
+//...and for it's behaviour upon hover
 .sopen:hover{
     box-shadow: 4px 4px 4px grey;
 }
-//small container on the left side holding the opening arrow
+//Styling for the small container on the left side holding the opening button
 .sider {
     position: fixed;
     z-index: 100;

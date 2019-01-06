@@ -17,7 +17,13 @@ export default function (state = initialState, action) {
                 ...state,
                 storage: action.payload
             };
+        case 'FETCH_FORUMS':
+            return {
+                ...state,
+                storage: action.payload
+            };
         case 'LOG_IN':
+            console.log("reducer logIn:" + action.payload);
             return{
                 ...state,
                 logged: action.payload,

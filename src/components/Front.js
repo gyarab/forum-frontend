@@ -12,7 +12,7 @@ class Front extends Component {
 
     render() {
         return (
-            <div><LilPost/><LilPost/><LilPost/><LilPost/></div>
+            <div><LilPost ahoj="jak se mas"/><LilPost/><LilPost/><LilPost/></div>
         );
     }
 }
