@@ -7,18 +7,36 @@ import '../styles/renderLilPosts.scss';
 
 class RenderLilPosts extends Component {
 
+
+    componentDidMount() {
+        this.props.fetchAllForums();
+        console.log(this.props.forums.length)
+    }
+
+
     constructor() {
         super();
         this.state = {
             forumID: '1',//hot placeholder
             numberOfPosts: 10,
+            maxPosts: false,
             position: window.location.href //gets the url of the page, yet unused
         };
     }
 
     loadMorePosts = () => {
-        if(this.state.numberOfPosts+25<this.props.forums.length) {
-            this.setState({numberOfPosts: this.state.numberOfPosts + 25})
+        if(this.state.numberOfPosts+5<this.props.forums.length && !this.state.maxPosts) {
+            this.setState({numberOfPosts: this.state.numberOfPosts + 5})
+        } else {
+            for(let i = 0; i<5; i++){
+                if((this.state.numberOfPosts+i) === (this.props.forums.length)) {
+                    this.setState({
+                        numberOfPosts: (this.state.numberOfPosts + i),
+                        maxPosts: true
+                    })
+                    break;
+                }
+            }
         }
     }
 
@@ -30,12 +48,13 @@ class RenderLilPosts extends Component {
                 <LilPost title={post.title}/>
             </div>
         ));
+        let tillMax = !this.state.maxPosts ? 'block' : 'none';
 
         return (
             <div className="rendered-lilposts">
                 {posts}
                 <div className={"load-more-wrapper"}>
-                    <button className="load-more" onClick={this.loadMorePosts}>Load more posts</button>
+                    <button className="load-more" onClick={this.loadMorePosts} style={{display: tillMax}}>Load more posts</button>
                 </div>
             </div>
         );
