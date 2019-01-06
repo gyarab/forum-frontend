@@ -21,7 +21,7 @@ class Navigation extends Component {
 
         return (
             <div className="lilpost-wrapper">
-                <div className="lilpost">
+                  <div className="lilpost">
                     <div className="lilpost-header">{this.state.title}</div>
                     <div className="lilpost-body">
                         <p>{this.state.content}</p>

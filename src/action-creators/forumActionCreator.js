@@ -12,6 +12,15 @@ export const fetchForumById = (id) => dispatch => {
             payload: item
         }));
 };
+export const fetchForums = () => dispatch => {
+    fetch('http://localhost:7373/forum/all')
+        .then(response => response.json())
+        .then(forums => dispatch({
+            type: 'FETCH_FORUMS',
+            payload: forums
+        }));
+
+};
 export const fetchAllForums = () => dispatch => {
     fetch('https://jsonplaceholder.typicode.com/todos')
         .then(response => response.json())
@@ -23,15 +32,17 @@ export const fetchAllForums = () => dispatch => {
 };
 export const logIn = (creds) => dispatch => {
     let formData = new FormData();
-    formData.append("username", "cool");
-    formData.append("password", "prase");
-    fetch("http://localhost:7373/login", {
+    formData.append("username", "admin@example.com");
+    formData.append("password", "admin!");
+    fetch("http://localhost:7373/api/core/login", {
         method: 'POST',
-        body: formData
-    }).then(response => console.log(response.json())).then(response =>
+        body: formData,
+        redirect: "follow",
+        credentials: "include"
+    }).then(response => response.json()).then(response =>
         dispatch({
-        type: 'LOG_IN',
-        payload: response
-    })
-    ).catch(e=>console.log(e))
+            type: 'LOG_IN',
+            payload: response
+        })
+    ).catch(e => console.log(e))
 };

@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 import '../styles/navigation.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import {connect} from "react-redux";
-import {fetchAllForums, fetchForumById} from "../action-creators/forumActionCreator";
+import {fetchForumById, fetchForums} from "../action-creators/forumActionCreator";
 import {NavLink} from 'react-router-dom'
 
 
 class Navigation extends Component {
 
     componentDidMount() {
-        this.props.fetchAllForums();
+        this.props.fetchForums();
     }
-
-
 
 
     constructor() {
@@ -42,7 +40,7 @@ class Navigation extends Component {
     render() {
         let forumNames = this.props.forums.map(forum => (
             <div key={forum.id}>
-                <NavLink to="/home" className="sidebar-item">{forum.title}</NavLink>
+                <NavLink to={"/"+forum.name} className="sidebar-item">{forum.name}</NavLink>
             </div>
         ));
 
@@ -64,7 +62,7 @@ class Navigation extends Component {
                 <div className="opened-sidebar" style={{display: toggled}}>
 
                     <div className="sidebar-opaciter" onClick={() => {
-                        this.setState({toggle: false})
+                        this.setState({toggle: false});console.log(this.props)
                     }}/>
 
                     <div id="sidebar">
@@ -99,7 +97,7 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-    fetchAllForums: PropTypes.func.isRequired,
+    fetchForums: PropTypes.func.isRequired,
     fetchForumById: PropTypes.func.isRequired,
     forums: PropTypes.array.isRequired,
     singleItem: PropTypes.object
@@ -113,8 +111,8 @@ const mapDispatchToProps = (dispatch) => ({
     fetchForumById: (id) => {
         dispatch(fetchForumById(id))
     },
-    fetchAllForums: () => {
-        dispatch(fetchAllForums())
+    fetchForums: () => {
+        dispatch(fetchForums())
     }
 });
 
