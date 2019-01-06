@@ -1,6 +1,7 @@
 const initialState = {
     logged: false,
     storage: [],
+    posts:[],
     singleItem: {},
 
 };
@@ -20,7 +21,7 @@ export default function (state = initialState, action) {
         case 'FETCH_FORUMS':
             return {
                 ...state,
-                storage: action.payload
+                posts: action.payload[0].posts
             };
         case 'LOG_IN':
             console.log("reducer logIn:" + action.payload);
