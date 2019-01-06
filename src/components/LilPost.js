@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-class Navigation extends Component {
+class LilPost extends Component {
     static defaultProps = {};
 
     static propTypes = {};
@@ -42,4 +42,4 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+export default LilPost;

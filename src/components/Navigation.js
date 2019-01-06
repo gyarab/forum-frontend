@@ -38,9 +38,9 @@ class Navigation extends Component {
     }
 
     render() {
-        let forumNames = this.props.forums.map(forum => (
+        let forumNames = this.props.posts.map(forum => (
             <div key={forum.id}>
-                <NavLink to={"/"+forum.name} className="sidebar-item">{forum.name}</NavLink>
+                <NavLink to={"/"+forum.title} className="sidebar-item">{forum.title}</NavLink>
             </div>
         ));
 
@@ -104,6 +104,7 @@ Navigation.propTypes = {
 };
 
 const mapStateToProps = state => ({
+    posts: state.forums.posts,
     forums: state.forums.storage,
     singleItem: state.forums.singleItem
 });
