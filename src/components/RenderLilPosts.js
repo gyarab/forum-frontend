@@ -48,13 +48,13 @@ class RenderLilPosts extends Component {
                 <LilPost title={post.title}/>
             </div>
         ));
-        let tillMax = !this.state.maxPosts ? 'block' : 'none';
+        let tilMax = !this.state.maxPosts ? 'block' : 'none';
 
         return (
             <div className="rendered-lilposts">
                 {posts}
                 <div className={"load-more-wrapper"}>
-                    <button className="load-more" onClick={this.loadMorePosts} style={{display: tillMax}}>Load more posts</button>
+                    <button className="load-more" onClick={this.loadMorePosts} style={{display: tilMax}}>Load more posts</button>
                 </div>
             </div>
         );
