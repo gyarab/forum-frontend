@@ -23,6 +23,7 @@ class RenderLilPosts extends Component {
                 slicedPosts: list
             }
         );
+
         console.log(this.state.slicedPosts[0]);
     }
 
