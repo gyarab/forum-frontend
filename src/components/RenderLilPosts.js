@@ -14,9 +14,8 @@ class RenderLilPosts extends Component {
 
     loadPosts() {
         let list = this.state.slicedPosts;
-        this.props.posts.map(post => {
+        this.props.posts.forEach(post => {
             list.push(post);
-
         });
         this.setState(
             {
