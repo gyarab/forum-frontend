@@ -21,15 +21,35 @@ class RenderLilPosts extends Component {
 
     loadPosts() {
         let list = this.state.posts;
-        let sliceEm = this.props.posts.slice(0, this.state.numberOfPosts)
+        let sliceEm = this.props.posts.slice(this.state.posts.length, this.state.numberOfPosts)
         sliceEm.map(post => {
             list.push(post);
         });
-        this.setState(
-            {
-                posts: list
-            }
-        );
+
+
+        if(this.state.numberOfPosts + 5 < this.props.posts.length){
+            this.setState(
+                {
+                    posts: list,
+                    numberOfPosts: this.state.numberOfPosts + 5
+                }
+            );
+        } else if(this.state.numberOfPosts === this.props.posts.length){
+            this.setState(
+                {
+                    posts: list,
+                    maxPosts: true
+                }
+            )
+        } else {
+            this.setState(
+                {
+                    posts: list,
+                    numberOfPosts: this.props.posts.length
+                }
+                )
+        }
+
     }
 
     constructor() {
@@ -43,22 +63,6 @@ class RenderLilPosts extends Component {
         };
     }
 
-    /*loadMorePosts() {
-        if (this.state.numberOfPosts + 5 < this.props.forums.length && !this.state.maxPosts) {
-            this.setState({numberOfPosts: this.state.numberOfPosts + 5})
-        } else {
-            for (let i = 0; i < 5; i++) {
-                if ((this.state.numberOfPosts + i) === (this.props.forums.length)) {
-                    this.setState({
-                        numberOfPosts: (this.state.numberOfPosts + i),
-                        maxPosts: true
-                    });
-                    break;
-                }
-            }
-        }
-    }
-    */
 
     render() {
         let posts = this.state.posts.map(post => (
