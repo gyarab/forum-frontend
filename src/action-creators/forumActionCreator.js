@@ -15,11 +15,12 @@ export const fetchForumById = (id) => dispatch => {
 export const fetchForums = () => dispatch => {
     fetch('http://localhost:7373/forum/all?page=0&size=2')
         .then(response => response.json())
-        .then(forums => dispatch({
-            type: 'FETCH_FORUMS',
-            payload: forums.content
-        }));
-
+        .then(forums =>
+            dispatch({
+                type: 'FETCH_FORUMS',
+                payload: forums.content
+            })
+        );
 };
 export const fetchAllForums = () => dispatch => {
     fetch('https://jsonplaceholder.typicode.com/todos')
@@ -27,7 +28,8 @@ export const fetchAllForums = () => dispatch => {
         .then(forums => dispatch({
             type: 'FETCH_ALL_FORUMS',
             payload: forums
-        }));
+        }))
+
 
 };
 export const logIn = (creds) => dispatch => {

@@ -8,37 +8,42 @@ import LilPost from "./LilPost";
 class RenderLilPosts extends Component {
 
 
-    componentDidMount() {
-        this.props.fetchForums();
+    componentDidMount(){
+        this.props.fetchForums()
     }
 
-    loadPosts() {
-        let list = this.state.slicedPosts;
-        this.props.posts.map(post => {
-            list.push(post);
+    componentDidUpdate(prevProps){
+        if (prevProps.posts !== this.props.posts && prevProps.posts.length === 0) {
+            this.loadPosts()
+        }
+    }
 
+
+    loadPosts() {
+        let list = this.state.posts;
+        let sliceEm = this.props.posts.slice(0, this.state.numberOfPosts)
+        sliceEm.map(post => {
+            list.push(post);
         });
         this.setState(
             {
-                slicedPosts: list
+                posts: list
             }
         );
-
-        console.log(this.state.slicedPosts[0]);
     }
 
     constructor() {
         super();
         this.state = {
             forumID: '1',//hot placeholder
-            numberOfPosts: 10,
+            numberOfPosts: 5,
             maxPosts: false,
             position: window.location.href, //gets the url of the page, yet unused
-            slicedPosts: []
+            posts: []
         };
     }
 
-    loadMorePosts() {
+    /*loadMorePosts() {
         if (this.state.numberOfPosts + 5 < this.props.forums.length && !this.state.maxPosts) {
             this.setState({numberOfPosts: this.state.numberOfPosts + 5})
         } else {
@@ -53,19 +58,18 @@ class RenderLilPosts extends Component {
             }
         }
     }
+    */
 
     render() {
-
-        let posts = this.state.slicedPosts.map(post => (
+        let posts = this.state.posts.map(post => (
             <div key={post.id}>
-                <LilPost title={post.title}/>
+                <LilPost title={post.title} thumbsUp={post.likes} thumbsDown={post.dislikes} content={post.content}/>
             </div>
         ));
         let tillMax = !this.state.maxPosts ? 'block' : 'none';
 
         return (
             <div className="rendered-lilposts">
-                {this.state.slicedPosts.typeof}
 
                 {posts}
                 <div className={"load-more-wrapper"}>
