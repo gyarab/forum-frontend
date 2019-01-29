@@ -78,7 +78,7 @@ class Navigation extends Component {
                         <div className={"search-wrapper"}>
                             <input placeholder="Search..." id="sidebar-search-text"
                                    onChange={this.onChange.bind(this)}/>
-                            <i onClick={() => this.handleClick()} className="sbtn fas fa-search"/>
+                            <i className="sbtn fas fa-search"/>
                         </div>
 
                         <div className="forums">
@@ -99,7 +99,6 @@ class Navigation extends Component {
 Navigation.propTypes = {
     fetchForumNames: PropTypes.func.isRequired,
     fetchForumById: PropTypes.func.isRequired,
-    forums: PropTypes.array.isRequired,
     singleItem: PropTypes.object
 };
 
