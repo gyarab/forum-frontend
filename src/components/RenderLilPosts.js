@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {fetchForums, fetchForumById} from "../action-creators/forumActionCreator";
+import {fetchPosts, fetchForumById} from "../action-creators/forumActionCreator";
 import connect from "react-redux/es/connect/connect";
 import '../styles/renderLilPosts.scss';
 import LilPost from "./LilPost";
@@ -104,7 +104,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(fetchForumById(id))
     },
     fetchForums: () => {
-        dispatch(fetchForums())
+        dispatch(fetchPosts())
     }
 });
 

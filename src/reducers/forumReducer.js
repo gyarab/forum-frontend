@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
                 ...state,
                 singleItem: action.payload
             };
-        case 'FETCH_ALL_FORUMS':
+        case 'FETCH_ALL_FORUM_NAMES':
             return {
                 ...state,
                 storage: action.payload

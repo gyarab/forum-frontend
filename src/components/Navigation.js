@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import '../styles/navigation.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import {connect} from "react-redux";
-import {fetchForumById, fetchForums} from "../action-creators/forumActionCreator";
+import {fetchAllForumNames, fetchForumById, fetchPosts} from "../action-creators/forumActionCreator";
 import {NavLink} from 'react-router-dom'
 
 
 class Navigation extends Component {
 
     componentDidMount() {
-        this.props.fetchForums();
+        this.props.fetchForumNames();
     }
 
 
@@ -97,7 +97,7 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-    fetchForums: PropTypes.func.isRequired,
+    fetchForumNames: PropTypes.func.isRequired,
     fetchForumById: PropTypes.func.isRequired,
     forums: PropTypes.array.isRequired,
     singleItem: PropTypes.object
@@ -112,8 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
     fetchForumById: (id) => {
         dispatch(fetchForumById(id))
     },
-    fetchForums: () => {
-        dispatch(fetchForums())
+    fetchForumNames: () => {
+        dispatch(fetchAllForumNames())
     }
 });
 

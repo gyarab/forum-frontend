@@ -12,8 +12,8 @@ export const fetchForumById = (id) => dispatch => {
             payload: item
         }));
 };
-export const fetchForums = () => dispatch => {
-    fetch('http://localhost:7373/forum/all?page=0&size=2')
+export const fetchPosts = () => dispatch => {
+    fetch('http://localhost:7373/forum/0/posts?page=0&size=2')
         .then(response => response.json())
         .then(forums =>
             dispatch({
@@ -22,12 +22,12 @@ export const fetchForums = () => dispatch => {
             })
         );
 };
-export const fetchAllForums = () => dispatch => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
+export const fetchAllForumNames = () => dispatch => {
+    fetch('http://localhost:7373/forum/all')
         .then(response => response.json())
-        .then(forums => dispatch({
-            type: 'FETCH_ALL_FORUMS',
-            payload: forums
+        .then(forumMap => dispatch({
+            type: 'FETCH_ALL_FORUM_NAMES',
+            payload: forumMap,
         }))
 
 
