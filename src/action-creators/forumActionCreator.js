@@ -12,13 +12,13 @@ export const fetchForumById = (id) => dispatch => {
             payload: item
         }));
 };
-export const fetchPosts = () => dispatch => {
-    fetch('http://localhost:7373/forum/0/posts?page=0&size=2')
+export const fetchPosts = (forumId, forumPage) => dispatch => {
+    fetch('http://localhost:7373/forum/'  + forumId + '/posts?page=' + forumPage + '&size=2')
         .then(response => response.json())
         .then(forums =>
             dispatch({
                 type: 'FETCH_FORUMS',
-                payload: forums.content
+                payload: forums
             })
         );
 };

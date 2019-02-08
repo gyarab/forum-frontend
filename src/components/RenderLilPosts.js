@@ -9,54 +9,45 @@ class RenderLilPosts extends Component {
 
 
     componentDidMount(){
-        this.props.fetchForums()
+        this.props.fetchPosts(1, this.state.page)
     }
 
     componentDidUpdate(prevProps){
         if (prevProps.posts !== this.props.posts && prevProps.posts.length === 0) {
             this.loadPosts()
         }
+
     }
 
 
+
     loadPosts() {
-        let list = this.state.posts;
-        let sliceEm = this.props.posts.slice(this.state.posts.length, this.state.numberOfPosts)
-        sliceEm.map(post => {
-            list.push(post);
+        let currentPosts = this.state.posts;
+        let list = this.props.posts.content;
+        console.log(this.props.posts);
+        list.map(post => {
+            currentPosts.push(post)
         });
-
-
-        if(this.state.numberOfPosts + 5 < this.props.posts.length){
-            this.setState(
-                {
-                    posts: list,
-                    numberOfPosts: this.state.numberOfPosts + 5
-                }
-            );
-        } else if(this.state.numberOfPosts === this.props.posts.length){
-            this.setState(
-                {
-                    posts: list,
-                    maxPosts: true
-                }
-            )
+        if(this.props.posts.last){
+            this.setState({
+                posts: currentPosts,
+                page: this.state.page + 1,
+                maxPosts: true
+            })
         } else {
-            this.setState(
-                {
-                    posts: list,
-                    numberOfPosts: this.props.posts.length
-                }
-                )
+            this.setState({
+                posts: currentPosts,
+                page: this.state.page + 1
+            })
+            this.props.fetchPosts(1, this.state.page+1)
         }
-
     }
 
     constructor() {
         super();
         this.state = {
             forumID: '1',//hot placeholder
-            numberOfPosts: 5,
+            page: 0,
             maxPosts: false,
             position: window.location.href, //gets the url of the page, yet unused
             posts: []
@@ -87,9 +78,7 @@ class RenderLilPosts extends Component {
 }
 
 RenderLilPosts.propTypes = {
-    fetchForums: PropTypes.func.isRequired,
     fetchForumById: PropTypes.func.isRequired,
-    forums: PropTypes.array.isRequired,
     singleItem: PropTypes.object
 };
 
@@ -103,8 +92,8 @@ const mapDispatchToProps = (dispatch) => ({
     fetchForumById: (id) => {
         dispatch(fetchForumById(id))
     },
-    fetchForums: () => {
-        dispatch(fetchPosts())
+    fetchPosts: (forumId, forumPage) => {
+        dispatch(fetchPosts(forumId, forumPage))
     }
 });
 

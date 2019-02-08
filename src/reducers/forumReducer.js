@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
         case 'FETCH_FORUMS':
             return {
                 ...state,
-                posts: action.payload[0].posts
+                posts: action.payload
             };
         case 'LOG_IN':
             console.log("reducer logIn:" + action.payload);
