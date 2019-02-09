@@ -19,7 +19,7 @@ class Navigation extends Component {
         this.state = {
             searchMode: false,
             toggle: false,
-            forumNames: '',
+            keys: [],
             id: '',
         };
 
@@ -36,14 +36,17 @@ class Navigation extends Component {
         }
 
     }
+    handleClick(){
+        console.dir(this.state.keys);
+
+    }
 
     render() {
-        let forumNames = this.props.posts.map(forum => (
-            <div key={forum.id}>
-                <NavLink to={"/"+forum.title} className="sidebar-item">{forum.title}</NavLink>
+        let forumNames = this.state.keys.map(key => (
+            <div key={this.props.forums[key]}>
+                <NavLink to={"/"+this.props.forums[key]} className="sidebar-item">{key}</NavLink>
             </div>
         ));
-
 
         let toggled = this.state.toggle ? 'block' : 'none';
         let reversed = !this.state.toggle ? 'block' : 'none';
@@ -54,7 +57,7 @@ class Navigation extends Component {
 
                 <div className="closed-sidebar">
                     <div className="sider" style={{display: reversed}}>
-                        <i onClick={() => this.setState({toggle: !this.state.toggle, forumNames})}
+                        <i onClick={() => this.setState({toggle: !this.state.toggle, keys: Object.keys(this.props.forums)})}
                            className="sbtn sopen fas fa-arrow-right"/>
                     </div>
                 </div>
@@ -78,11 +81,11 @@ class Navigation extends Component {
                         <div className={"search-wrapper"}>
                             <input placeholder="Search..." id="sidebar-search-text"
                                    onChange={this.onChange.bind(this)}/>
-                            <i className="sbtn fas fa-search"/>
+                            <i onClick={this.handleClick.bind(this)} className="sbtn fas fa-search"/>
                         </div>
 
                         <div className="forums">
-
+                            {forumNames}
                             {this.state.searchMode ? <NavLink to="/home"
                                                               className="sidebar-item">{this.props.singleItem.title}</NavLink> : this.state.forumNames}
                         </div>
