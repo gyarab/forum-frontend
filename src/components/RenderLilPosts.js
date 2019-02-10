@@ -19,6 +19,16 @@ class RenderLilPosts extends Component {
 
     }
 
+    constructor() {
+        super();
+        this.state = {
+            forumID: '1',//hot placeholder
+            page: 0,
+            maxPosts: false,
+            position: window.location.href, //gets the url of the page, yet unused
+            posts: []
+        };
+    }
 
 
     loadPosts() {
@@ -38,20 +48,9 @@ class RenderLilPosts extends Component {
             this.setState({
                 posts: currentPosts,
                 page: this.state.page + 1
-            })
+            });
             this.props.fetchPosts(1, this.state.page+1)
         }
-    }
-
-    constructor() {
-        super();
-        this.state = {
-            forumID: '1',//hot placeholder
-            page: 0,
-            maxPosts: false,
-            position: window.location.href, //gets the url of the page, yet unused
-            posts: []
-        };
     }
 
 

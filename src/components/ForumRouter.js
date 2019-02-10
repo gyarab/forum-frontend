@@ -4,6 +4,7 @@ import {Route} from "react-router-dom";
 import Front from "./Front";
 import Login from "./Login";
 import Bigpost from "./Bigpost";
+import CreatePost from "./CreatePost";
 
 class ForumRouter extends Component {
 

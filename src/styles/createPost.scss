@@ -1,0 +1,69 @@
+@import "themes";
+
+.createpost-overlay{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background:   #f5f6fa;
+  padding: 1.25rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 105;
+}
+
+.createpost{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 110;
+  transition: 0.2s;
+  font-family: "adelle-sans", sans-serif;
+  margin: 0 auto;
+  width: 40rem;
+}
+
+.createpost-form{
+}
+
+.title-input{
+  width:100%;
+}
+
+.content-input{
+  resize: none;
+  height: 20rem;
+  width: 100%;
+}
+
+label{
+  font-size: 20px;
+}
+
+.submit, .createpost-open{
+  background-color: $primary-color;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 20rem;
+  margin: 0 10rem 0 10rem;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  transition: 0.2s;
+  border: none;
+}
+
+//Shows grey shadow wehenever user hovers over the button
+.submit:hover{
+  box-shadow: 4px 4px 4px grey;
+}
+
+//Removes blue outline after clicking the button
+.submit:focus, .content-input:focus, .title-input:focus{
+  outline: none;
+}
