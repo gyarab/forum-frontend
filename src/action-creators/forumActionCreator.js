@@ -13,7 +13,7 @@ export const fetchForumById = (id) => dispatch => {
         }));
 };
 export const fetchPosts = (forumId, forumPage) => dispatch => {
-    fetch('http://localhost:7373/forum/'  + forumId + '/posts?page=' + forumPage + '&size=2')
+    fetch('http://localhost:7373/forum/'  + forumId + '/posts?page=' + forumPage + '&size=1')
         .then(response => response.json())
         .then(forums =>
             dispatch({
