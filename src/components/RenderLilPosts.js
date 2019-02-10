@@ -55,9 +55,10 @@ class RenderLilPosts extends Component {
 
 
     render() {
+        console.log(posts);
         let posts = this.state.posts.map(post => (
             <div key={post.id}>
-                <LilPost title={post.title} thumbsUp={post.likes} thumbsDown={post.dislikes} content={post.content}/>
+                <LilPost title={post.title} likes={post.likes} dislikes={post.dislikes} content={post.content}/>
             </div>
         ));
         let tillMax = !this.state.maxPosts ? 'block' : 'none';
