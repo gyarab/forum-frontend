@@ -9,6 +9,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .createpost-overlay{
   visibility: visible;
   top: 0;
@@ -21,43 +22,33 @@
   opacity: 1;
 }
 
-.createpost{
+.createpost {
   top: 0;
   right: 0;
   left: 0;
   position: fixed;
-  z-index: 110;
+  z-index: 106;
   transition: 0.2s;
   font-family: "adelle-sans", sans-serif;
   background: #fff;
   margin: 5rem auto 0 auto;
-  width: 40rem;
   padding: 2rem;
+  border-radius: 1rem;
+
+  @media screen and (min-width: 480px) {
+    width: 28rem;
+  }
+  @media screen and (min-width: 767px) {
+    width: 40rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 50rem;
+  }
+
 }
 
-.createpost-form{
-}
-
-.title-input{
-  width:100%;
-}
-
-.content-input{
-  resize: none;
-  height: 20rem;
-  width: 100%;
-}
-
-label{
-  font-size: 20px;
-}
-
-.submit, .createpost-open{
-  background-color: $primary-color;
+.submit, .createpost-open, .createpost-slider, .close-modal{
   cursor: pointer;
-  height: 2.5rem;
-  width: 20rem;
-  margin: 0 auto;
   font-family: 'Poppins', sans-serif;
   color: white;
   transition: 0.2s;
@@ -65,12 +56,101 @@ label{
   display: block;
 }
 
+.close-modal{
+  position:relative;
+  float:right;
+  z-index: 107;
+  width: 3rem;
+  top:-3rem;
+  right:-3rem;
+  height: 0;
+  font-size: 1.85rem;
+  padding-bottom: 2.8rem;
+  border-radius: 50%;
+  background-color: $primary-color;
+  border: solid 2px $primary-color;
+}
+
+.title, .content{
+  width:100%;
+  border: none;
+  border-bottom: solid 1px $primary-color;
+  padding:0;
+  margin:0;
+}
+.content{
+  resize: none;
+  height: 20rem;
+}
+
+.title-label{
+  margin:0;
+  padding:0;
+}
+
+.content-label{
+  margin-top: 1rem;
+}
+
+.content-label, .title-label{
+  font-size: 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+}
+
+.submit{
+  height: 2.5rem;
+  width: 20rem;
+  margin: 1rem auto 0 auto;
+  background-color: $primary-color;
+}
+
+.createpost-open{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 3rem;
+  height: 0;
+  font-size: 2rem;
+  padding-bottom: 3rem;
+  border-radius: 50%;
+  margin: 0 1.5rem 1.5rem 0;
+  background-color: $primary-color;
+  z-index: 2;
+}
+
+.createpost-slider{
+  background-color: white;
+  height: 2.5rem;
+  width: 0.2rem;
+  text-align: center;
+  padding: 0.5rem 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  color: black;
+  margin: 0 3.5rem 1.75rem 0;
+  border: solid 2px $primary-color;
+  z-index: 1;
+  overflow: hidden;
+}
+
 //Shows grey shadow wehenever user hovers over the button
 .submit:hover, .createpost-open:hover{
   box-shadow: 4px 4px 4px grey;
 }
 
+.close-modal:hover{
+  background: #fff;
+  color: $primary-color;
+  border: solid 2px $primary-color;
+}
+
+.createpost-open:hover + .createpost-slider{
+  width: 10rem;
+}
+
 //Removes blue outline after clicking the button
-.submit:focus, .content-input:focus, .title-input:focus{
+.submit:focus, .content:focus, .title:focus, .createpost-open:focus, .close-modal:focus{
   outline: none;
 }

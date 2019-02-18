@@ -34,7 +34,7 @@ class RenderLilPosts extends Component {
     loadPosts() {
         let currentPosts = this.state.posts;
         let list = this.props.posts.content;
-        console.log(this.props.posts);
+        //eslint-disable-next-line
         list.map(post => {
             currentPosts.push(post)
         });
@@ -55,7 +55,6 @@ class RenderLilPosts extends Component {
 
 
     render() {
-        console.log(posts);
         let posts = this.state.posts.map(post => (
             <div key={post.id}>
                 <LilPost title={post.title} likes={post.likes} dislikes={post.dislikes} content={post.content}/>

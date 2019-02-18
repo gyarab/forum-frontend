@@ -1,3 +1,5 @@
+@import "themes";
+
 .lilpost {
   transition: 0.2s;
   background: #fff;
@@ -78,8 +80,5 @@
 }
 
 .interactive-button:hover{
-  color: #9c88ff;
-  /*alternative look in comments
-  -webkit-text-stroke-color: #000;
-  -webkit-text-stroke-width: 2px;*/
+  color: $primary-color;
 }

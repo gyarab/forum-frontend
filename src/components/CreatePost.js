@@ -11,43 +11,41 @@ class LilPost extends Component {
     constructor() {
         super();
         this.state = {
-            id: 0,
             title: "",
             content: "",
-            dislikes: 0,
-            likes: 0,
             forumId: 0,
             thread: "",
-            isOpen: false
+            modalOpened: false,
         };
     }
 
-    submitPost(event){
+    handleChange(event){
         event.preventDefault();
+        this.setState({ [event.target.className]: event.target.value });
     }
 
     toggleModal(event){
         event.preventDefault();
-        this.setState({isOpen: !this.state.isOpen});
+        this.setState({modalOpened: !this.state.modalOpened});
     }
+
 
     render() {
 
-        let toggle = !this.state.isOpen ? 'none' : 'block';
+        let modalToggle = !this.state.modalOpened ? 'none' : 'block';
 
         return (
             <div className="createpost-wrapper">
-                <button className="createpost-open" onClick={this.toggleModal.bind(this)}>Create post</button>
-                <div className="createpost-overlay" style={{display: toggle}} onClick={this.toggleModal.bind(this)} />
-                <div className="createpost" style={{display: toggle}}>
-                    <form className="createpost-form" onSubmit={this.submitPost}>
-                        <label>Title of your post:</label>
-                        <input type="text" className="title-input"  placeholder="Title of your post"/>
-                        <br />
-                        <label>Content of your post:</label>
-
-                        <textarea className="content-input" placeholder="Your message" />
-                        <br />
+                <button className="createpost-open" onClick={this.toggleModal.bind(this)}>+</button>
+                <span className="createpost-slider">Create a post</span>
+                <div className="createpost-overlay" style={{display: modalToggle}} onClick={this.toggleModal.bind(this)} />
+                <div className="createpost" style={{display: modalToggle}}>
+                    <form className="createpost-form" onSubmit={this.toggleModal.bind(this)}>
+                        <button className="close-modal" onClick={this.toggleModal.bind(this)}>&#x00D7;</button>
+                        <label className="title-label">Title of your post:</label>
+                        <input type="text" className="title"  placeholder="What is the title of your post" onChange={this.handleChange.bind(this)}/>
+                        <label className="content-label">Content of your post:</label>
+                        <textarea className="content" placeholder="What is the message you want to convey" onChange={this.handleChange.bind(this)}/>
                         <button className="submit">Submit</button>
                     </form>
                 </div>
