@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import '../styles/navigation.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import {connect} from "react-redux";
-import {fetchAllForumNames, fetchForumById} from "../action-creators/forumActionCreator";
+import {fetchAllForumNames, searchForumByName} from "../action-creators/forumActionCreator";
 import {NavLink} from 'react-router-dom'
 
 
 class Navigation extends Component {
 
     componentDidMount() {
-        this.props.fetchForumNames();
+        this.props.fetchForumNames()
     }
 
 
@@ -19,32 +19,41 @@ class Navigation extends Component {
         this.state = {
             searchMode: false,
             toggle: false,
-            keys: [],
+            allKeys: [],
+            searchedKeys:[],
             id: '',
         };
 
     }
 
     onChange(event) {
-        let input = event.target.value;
-        if (input.length >= 1) {
-            this.setState({searchMode: true});
-            this.props.fetchForumById(input);
-        }
-        else {
-            this.setState({searchMode: false});
-        }
+            let input = event.target.value;
+            if (input.length >= 1) {this.props.searchForumByName(input);
+                this.setState({searchMode: true, searchedKeys: []}, () => {
+                    this.handleClick.bind(this);
+                });
 
+
+            }
+            else {
+                this.setState({searchMode: false, searchedKeys: []});
+            }
     }
     handleClick(){
-        console.dir(this.state.keys);
+        this.setState({searchedKeys: Object.keys(this.props.arrayOfForums)});
+        console.dir(Object.keys(this.props.arrayOfForums));
 
     }
 
     render() {
-        let forumNames = this.state.keys.map(key => (
+        let forumNames = this.state.allKeys.map(key => (
             <div key={this.props.forums[key]}>
                 <NavLink to={"/"+this.props.forums[key]} className="sidebar-item">{key}</NavLink>
+            </div>
+        ));
+        let searchedForums = this.state.searchedKeys.map(key => (
+            <div key={this.props.arrayOfForums[key]}>
+                <NavLink to={"/"+this.props.arrayOfForums[key]} className="sidebar-item">{key}</NavLink>
             </div>
         ));
 
@@ -57,7 +66,7 @@ class Navigation extends Component {
 
                 <div className="closed-sidebar">
                     <div className="sider" style={{display: reversed}}>
-                        <i onClick={() => this.setState({toggle: !this.state.toggle, keys: Object.keys(this.props.forums)})}
+                        <i onClick={() => this.setState({toggle: !this.state.toggle, allKeys: Object.keys(this.props.forums)})}
                            className="sbtn sopen fas fa-arrow-right"/>
                     </div>
                 </div>
@@ -85,9 +94,8 @@ class Navigation extends Component {
                         </div>
 
                         <div className="forums">
-                            {forumNames}
-                            {this.state.searchMode ? <NavLink to="/home"
-                                                              className="sidebar-item">{this.props.singleItem.title}</NavLink> : this.state.forumNames}
+
+                            {this.state.searchMode ? searchedForums : forumNames}
                         </div>
 
                     </div>
@@ -101,18 +109,17 @@ class Navigation extends Component {
 
 Navigation.propTypes = {
     fetchForumNames: PropTypes.func.isRequired,
-    fetchForumById: PropTypes.func.isRequired,
-    singleItem: PropTypes.object
+    searchForumByName: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
     posts: state.forums.posts,
     forums: state.forums.storage,
-    singleItem: state.forums.singleItem
+    arrayOfForums: state.forums.arrayOfForums
 });
 const mapDispatchToProps = (dispatch) => ({
-    fetchForumById: (id) => {
-        dispatch(fetchForumById(id))
+    searchForumByName: (name) => {
+        dispatch(searchForumByName(name))
     },
     fetchForumNames: () => {
         dispatch(fetchAllForumNames())

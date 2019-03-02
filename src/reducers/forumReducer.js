@@ -1,17 +1,18 @@
+
 const initialState = {
     logged: false,
     storage: [],
     posts:[],
-    singleItem: {},
+    arrayOfForums: [],
 
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case 'FETCH_FORUM_BY_ID':
+        case 'SEARCH_FORUM_BY_NAME':
             return {
                 ...state,
-                singleItem: action.payload
+                arrayOfForums: action.payload
             };
         case 'FETCH_ALL_FORUM_NAMES':
             return {

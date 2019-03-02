@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/auth.scss'
+import store from '../store'
 //eslint-disable-next-line
 import PropTypes from 'prop-types';
 import {logIn} from "../action-creators/forumActionCreator";
@@ -27,6 +28,7 @@ class Login extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
+        // console.dir(this.state);
     }
 
     submit() {
@@ -39,7 +41,7 @@ class Login extends Component {
 
     }
     go(){
-        console.log(this.props.log)
+        console.log(store.getState().forums.logged)
     }
 
     render() {
