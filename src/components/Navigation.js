@@ -49,6 +49,7 @@ class Navigation extends Component {
         let forumNames = this.state.allKeys.map(key => (
             <div key={this.props.forums[key]}>
                 <NavLink to={"/"+this.props.forums[key]} className="sidebar-item">{key}</NavLink>
+                <NavLink to={"/"} className="sidebar-item">{"Home"}</NavLink>
             </div>
         ));
         let searchedForums = this.state.searchedKeys.map(key => (
@@ -74,7 +75,7 @@ class Navigation extends Component {
                 <div className="opened-sidebar" style={{display: toggled}}>
 
                     <div className="sidebar-opaciter" onClick={() => {
-                        this.setState({toggle: false});console.log(this.props)
+                        this.setState({toggle: false});
                     }}/>
 
                     <div id="sidebar">

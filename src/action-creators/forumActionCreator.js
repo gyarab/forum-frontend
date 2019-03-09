@@ -1,17 +1,15 @@
 import store from '../store.js'
 
-export const createPost = () => dispatch => {
+export const createPost = (post) => dispatch => {
 
-    fetch('http://localhost:7373/create/post', {
+    fetch('http://localhost:7373/forum/create/post', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
+            'Authorization': store.getState().forums.logged
         },
-        body: JSON.stringify()
-    }).then(res => res.json()).then(recipe => dispatch({
-        type: 'ALL_FORUMS',
-        payload: recipe
-    }));
+        body: JSON.stringify(post)
+    }).then(res => console.log(res))
 };
 export const searchForumByName = (name) => dispatch => {
     fetch('http://localhost:7373/forum/search/'+name)

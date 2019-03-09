@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import '../styles/createPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import connect from "react-redux/es/connect/connect";
+import {createPost} from "../action-creators/forumActionCreator";
+import PropTypes from "prop-types";
 
-class LilPost extends Component {
+class CreatePost extends Component {
 
     static defaultProps = {};
 
@@ -13,7 +16,7 @@ class LilPost extends Component {
         this.state = {
             title: "",
             content: "",
-            forumId: 0,
+            forum: {id: 1, name: "dominik"},
             thread: "",
             modalOpened: false,
         };
@@ -31,7 +34,9 @@ class LilPost extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-        this.state.toggleModal();
+        let post = {title: this.state.title, content: this.state.content, forum: this.state.forum, likes: 1, dislikes: 0};
+        this.props.createPost(post);
+        this.toggleModal(event);
     }
 
 
@@ -61,4 +66,8 @@ class LilPost extends Component {
     }
 }
 
-export default LilPost;
+CreatePost.propTypes = {
+    createPost:  PropTypes.func.isRequired
+};
+
+export default connect(null, {createPost})(CreatePost);

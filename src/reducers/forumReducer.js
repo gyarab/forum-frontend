@@ -2,7 +2,7 @@
 const initialState = {
     logged: false,
     storage: [],
-    posts:[],
+    posts:"",
     arrayOfForums: [],
 
 };

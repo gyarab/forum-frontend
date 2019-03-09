@@ -57,12 +57,12 @@
 }
 
 .close-modal{
-  position:relative;
+  position:absolute;
   float:right;
   z-index: 107;
   width: 3rem;
-  top:-3rem;
-  right:-3rem;
+  top:-1rem;
+  right:-1rem;
   height: 0;
   font-size: 1.85rem;
   padding-bottom: 2.8rem;
@@ -85,6 +85,7 @@
 
 
 .content-label, .title-label{
+  width: 100%;
   font-size: 1.25rem;
   font-family: 'Poppins', sans-serif;
   background: #fff;

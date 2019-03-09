@@ -10,6 +10,10 @@ class RenderLilPosts extends Component {
 
     componentDidMount(){
         this.props.fetchPosts(1, this.state.page)
+        if(typeof this.props.posts==="object"){
+            this.loadPosts()
+        }
+        console.dir(this.props.posts)
     }
 
     componentDidUpdate(prevProps){
