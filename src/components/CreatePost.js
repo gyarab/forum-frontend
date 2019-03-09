@@ -29,6 +29,11 @@ class LilPost extends Component {
         this.setState({modalOpened: !this.state.modalOpened});
     }
 
+    handleSubmit(event){
+        event.preventDefault();
+        this.state.toggleModal();
+    }
+
 
     render() {
 
@@ -40,12 +45,14 @@ class LilPost extends Component {
                 <span className="createpost-slider">Create a post</span>
                 <div className="createpost-overlay" style={{display: modalToggle}} onClick={this.toggleModal.bind(this)} />
                 <div className="createpost" style={{display: modalToggle}}>
-                    <form className="createpost-form" onSubmit={this.toggleModal.bind(this)}>
+                    <form className="createpost-form" onSubmit={this.handleSubmit.bind(this)}>
                         <button className="close-modal" onClick={this.toggleModal.bind(this)}>&#x00D7;</button>
-                        <label className="title-label">Title of your post:</label>
+                        <label className="title-label">Title of your post:
                         <input type="text" className="title"  placeholder="What is the title of your post" onChange={this.handleChange.bind(this)}/>
-                        <label className="content-label">Content of your post:</label>
+                        </label>
+                        <label className="content-label">Content of your post:
                         <textarea className="content" placeholder="What is the message you want to convey" onChange={this.handleChange.bind(this)}/>
+                        </label>
                         <button className="submit">Submit</button>
                     </form>
                 </div>

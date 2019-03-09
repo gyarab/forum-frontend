@@ -34,17 +34,21 @@ export const fetchAllForumNames = () => dispatch => {
 };
 export const logIn = (creds) => dispatch => {
     let formData = new FormData();
-    formData.append("username", "admin@example.com");
-    formData.append("password", "admin!");
+    //admin@example.com
+    formData.append('username', creds.username);
+    //admin!
+    formData.append('password', creds.password);
+
     fetch("http://localhost:7373/api/core/login", {
-        method: 'POST',
         body: formData,
-        redirect: "follow",
-        credentials: "include"
-    }).then(response => response.json()).then(response =>
-        dispatch({
+        mode: 'cors',
+        method: "post"
+    }).then(response => dispatch({
             type: 'LOG_IN',
-            payload: response
+            payload: response.headers.get('Lemon-Authorization')
         })
-    ).catch(e => console.log(e))
+    )
+        .catch(e =>
+            console.log(e)
+        )
 };
