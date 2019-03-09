@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Provider} from "react-redux";
-import configureStore from "./store";
+import store from "./store";
 import {BrowserRouter as Router} from 'react-router-dom';
 import ForumRouter from "./components/ForumRouter";
 
@@ -9,7 +9,7 @@ import ForumRouter from "./components/ForumRouter";
 class App extends Component {
     render() {
         return (
-            <Provider store={configureStore()}>
+            <Provider store={store}>
                 <Router>
                 <div className="App">
                     <ForumRouter/>

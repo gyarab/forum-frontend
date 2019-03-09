@@ -1,19 +1,32 @@
-export const getAllForums = () => dispatch => {
-    dispatch({
+import store from '../store.js'
+
+export const createPost = () => dispatch => {
+
+    fetch('http://localhost:7373/create/post', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify()
+    }).then(res => res.json()).then(recipe => dispatch({
         type: 'ALL_FORUMS',
-        payload: 'This is working',
-    })
+        payload: recipe
+    }));
 };
-export const fetchForumById = (id) => dispatch => {
-    fetch('https://jsonplaceholder.typicode.com/todos/' + id)
+export const searchForumByName = (name) => dispatch => {
+    fetch('http://localhost:7373/forum/search/'+name)
         .then(response => response.json())
         .then(item => dispatch({
-            type: 'FETCH_FORUM_BY_ID',
+            type: 'SEARCH_FORUM_BY_NAME',
             payload: item
         }));
 };
 export const fetchPosts = (forumId, forumPage) => dispatch => {
-    fetch('http://localhost:7373/forum/'  + forumId + '/posts?page=' + forumPage + '&size=1')
+    fetch('http://localhost:7373/forum/' + forumId + '/posts?page=' + forumPage + '&size=1', {
+        headers: {
+            'Authorization': store.getState().forums.logged ?  store.getState().forums.logged : ''
+        }
+    })
         .then(response => response.json())
         .then(forums =>
             dispatch({
@@ -23,8 +36,11 @@ export const fetchPosts = (forumId, forumPage) => dispatch => {
         );
 };
 export const fetchAllForumNames = () => dispatch => {
-    fetch('http://localhost:7373/forum/all')
-        .then(response => response.json())
+    return fetch('http://localhost:7373/forum/all', {
+        headers: {
+            'Authorization': store.getState().forums.logged ?  store.getState().forums.logged : ''
+        }
+    }).then(response => response.json())
         .then(forumMap => dispatch({
             type: 'FETCH_ALL_FORUM_NAMES',
             payload: forumMap,
