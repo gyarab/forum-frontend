@@ -11,11 +11,17 @@ class Front extends Component {
 
     state = {};
 
+    click(){
+        console.dir(this.props);
+    }
+
     render() {
         return (
-            <div><RenderLilPosts />
+            <div><RenderLilPosts match={this.props.match}/>
             <CreatePost />
+                {/*<button onClick={this.click.bind(this)} style={{padding:"50px"}}>click</button>*/}
             </div>
+
         );
     }
 }
