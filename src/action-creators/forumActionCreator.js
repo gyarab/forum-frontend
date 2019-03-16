@@ -6,7 +6,7 @@ export const createPost = (post) => dispatch => {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
-            'Authorization': store.getState().forums.logged
+            'Authorization': localStorage.getItem('auth')
         },
         body: JSON.stringify(post)
     }).then(res => console.log(res))
@@ -20,11 +20,7 @@ export const searchForumByName = (name) => dispatch => {
         }));
 };
 export const fetchPosts = (forumId, forumPage) => dispatch => {
-    fetch('http://localhost:7373/forum/' + forumId + '/posts?page=' + forumPage + '&size=1', {
-        headers: {
-            'Authorization': store.getState().forums.logged ?  store.getState().forums.logged : ''
-        }
-    })
+    fetch('http://localhost:7373/forum/' + forumId + '/posts?page=' + forumPage + '&size=1')
         .then(response => response.json())
         .then(forums =>
             dispatch({
@@ -34,11 +30,7 @@ export const fetchPosts = (forumId, forumPage) => dispatch => {
         );
 };
 export const fetchAllForumNames = () => dispatch => {
-    return fetch('http://localhost:7373/forum/all', {
-        headers: {
-            'Authorization': store.getState().forums.logged ?  store.getState().forums.logged : ''
-        }
-    }).then(response => response.json())
+    return fetch('http://localhost:7373/forum/all').then(response => response.json())
         .then(forumMap => dispatch({
             type: 'FETCH_ALL_FORUM_NAMES',
             payload: forumMap,
@@ -57,11 +49,13 @@ export const logIn = (creds) => dispatch => {
         body: formData,
         mode: 'cors',
         method: "post"
-    }).then(response => dispatch({
+    }).then(response => {
+        localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
+        dispatch({
             type: 'LOG_IN',
             payload: response.headers.get('Lemon-Authorization')
         })
-    )
+    })
         .catch(e =>
             console.log(e)
         )
