@@ -2,7 +2,7 @@
 const initialState = {
     logged: false,
     storage: [],
-    posts:"",
+    posts:[],
     arrayOfForums: [],
 
 };
@@ -20,9 +20,10 @@ export default function (state = initialState, action) {
                 storage: action.payload
             };
         case 'FETCH_FORUMS':
+
             return {
                 ...state,
-                posts: action.payload
+                posts: state.posts.concat(action.payload)
             };
         case 'LOG_IN':
             console.log("reducer logIn:" + action.payload);

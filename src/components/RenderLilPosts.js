@@ -8,20 +8,10 @@ import LilPost from "./LilPost";
 class RenderLilPosts extends Component {
 
 
-    componentDidMount(){
-        this.props.fetchPosts(1, this.state.page)
-        if(typeof this.props.posts==="object"){
-            this.loadPosts()
-        }
-        console.dir(this.props.posts)
+     componentDidMount() {
+        this.props.fetchPosts(1, this.state.page);
     }
 
-    componentDidUpdate(prevProps){
-        if (prevProps.posts !== this.props.posts && prevProps.posts.length === 0) {
-            this.loadPosts()
-        }
-
-    }
 
     constructor() {
         super();
@@ -39,10 +29,10 @@ class RenderLilPosts extends Component {
         let currentPosts = this.state.posts;
         let list = this.props.posts.content;
         //eslint-disable-next-line
-        list.map(post => {
+        list && list.map(post => {
             currentPosts.push(post)
         });
-        if(this.props.posts.last){
+        if (this.props.posts.last) {
             this.setState({
                 posts: currentPosts,
                 page: this.state.page + 1,
@@ -53,17 +43,21 @@ class RenderLilPosts extends Component {
                 posts: currentPosts,
                 page: this.state.page + 1
             });
-            this.props.fetchPosts(1, this.state.page+1)
+            this.props.fetchPosts(1, this.state.page + 1)
         }
     }
 
-
+click(){
+         console.log(this.props.posts[0].content)
+}
     render() {
-        let posts = this.state.posts.map(post => (
+         let posts = "";
+         if(this.props.posts[0]){
+         posts = this.props.posts[0].content.map(post => (
             <div key={post.id}>
                 <LilPost title={post.title} likes={post.likes} dislikes={post.dislikes} content={post.content}/>
             </div>
-        ));
+        ));}
         let tillMax = !this.state.maxPosts ? 'block' : 'none';
 
         return (
@@ -71,9 +65,11 @@ class RenderLilPosts extends Component {
 
                 {posts}
                 <div className={"load-more-wrapper"}>
-                    <button className="load-more" onClick={this.loadPosts.bind(this)} style={{display: tillMax}}>Load more
+                    <button className="load-more" onClick={this.loadPosts.bind(this)} style={{display: tillMax}}>Load
+                        more
                         posts
                     </button>
+                    <button className="load-more" onClick={this.click.bind(this)} style={{display: tillMax}}>click </button>
                 </div>
             </div>
         );
