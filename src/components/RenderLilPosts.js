@@ -4,13 +4,18 @@ import {fetchPosts, searchForumByName} from "../action-creators/forumActionCreat
 import connect from "react-redux/es/connect/connect";
 import '../styles/renderLilPosts.scss';
 import LilPost from "./LilPost";
+import CreatePost from "./CreatePost";
 
 class RenderLilPosts extends Component {
 
 
     componentDidMount() {
         console.dir(this.props.match.params.forumId);
-        this.props.fetchPosts(parseInt(this.props.match.params.forumId), 0);
+        if(this.props.match.params.forumId === undefined){
+            this.props.fetchPosts(1, 0);
+        } else {
+            this.props.fetchPosts(parseInt(this.props.match.params.forumId), 0);
+        }
     }
 
 
@@ -28,7 +33,11 @@ class RenderLilPosts extends Component {
         this.setState({
             page: this.state.page + 1
         });
-        this.props.fetchPosts(parseInt(this.props.match.params.forumId), this.state.page);
+        if(this.props.match.params.forumId === undefined){
+            this.props.fetchPosts(1, this.state.page);
+        } else {
+            this.props.fetchPosts(parseInt(this.props.match.params.forumId), this.state.page);
+        }
     }
 
     click() {
@@ -61,6 +70,7 @@ class RenderLilPosts extends Component {
                     <button className="load-more" onClick={this.click.bind(this)} style={{display: tillMax}}>click
                     </button>
                 </div>
+                <CreatePost match={this.props.match}/>
             </div>
         );
     }

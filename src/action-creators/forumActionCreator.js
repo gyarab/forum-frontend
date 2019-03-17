@@ -1,5 +1,3 @@
-import store from '../store.js'
-
 export const createPost = (post) => dispatch => {
 
     fetch('http://localhost:7373/forum/create/post', {

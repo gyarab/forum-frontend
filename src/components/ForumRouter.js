@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Navigation from "./Navigation";
 import {Route} from "react-router-dom";
-import Front from "./Front";
 import Login from "./Login";
 import Bigpost from "./Bigpost";
+import RenderLilPosts from "./RenderLilPosts";
 
 class ForumRouter extends Component {
 
@@ -11,10 +11,10 @@ class ForumRouter extends Component {
         return (
             <div>
                 <Route path="/" component={Navigation}/>
-                <Route path="/" exact component={Front}/>
+                <Route path="/" exact component={RenderLilPosts}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/begmy" exact component={Bigpost}/>
-                <Route path={`/:forumId`} exact component={Front}/>
+                <Route path={`/:forumId`} exact component={RenderLilPosts}/>
             </div>
         );
     }

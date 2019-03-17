@@ -71,16 +71,12 @@
   border: solid 2px $primary-color;
 }
 
-.title, .content{
+.title{
   width:100%;
   border: none;
   border-bottom: solid 1px $primary-color;
   padding:0;
   margin:0;
-}
-.content{
-  resize: none;
-  height: 20rem;
 }
 
 
@@ -146,4 +142,8 @@
 //Removes blue outline after clicking the button
 .submit:focus, .content:focus, .title:focus, .createpost-open:focus, .close-modal:focus{
   outline: none;
+}
+
+.ql-editor{
+  height: 400px;
 }
