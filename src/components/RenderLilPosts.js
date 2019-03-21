@@ -4,12 +4,18 @@ import {fetchPosts, searchForumByName} from "../action-creators/forumActionCreat
 import connect from "react-redux/es/connect/connect";
 import '../styles/renderLilPosts.scss';
 import LilPost from "./LilPost";
+import CreatePost from "./CreatePost";
 
 class RenderLilPosts extends Component {
 
 
-     componentDidMount() {
-        this.props.fetchPosts(1, this.state.page);
+    componentDidMount() {
+        console.dir(this.props.match.params.forumId);
+        if(this.props.match.params.forumId === undefined){
+            this.props.fetchPosts(1, 0);
+        } else {
+            this.props.fetchPosts(parseInt(this.props.match.params.forumId), 0);
+        }
     }
 
 
@@ -17,48 +23,40 @@ class RenderLilPosts extends Component {
         super();
         this.state = {
             forumID: '1',//hot placeholder
-            page: 0,
-            maxPosts: false,
+            page: 1,
             position: window.location.href, //gets the url of the page, yet unused
-            posts: []
         };
     }
 
 
     loadPosts() {
-        let currentPosts = this.state.posts;
-        let list = this.props.posts.content;
-        //eslint-disable-next-line
-        list && list.map(post => {
-            currentPosts.push(post)
+        this.setState({
+            page: this.state.page + 1
         });
-        if (this.props.posts.last) {
-            this.setState({
-                posts: currentPosts,
-                page: this.state.page + 1,
-                maxPosts: true
-            })
+        if(this.props.match.params.forumId === undefined){
+            this.props.fetchPosts(1, this.state.page);
         } else {
-            this.setState({
-                posts: currentPosts,
-                page: this.state.page + 1
-            });
-            this.props.fetchPosts(1, this.state.page + 1)
+            this.props.fetchPosts(parseInt(this.props.match.params.forumId), this.state.page);
         }
     }
 
-click(){
-         console.log(this.props.posts[0].content)
-}
+    click() {
+        console.dir(this.props);
+    }
+
     render() {
-         let posts = "";
-         if(this.props.posts[0]){
-         posts = this.props.posts[0].content.map(post => (
-            <div key={post.id}>
-                <LilPost title={post.title} likes={post.likes} dislikes={post.dislikes} content={post.content}/>
-            </div>
-        ));}
-        let tillMax = !this.state.maxPosts ? 'block' : 'none';
+        let posts = "";
+        let tillMax = 'block';
+        if (this.props.posts[0]) {
+            posts = this.props.posts.map(post => (
+                <div key={post.content[0].id}>
+                    <LilPost title={post.content[0].title} likes={post.content[0].likes}
+                             dislikes={post.content[0].dislikes} content={post.content[0].content}/>
+                </div>
+            ));
+            tillMax = !this.props.posts[this.props.posts.length - 1].last ? 'block' : 'none';
+        }
+
 
         return (
             <div className="rendered-lilposts">
@@ -69,8 +67,10 @@ click(){
                         more
                         posts
                     </button>
-                    <button className="load-more" onClick={this.click.bind(this)} style={{display: tillMax}}>click </button>
+                    <button className="load-more" onClick={this.click.bind(this)} style={{display: tillMax}}>click
+                    </button>
                 </div>
+                <CreatePost match={this.props.match}/>
             </div>
         );
     }
