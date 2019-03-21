@@ -1,8 +1,5 @@
-import store from '../store.js'
-
 export const createPost = (post) => dispatch => {
-
-    fetch('http://localhost:7373/forum/create/post', {
+    fetch('http://localhost:7373/post/create', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -20,7 +17,7 @@ export const searchForumByName = (name) => dispatch => {
         }));
 };
 export const fetchPosts = (forumId, forumPage) => dispatch => {
-    fetch('http://localhost:7373/forum/' + forumId + '/posts?page=' + forumPage + '&size=1')
+    fetch('http://localhost:7373/post/forum/' + forumId + '/posts?page=' + forumPage + '&size=1')
         .then(response => response.json())
         .then(forums =>
             dispatch({
@@ -50,7 +47,8 @@ export const logIn = (creds) => dispatch => {
         mode: 'cors',
         method: "post"
     }).then(response => {
-        localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
+        console.log(response)
+        // localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
         dispatch({
             type: 'LOG_IN',
             payload: response.headers.get('Lemon-Authorization')
