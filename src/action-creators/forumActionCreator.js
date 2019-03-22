@@ -69,3 +69,9 @@ export const resetPosts = () => dispatch => {
         type: 'RESET'
     })
 };
+export const getPostById = (id) => dispatch =>{
+    dispatch({
+        type: 'POST_BY_ID',
+        payload: id
+    })
+}

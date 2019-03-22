@@ -1,8 +1,19 @@
 import React, {Component} from 'react';
 import '../styles/bigpost.scss';
 import {connect} from "react-redux";
+import {getPostById} from "../action-creators/forumActionCreator";
+import PropTypes from "prop-types";
 
-class Bigpost extends Component {
+class BigPost extends Component {
+
+    componentDidMount(){
+        this.props.getPostById(this.props.match.params.postId);
+    }
+
+    componentDidUpdate(){
+        console.log(this.props)
+    }
+
     state = {
         title: "BIGPOST",
         content: "BLAALBLBLALLBLBLBBL",
@@ -22,7 +33,7 @@ class Bigpost extends Component {
     render() {
         return (
             <div className="Bigpost">
-                <div className="Bigpost-Header">{this.state.title}</div>
+                <div className="Bigpost-Header">{this.props.post}</div>
                 <div className="Bigpost-Body">{this.state.content}</div>
                 <div className="Bigpost-Footer">
                     <ul>
@@ -40,7 +51,7 @@ class Bigpost extends Component {
                         <input type="submit" value="Submit comment"></input>
 
                     </form>
-                    <button onClick={()=>{console.log(this.props.posts)}}>Ahoj</button>
+                    <button onClick={()=>{console.log(this.props)}}>Ahoj</button>
                     <p>{this.state.comments}</p>
                 </div>
             </div>
@@ -48,13 +59,19 @@ class Bigpost extends Component {
     }
 }
 
-// function addComment(element) {
-// this.setState({
-//         comments: this.state.arr.concat(element)
-//     });
-// }
+BigPost.propTypes = {
+    getPostById: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => ({
-    posts: state.forums.posts
+    post: state.forums.post
 });
 
-export default connect(mapStateToProps)(Bigpost);
+
+const mapDispatchToProps = (dispatch) => ({
+    getPostById: (id) => {
+        dispatch(getPostById(id))
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BigPost);

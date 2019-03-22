@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Navigation from "./Navigation";
 import {Route} from "react-router-dom";
 import Login from "./Login";
-import Bigpost from "./Bigpost";
+import BigPost from "./BigPost";
 import RenderLilPosts from "./RenderLilPosts";
 
 class ForumRouter extends Component {
@@ -14,7 +14,7 @@ class ForumRouter extends Component {
                 <Route path="/" exact component={RenderLilPosts}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path={`/forum/:forumId`} exact component={RenderLilPosts}/>
-                <Route path={`/bigpost/:postId`} component={Bigpost}/>
+                <Route path={`/bigpost/:postId`} component={BigPost}/>
             </div>
         );
     }
