@@ -32,6 +32,7 @@ class CreatePost extends Component {
     }
 
     handleChange(event) {
+
         this.setState({[event.target.className]: event.target.value});
     }
 
@@ -77,9 +78,12 @@ class CreatePost extends Component {
                         <button className="close-modal" onClick={this.toggleModal.bind(this)}>&#x00D7;</button>
                         <input type="text" className="title" placeholder="What is the title of your post"
                                onChange={this.handleChange.bind(this)}/>
-                        <ReactQuill value={this.state.content} onChange={this.handleQuill.bind(this)}/>
+
+                        <ReactQuill modules={CreatePost.modules} value={this.state.content}
+                                    onChange={this.handleQuill.bind(this)}/>
                         <button className="submit">Submit</button>
                     </form>
+                    <div dangerouslySetInnerHTML= {{__html:this.state.content}}></div>
                     <button className="load-more" onClick={this.click.bind(this)}>click</button>
                 </div>
             </div>
@@ -87,6 +91,26 @@ class CreatePost extends Component {
     }
 }
 
+CreatePost.modules = {
+    toolbar: [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+
+        // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['clean']                                         // remove formatting button
+    ]
+};
 CreatePost.propTypes = {
     createPost: PropTypes.func.isRequired
 };

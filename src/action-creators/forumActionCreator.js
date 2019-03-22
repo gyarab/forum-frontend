@@ -48,7 +48,10 @@ export const logIn = (creds) => dispatch => {
         method: "post"
     }).then(response => {
         console.log(response)
-        // localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
+        if(response.status===200){
+            localStorage.setItem('logged', true);
+            localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
+        }
         dispatch({
             type: 'LOG_IN',
             payload: response.headers.get('Lemon-Authorization')
@@ -57,4 +60,9 @@ export const logIn = (creds) => dispatch => {
         .catch(e =>
             console.log(e)
         )
+};
+export const resetPosts = () => dispatch => {
+    dispatch({
+        type: 'RESET'
+    })
 };

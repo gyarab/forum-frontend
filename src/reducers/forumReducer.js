@@ -1,8 +1,7 @@
-
 const initialState = {
     logged: false,
     storage: [],
-    posts:[],
+    posts: [],
     arrayOfForums: [],
 
 };
@@ -27,9 +26,14 @@ export default function (state = initialState, action) {
             };
         case 'LOG_IN':
             console.log("reducer logIn:" + action.payload);
-            return{
+            return {
                 ...state,
                 logged: action.payload,
+            };
+        case 'RESET':
+            return{
+                ...state,
+                posts:[]
             };
         default:
             return state

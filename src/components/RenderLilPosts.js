@@ -10,14 +10,22 @@ class RenderLilPosts extends Component {
 
 
     componentDidMount() {
-        console.dir(this.props.match.params.forumId);
-        if(this.props.match.params.forumId === undefined){
+        this.load();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.forumId !== this.props.match.params.forumId) {
+            this.load();
+        }
+    }
+
+    load() {
+        if (this.props.match.params.forumId === undefined) {
             this.props.fetchPosts(1, 0);
         } else {
             this.props.fetchPosts(parseInt(this.props.match.params.forumId), 0);
         }
     }
-
 
     constructor() {
         super();
@@ -33,7 +41,7 @@ class RenderLilPosts extends Component {
         this.setState({
             page: this.state.page + 1
         });
-        if(this.props.match.params.forumId === undefined){
+        if (this.props.match.params.forumId === undefined) {
             this.props.fetchPosts(1, this.state.page);
         } else {
             this.props.fetchPosts(parseInt(this.props.match.params.forumId), this.state.page);
@@ -70,7 +78,7 @@ class RenderLilPosts extends Component {
                     <button className="load-more" onClick={this.click.bind(this)} style={{display: tillMax}}>click
                     </button>
                 </div>
-                <CreatePost match={this.props.match}/>
+                {!localStorage.getItem("logged") ? "" : <CreatePost match={this.props.match}/>}
             </div>
         );
     }
