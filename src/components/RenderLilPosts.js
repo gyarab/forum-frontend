@@ -20,7 +20,9 @@ class RenderLilPosts extends Component {
     }
 
     load() {
-        console.log("Mah god");
+        this.setState({
+            page:1,
+        });
         if (this.props.match.params.forumId === undefined) {
             this.props.fetchPosts(1, 0);
         } else {
@@ -37,21 +39,20 @@ class RenderLilPosts extends Component {
 
 
     loadPosts() {
-        this.setState({
-            page: this.state.page + 1
-        });
         if (this.props.match.params.forumId === undefined) {
             this.props.fetchPosts(1, this.state.page);
         } else {
             this.props.fetchPosts(parseInt(this.props.match.params.forumId), this.state.page);
         }
+        this.setState({
+            page: this.state.page + 1
+        });
     }
 
     render() {
         let posts = "";
         let tillMax = 'block';
         if (this.props.posts[0]) {
-            console.log(this.props.posts);
             posts = this.props.posts.map(post => (
                 <div key={post.content[0].id}>
                     <LilPost title={post.content[0].title} likes={post.content[0].likes}

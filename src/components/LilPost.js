@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import {NavLink} from 'react-router-dom'
 
 
 class LilPost extends Component {
@@ -22,25 +23,27 @@ class LilPost extends Component {
     render() {
 
         return (
-            <div className="lilpost-wrapper">
-                <div className="lilpost">
-                    <div className="lilpost-header">{this.state.title}</div>
+            <NavLink>
+                <div className="lilpost-wrapper">
+                    <div className="lilpost">
+                        <div className="lilpost-header">{this.state.title}</div>
 
-                    <div className="lilpost-body">
-                        <div dangerouslySetInnerHTML={{__html: this.state.content}}/>
-                    </div>
-                    <div className="lilpost-footer">
-                        <ul>
-                            <li><i className="fas fa-comments fa-2x interactive-button"/></li>
-                            <li>{this.state.comments}</li>
-                            <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                            <li>{this.state.likes}</li>
-                            <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                            <li>{this.state.dislikes}</li>
-                        </ul>
+                        <div className="lilpost-body">
+                            <div dangerouslySetInnerHTML={{__html: this.state.content}}/>
+                        </div>
+                        <div className="lilpost-footer">
+                            <ul>
+                                <li><i className="fas fa-comments fa-2x interactive-button"/></li>
+                                <li>{this.state.comments}</li>
+                                <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
+                                <li>{this.state.likes}</li>
+                                <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
+                                <li>{this.state.dislikes}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </NavLink>
         );
     }
 }
