@@ -20,6 +20,7 @@ class RenderLilPosts extends Component {
     }
 
     load() {
+        console.log("Mah god");
         if (this.props.match.params.forumId === undefined) {
             this.props.fetchPosts(1, 0);
         } else {
@@ -30,9 +31,7 @@ class RenderLilPosts extends Component {
     constructor() {
         super();
         this.state = {
-            forumID: '1',//hot placeholder
             page: 1,
-            position: window.location.href, //gets the url of the page, yet unused
         };
     }
 
@@ -48,14 +47,11 @@ class RenderLilPosts extends Component {
         }
     }
 
-    click() {
-        console.dir(this.props);
-    }
-
     render() {
         let posts = "";
         let tillMax = 'block';
         if (this.props.posts[0]) {
+            console.log(this.props.posts);
             posts = this.props.posts.map(post => (
                 <div key={post.content[0].id}>
                     <LilPost title={post.content[0].title} likes={post.content[0].likes}
@@ -74,8 +70,6 @@ class RenderLilPosts extends Component {
                     <button className="load-more" onClick={this.loadPosts.bind(this)} style={{display: tillMax}}>Load
                         more
                         posts
-                    </button>
-                    <button className="load-more" onClick={this.click.bind(this)} style={{display: tillMax}}>click
                     </button>
                 </div>
                 {!localStorage.getItem("logged") ? "" : <CreatePost match={this.props.match}/>}
