@@ -55,7 +55,7 @@ class RenderLilPosts extends Component {
         if (this.props.posts[0]) {
             posts = this.props.posts.map(post => (
                 <div key={post.content[0].id}>
-                    <LilPost title={post.content[0].title} likes={post.content[0].likes}
+                    <LilPost id={post.content[0].id} title={post.content[0].title} likes={post.content[0].likes}
                              dislikes={post.content[0].dislikes} content={post.content[0].content}/>
                 </div>
             ));

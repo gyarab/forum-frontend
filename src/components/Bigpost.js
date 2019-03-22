@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/bigpost.scss';
+import {connect} from "react-redux";
 
 class Bigpost extends Component {
     state = {
@@ -39,6 +40,7 @@ class Bigpost extends Component {
                         <input type="submit" value="Submit comment"></input>
 
                     </form>
+                    <button onClick={()=>{console.log(this.props.posts)}}>Ahoj</button>
                     <p>{this.state.comments}</p>
                 </div>
             </div>
@@ -51,4 +53,8 @@ class Bigpost extends Component {
 //         comments: this.state.arr.concat(element)
 //     });
 // }
-export default Bigpost;
+const mapStateToProps = state => ({
+    posts: state.forums.posts
+});
+
+export default connect(mapStateToProps)(Bigpost);

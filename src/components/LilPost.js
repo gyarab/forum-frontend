@@ -12,34 +12,27 @@ class LilPost extends Component {
     static propTypes = {};
 
 
-    state = {
-        title: this.props.title,
-        content: this.props.content,
-        comments: 2,
-        likes: this.props.likes,
-        dislikes: this.props.dislikes
-    };
-
     render() {
 
         return (
-            <NavLink>
+            <NavLink to={"/bigpost/"+this.props.id}>
                 <div className="lilpost-wrapper">
                     <div className="lilpost">
-                        <div className="lilpost-header">{this.state.title}</div>
+                        <div className="lilpost-header">{this.props.title}</div>
 
                         <div className="lilpost-body">
-                            <div dangerouslySetInnerHTML={{__html: this.state.content}}/>
+                            <div dangerouslySetInnerHTML={{__html: this.props.content}}/>
                         </div>
                         <div className="lilpost-footer">
                             <ul>
                                 <li><i className="fas fa-comments fa-2x interactive-button"/></li>
-                                <li>{this.state.comments}</li>
+                                <li>2</li>
                                 <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                                <li>{this.state.likes}</li>
+                                <li>{this.props.likes}</li>
                                 <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                                <li>{this.state.dislikes}</li>
+                                <li>{this.props.dislikes}</li>
                             </ul>
+                            <button onClick={()=>{console.log(this.props)}}>Ahoj</button>
                         </div>
                     </div>
                 </div>

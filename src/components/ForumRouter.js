@@ -13,8 +13,8 @@ class ForumRouter extends Component {
                 <Route path="/" component={Navigation}/>
                 <Route path="/" exact component={RenderLilPosts}/>
                 <Route path="/login" exact component={Login}/>
-                <Route path="/begmy" exact component={Bigpost}/>
                 <Route path={`/forum/:forumId`} exact component={RenderLilPosts}/>
+                <Route path={`/bigpost/:postId`} component={Bigpost}/>
             </div>
         );
     }
