@@ -43,6 +43,7 @@ class Login extends Component {
         return (
             <div className="parent">
                 <div className="auth-wrapper">
+                    {this.props.error ? <p style={{color: "red"}}>{this.props.error}</p> : ""}
                     <input type="text" className="input" name="username" placeholder="Username" onChange={this.onChange}
                            value={this.state.username}/>
                     <input type="password" className="input" name="password" placeholder="Password"
@@ -58,7 +59,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-    log: state.forums.logged
+    error: state.forums.error
 });
 
 export default connect(mapStateToProps, {logIn})(Login);

@@ -24,7 +24,12 @@ export const fetchPosts = (forumId, forumPage) => dispatch => {
                 type: 'FETCH_FORUMS',
                 payload: forums
             })
-        );
+        ).catch(e =>{
+        dispatch({
+            type:'FETCH_FORUMS',
+            payload: ""
+        })
+    });
 };
 export const fetchAllForumNames = () => dispatch => {
     return fetch('http://localhost:7373/forum/all').then(response => response.json())
@@ -47,18 +52,16 @@ export const logIn = (creds) => dispatch => {
         mode: 'cors',
         method: "post"
     }).then(response => {
-        console.log(response)
         if(response.status===200){
             localStorage.setItem('logged', true);
             localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
         }
-        dispatch({
-            type: 'LOG_IN',
-            payload: response.headers.get('Lemon-Authorization')
-        })
     })
         .catch(e =>
-            console.log(e)
+            dispatch({
+                type:'LOG_IN',
+                payload: e.toString(),
+            })
         )
 };
 export const resetPosts = () => dispatch => {

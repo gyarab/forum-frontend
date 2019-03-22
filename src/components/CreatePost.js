@@ -59,10 +59,6 @@ class CreatePost extends Component {
         this.toggleModal(event);
     }
 
-    click() {
-        console.log(this.state.content);
-    }
-
     render() {
 
         let modalToggle = !this.state.modalOpened ? 'none' : 'block';
@@ -84,7 +80,6 @@ class CreatePost extends Component {
                         <button className="submit">Submit</button>
                     </form>
                     <div dangerouslySetInnerHTML= {{__html:this.state.content}}></div>
-                    <button className="load-more" onClick={this.click.bind(this)}>click</button>
                 </div>
             </div>
         );

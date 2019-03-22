@@ -1,5 +1,5 @@
 const initialState = {
-    logged: false,
+    error: false,
     storage: [],
     posts: [],
     arrayOfForums: [],
@@ -25,10 +25,9 @@ export default function (state = initialState, action) {
                 posts: state.posts.concat(action.payload)
             };
         case 'LOG_IN':
-            console.log("reducer logIn:" + action.payload);
             return {
                 ...state,
-                logged: action.payload,
+                error: action.payload,
             };
         case 'RESET':
             return{

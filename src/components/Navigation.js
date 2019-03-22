@@ -13,10 +13,6 @@ class Navigation extends Component {
         this.props.fetchForumNames()
     }
 
-    componentDidUpdate(prevProps) {
-        console.log(this.props)
-    }
-
     constructor() {
         super();
         this.state = {
@@ -44,8 +40,6 @@ class Navigation extends Component {
 
     handleClick() {
         this.setState({searchedKeys: Object.keys(this.props.arrayOfForums)});
-        console.dir(Object.keys(this.props.arrayOfForums));
-
     }
 
     render() {
