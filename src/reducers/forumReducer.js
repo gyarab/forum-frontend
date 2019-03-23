@@ -3,7 +3,7 @@ const initialState = {
     storage: [],
     posts: [],
     arrayOfForums: [],
-    post: ""
+    post: "ahoj"
 
 };
 
@@ -36,17 +36,22 @@ export default function (state = initialState, action) {
                 posts:[]
             };
         case 'POST_BY_ID':
+            let a ={};
             state.posts.forEach(e=>{
                 if(parseInt(e.content[0].id) === parseInt(action.payload)){
-                    console.log("returning the post")
-                    return{
+                    a = {
                         ...state,
                         post: e.content[0]
                     };
                 }
             });
+            return a;
+        case 'FETCHED_POST_BY_ID':
+            return {
+                ...state,
+                post: action.payload
+            }
         default:
-            console.log("returning default")
             return state
     }
 

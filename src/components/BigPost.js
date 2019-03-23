@@ -1,24 +1,22 @@
 import React, {Component} from 'react';
 import '../styles/bigpost.scss';
 import {connect} from "react-redux";
-import {getPostById} from "../action-creators/forumActionCreator";
+import {fetchPostById, getPostById} from "../action-creators/forumActionCreator";
 import PropTypes from "prop-types";
 
 class BigPost extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getPostById(this.props.match.params.postId);
     }
 
-    componentDidUpdate(){
-        console.log(this.props)
+    componentDidUpdate() {
+        if (this.props.post === undefined) {
+            this.props.fetchPostById(this.props.match.params.postId);
+        }
     }
 
     state = {
-        title: "BIGPOST",
-        content: "BLAALBLBLALLBLBLBBL",
-        thumbsUp: 6,
-        thumbsDown: 65,
         comments: ""
     };
 
@@ -31,27 +29,31 @@ class BigPost extends Component {
     }
 
     render() {
+        let a = typeof(this.props.post)==="undefined"? "":this.props.post;
         return (
             <div className="Bigpost">
-                <div className="Bigpost-Header">{this.props.post}</div>
-                <div className="Bigpost-Body">{this.state.content}</div>
+                <div className="Bigpost-Header">{a.title}</div>
+                <div dangerouslySetInnerHTML={{__html: a.content}} className="Bigpost-Body"/>
+
                 <div className="Bigpost-Footer">
                     <ul>
-                        <li>Posted by USER_ID</li>
                         <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                        <li>{this.state.thumbsUp}</li>
+                        <li>{a.likes}</li>
                         <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                        <li>{this.state.thumbsDown}</li>
+                        <li>{a.dislikes}</li>
                     </ul>
                 </div>
                 <div className="Bigpost-Form">
                     <form>
                         <input type="text" onChange={this.onChange.bind(this)} placeholder="Type a comment here"
-                               name="negr"></input>
-                        <input type="submit" value="Submit comment"></input>
+                               name="negr"/>
+                        <input type="submit" value="Submit comment"/>
 
                     </form>
-                    <button onClick={()=>{console.log(this.props)}}>Ahoj</button>
+                    <button onClick={() => {
+                        console.log(this.props)
+                    }}>Ahoj
+                    </button>
                     <p>{this.state.comments}</p>
                 </div>
             </div>
@@ -71,6 +73,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
     getPostById: (id) => {
         dispatch(getPostById(id))
+    },
+    fetchPostById: (id) =>{
+        dispatch(fetchPostById(id))
     }
 });
 

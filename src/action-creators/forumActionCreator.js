@@ -9,7 +9,7 @@ export const createPost = (post) => dispatch => {
     }).then(res => console.log(res))
 };
 export const searchForumByName = (name) => dispatch => {
-    fetch('http://localhost:7373/forum/search/'+name)
+    fetch('http://localhost:7373/forum/search/' + name)
         .then(response => response.json())
         .then(item => dispatch({
             type: 'SEARCH_FORUM_BY_NAME',
@@ -24,9 +24,9 @@ export const fetchPosts = (forumId, forumPage) => dispatch => {
                 type: 'FETCH_FORUMS',
                 payload: forums
             })
-        ).catch(e =>{
+        ).catch(e => {
         dispatch({
-            type:'FETCH_FORUMS',
+            type: 'FETCH_FORUMS',
             payload: ""
         })
     });
@@ -52,14 +52,14 @@ export const logIn = (creds) => dispatch => {
         mode: 'cors',
         method: "post"
     }).then(response => {
-        if(response.status===200){
+        if (response.status === 200) {
             localStorage.setItem('logged', true);
             localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
         }
     })
         .catch(e =>
             dispatch({
-                type:'LOG_IN',
+                type: 'LOG_IN',
                 payload: e.toString(),
             })
         )
@@ -69,9 +69,16 @@ export const resetPosts = () => dispatch => {
         type: 'RESET'
     })
 };
-export const getPostById = (id) => dispatch =>{
+export const getPostById = (id) => dispatch => {
     dispatch({
         type: 'POST_BY_ID',
         payload: id
     })
+};
+export const fetchPostById = (id) => dispatch => {
+    fetch("http://localhost:7373/post/id/" + id).then(response => response.json()).then(e =>
+        dispatch({
+            type: 'FETCHED_POST_BY_ID',
+            payload: e
+        }));
 }
