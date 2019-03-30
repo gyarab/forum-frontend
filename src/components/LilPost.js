@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import {NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom';
 
 
 class LilPost extends Component {

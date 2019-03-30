@@ -82,3 +82,8 @@
 .interactive-button:hover{
   color: $primary-color;
 }
+
+a:hover, a:link, a:active, a:visited{
+  text-decoration: none;
+  color: $primary-color;
+}
