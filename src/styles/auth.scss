@@ -8,18 +8,36 @@
 .auth-wrapper {
   display: block;
   margin:auto;
-  width: 300px;
+  width: 500px;
 }
 
 .input{
-  padding: 10px;
-  border-radius: 25px;
-  margin-top: 10px;
+  padding: 15px;
+  margin-top: 15px;
   border: none;
   width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.input:after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0 auto; /* This will center the border. */
+  width: 50%; /* Change this to whatever width you want. */
+  padding-top: 20px; /* This creates some space between the element and the border. */
+  border-bottom: 1px solid transparent; /* This creates the border. Replace black with whatever color you want. */
 }
 
+input:focus{
+  border-bottom: 2px solid gray;
+
+}
+
+
 .button-submit{
+  padding: 15px;
+  width: 100%;
   background-color: $primary-color;
   color: white;
 }
@@ -28,4 +46,14 @@
   background-color: $secondary-color;
   color: white;
   cursor: pointer;
+}
+.button-register{
+  padding: 15px;
+  width: 100%;
+  background-color: $secondary-color;
+  color:white;
+  cursor: pointer;
+}
+a:link{
+  text-decoration: none;
 }

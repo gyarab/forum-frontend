@@ -88,9 +88,9 @@ class Navigation extends Component {
                         <div className="sidebar-header">
                             <i onClick={() => this.setState({toggle: !this.state.toggle})}
                                className="sbtn sclose fas fa-arrow-left"/>
-                            <NavLink style={{textDecoration: "none", color: "white"}} to={"/"}><h1>Gyarab Forum</h1>
+                            <NavLink style={{textDecoration: "none", color: "white" ,fontSize:'30pt',marginTop:0}} to={"/"}>Gyarab Forum
                             </NavLink>
-                            <NavLink style={{display: localStorage.getItem("logged") ? "none" : "block"}}
+                            <NavLink style={{fontSize:'13pt',display: localStorage.getItem("logged") ? "none" : "block"}}
                                      onClick={() => {
                                          this.setState({toggle: false});
                                      }} to="/login" className="sidebar-item"><i className="far fa-user"/> Log in /

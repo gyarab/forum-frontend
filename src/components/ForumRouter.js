@@ -4,6 +4,7 @@ import {Route} from "react-router-dom";
 import Login from "./Login";
 import BigPost from "./BigPost";
 import RenderLilPosts from "./RenderLilPosts";
+import Register from "./Register";
 
 class ForumRouter extends Component {
 
@@ -13,6 +14,7 @@ class ForumRouter extends Component {
                 <Route path="/" component={Navigation}/>
                 <Route path="/" exact component={RenderLilPosts}/>
                 <Route path="/login" exact component={Login}/>
+                <Route path="/register" exact component={Register}/>
                 <Route path={`/forum/:forumId`} exact component={RenderLilPosts}/>
                 <Route path={`/bigpost/:postId`} component={BigPost}/>
             </div>
