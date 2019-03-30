@@ -28,8 +28,8 @@
     cursor: pointer;
     display: block;
     color: white;
-    height: 35px;
-    width: 35px;
+    height: 15px;
+    width: 15px;
     padding: 10px;
     transition: 0.2s;
 }
@@ -68,7 +68,7 @@
     border: none;
     background: none;
     color: white;
-    width: 263px;
+    width: 253px;
     padding-left: 8px;
 }
 //Shows a scrollbar in case there is not enough space to show all sidebar-items
@@ -79,8 +79,9 @@
 .sidebar-item {
     text-decoration: none;
     display: block;
+    font-size: 15pt;
     position: relative;
-    width: 100%;
+    width: 93%;
     padding: 10px;
     color: white;
     background-color: $primary-color;

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../styles/auth.scss'
-//eslint-disable-next-line
 import PropTypes from 'prop-types';
 import {logIn} from "../action-creators/forumActionCreator";
 import {connect} from "react-redux";
@@ -43,15 +42,17 @@ class Login extends Component {
         return (
             <div className="parent">
                 <div className="auth-wrapper">
+
                     {this.props.error ? <p style={{color: "red"}}>{this.props.error}</p> : ""}
-                    <input type="text" className="input" name="username" placeholder="Username" onChange={this.onChange}
+                    <input className="input" name="username" placeholder="E-Mail"
+                           onChange={this.onChange}
                            value={this.state.username}/>
                     <input type="password" className="input" name="password" placeholder="Password"
                            onChange={this.onChange}
                            value={this.state.password}/>
-                    <NavLink to={localStorage.getItem("logged")?"/":"/login"}>
                         <input type="submit" className="input button-submit" value="Login"
-                               onClick={this.submit}/></NavLink>
+                               onClick={this.submit}/>
+                    <NavLink to={"/register"}><p style={{marginLeft:'auto',marginRight:'auto'}}>Or Register here</p></NavLink>
                 </div>
             </div>
         );
