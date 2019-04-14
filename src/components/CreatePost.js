@@ -106,6 +106,7 @@ CreatePost.modules = {
         ['clean']                                         // remove formatting button
     ]
 };
+
 CreatePost.propTypes = {
     createPost: PropTypes.func.isRequired
 };
