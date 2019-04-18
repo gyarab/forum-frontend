@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import {connect} from "react-redux";
 import {fetchAllForumNames, resetPosts, searchForumByName} from "../action-creators/forumActionCreator";
 import {NavLink} from 'react-router-dom'
+import AccountInfo from "./AccountInfo";
 
 
 class Navigation extends Component {
@@ -114,6 +115,7 @@ class Navigation extends Component {
 
                             {this.state.searchMode ? searchedForums : forumNames}
                         </div>
+                        <AccountInfo style={{display: localStorage.getItem("logged") ? "none" : "block"}}/>
 
                     </div>
 
