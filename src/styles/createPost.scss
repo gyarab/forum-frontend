@@ -63,20 +63,22 @@
   width: 3rem;
   top:-1rem;
   right:-1rem;
-  height: 0;
-  font-size: 1.85rem;
-  padding-bottom: 2.8rem;
+  height: 3rem;
+  font-size: 2rem;
   border-radius: 50%;
   background-color: $primary-color;
-  border: solid 2px $primary-color;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3rem;
 }
 
 .title{
   width:100%;
   border: none;
   border-bottom: solid 1px $primary-color;
+  font-size: 1.5rem;
   padding:0;
-  margin:0;
+  margin:0 0 1rem 0;
 }
 
 
@@ -95,33 +97,43 @@
 }
 
 .createpost-open{
-  position: fixed;
-  right: 0;
-  bottom: 0;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
   width: 3rem;
-  height: 0;
+  height: 3rem;
   font-size: 2rem;
-  padding-bottom: 3rem;
   border-radius: 50%;
-  margin: 0 1.5rem 1.5rem 0;
   background-color: $primary-color;
   z-index: 2;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3rem;
 }
 
 .createpost-slider{
   background-color: white;
-  height: 2.5rem;
+  height: 1.1rem;
   width: 0.2rem;
   text-align: center;
   padding: 0.5rem 0;
   position: fixed;
-  right: 0;
-  bottom: 0;
+  right: 3.5rem;
+  bottom: 1.80rem;
   color: black;
-  margin: 0 3.5rem 1.75rem 0;
   border: solid 2px $primary-color;
   z-index: 1;
+  vertical-align: middle;
+  line-height: 1.1rem;
   overflow: hidden;
+}
+
+.ql-formats:hover{
+  color: $primary-color;
+}
+
+.ql-container.ql-snow, .ql-toolbar.ql-snow {
+  border: 1px solid $primary-color;
 }
 
 //Shows grey shadow wehenever user hovers over the button
@@ -130,9 +142,7 @@
 }
 
 .close-modal:hover{
-  background: #fff;
-  color: $primary-color;
-  border: solid 2px $primary-color;
+  background-color: darken($primary-color, 7%);
 }
 
 .createpost-open:hover + .createpost-slider{
@@ -142,6 +152,10 @@
 //Removes blue outline after clicking the button
 .submit:focus, .content:focus, .title:focus, .createpost-open:focus, .close-modal:focus{
   outline: none;
+}
+
+.title:focus{
+  border-bottom: solid 1px $primary-color;
 }
 
 .ql-editor{
