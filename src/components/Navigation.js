@@ -42,14 +42,18 @@ class Navigation extends Component {
         this.setState({searchedKeys: Object.keys(this.props.arrayOfForums)});
     }
 
+    reset(key) {
+        if (this.props.forums[key] !== parseInt(this.props.location.pathname.split("/").pop())) {
+            this.props.postsReset();
+        }
+    }
+
     render() {
         let forumNames = this.state.allKeys.map(key => (
             <div key={this.props.forums[key]}>
                 <NavLink onClick={() => {
                     this.setState({toggle: false});
-                    if (this.props.forums[key] !== parseInt(this.props.location.pathname.split("/").pop())) {
-                        this.props.reset();
-                    }
+                    this.reset(key);
 
                 }}
                          to={"/forum/" + this.props.forums[key]} className="sidebar-item">{key}</NavLink>
@@ -67,6 +71,8 @@ class Navigation extends Component {
         return (
             <div>
 
+                {/*Closed state*/}
+
                 <div className="closed-sidebar">
                     <div className="sider" style={{display: reversed}}>
                         <i onClick={() => this.setState({
@@ -77,32 +83,62 @@ class Navigation extends Component {
                     </div>
                 </div>
 
+                {/*Opened state*/}
+
                 <div className="opened-sidebar" style={{display: toggled}}>
+
+                    {/*Blur screen*/}
 
                     <div className="sidebar-opaciter" onClick={() => {
                         this.setState({toggle: false});
                     }}/>
 
+                    {/*Sidebar*/}
+
                     <div id="sidebar">
 
+                        {/*Header*/}
+
                         <div className="sidebar-header">
+
+                            {/*Close button*/}
+
                             <i onClick={() => this.setState({toggle: !this.state.toggle})}
                                className="sbtn sclose fas fa-arrow-left"/>
-                            <NavLink style={{textDecoration: "none", color: "white" ,fontSize:'30pt',marginTop:0}} to={"/"}>Gyarab Forum
-                            </NavLink>
-                            <NavLink style={{fontSize:'13pt',display: localStorage.getItem("logged") ? "none" : "block"}}
+
+                            {/*Title*/}
+
+                            <NavLink style={{textDecoration: "none", color: "white", fontSize: '30pt', marginTop: 0}}
                                      onClick={() => {
+                                         this.props.postsReset();
                                          this.setState({toggle: false});
-                                     }} to="/login" className="sidebar-item"><i className="far fa-user"/> Log in /
-                                Register</NavLink>
+                                     }} to="/">Gyarab Forum
+                            </NavLink>
+
+                            {/*Register*/}
+
+                            <NavLink style={{display: localStorage.getItem("logged") ? "none" : "block"}}
+                                     onClick={() => {
+                                         this.props.postsReset();
+                                         this.setState({toggle: false});
+                                     }} to="/login" className="sidebar-item auth"><i className="far fa-user"/> Log in /
+                                Register
+                            </NavLink>
+
+                            {/*Logout*/}
+
                             <NavLink style={{display: localStorage.getItem("logged") ? "block" : "none"}}
                                      onClick={() => {
+                                         // this.props.authReset();
                                          localStorage.clear();
                                          this.setState({toggle: false});
-                                     }} to="/login" className="sidebar-item"><i
-                                className="far fa-user"/> Logout</NavLink>
+                                     }} to="/login" className="sidebar-item auth"><i
+                                className="far fa-user"/> Logout
+                            </NavLink>
+
                         </div>
 
+                        {/*Search*/}
 
                         <div className={"search-wrapper"}>
                             <input placeholder="Search..." id="sidebar-search-text"
@@ -110,9 +146,12 @@ class Navigation extends Component {
                             <i onClick={this.handleClick.bind(this)} className="sbtn fas fa-search"/>
                         </div>
 
+                        {/*List*/}
+
                         <div className="forums">
 
                             {this.state.searchMode ? searchedForums : forumNames}
+
                         </div>
 
                     </div>
@@ -127,7 +166,7 @@ class Navigation extends Component {
 Navigation.propTypes = {
     fetchForumNames: PropTypes.func.isRequired,
     searchForumByName: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired
+    postsReset: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -135,6 +174,7 @@ const mapStateToProps = state => ({
     forums: state.forums.storage,
     arrayOfForums: state.forums.arrayOfForums
 });
+
 const mapDispatchToProps = (dispatch) => ({
     searchForumByName: (name) => {
         dispatch(searchForumByName(name))
@@ -142,7 +182,7 @@ const mapDispatchToProps = (dispatch) => ({
     fetchForumNames: () => {
         dispatch(fetchAllForumNames())
     },
-    reset: () => {
+    postsReset: () => {
         dispatch(resetPosts())
     }
 });

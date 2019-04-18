@@ -1,9 +1,10 @@
 const initialState = {
-    error: false,
+    status: false,
     storage: [],
     posts: [],
     arrayOfForums: [],
-    post: "ahoj"
+    post: "",
+    logged: false,
 
 };
 
@@ -28,17 +29,17 @@ export default function (state = initialState, action) {
         case 'LOG_IN':
             return {
                 ...state,
-                error: action.payload,
+                status: action.payload,
             };
         case 'RESET':
-            return{
+            return {
                 ...state,
-                posts:[]
+                posts: []
             };
         case 'POST_BY_ID':
-            let a ={};
-            state.posts.forEach(e=>{
-                if(parseInt(e.content[0].id) === parseInt(action.payload)){
+            let a = {};
+            state.posts.forEach(e => {
+                if (parseInt(e.content[0].id) === parseInt(action.payload)) {
                     a = {
                         ...state,
                         post: e.content[0]
@@ -50,7 +51,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 post: action.payload
-            }
+            };
         default:
             return state
     }

@@ -40,30 +40,6 @@ export const fetchAllForumNames = () => dispatch => {
 
 
 };
-export const logIn = (creds) => dispatch => {
-    let formData = new FormData();
-    //admin@example.com
-    formData.append('username', creds.username);
-    //admin!
-    formData.append('password', creds.password);
-
-    fetch("http://localhost:7373/api/core/login", {
-        body: formData,
-        mode: 'cors',
-        method: "post"
-    }).then(response => {
-        if (response.status === 200) {
-            localStorage.setItem('logged', true);
-            localStorage.setItem('auth', response.headers.get('Lemon-Authorization'));
-        }
-    })
-        .catch(e =>
-            dispatch({
-                type: 'LOG_IN',
-                payload: e.toString(),
-            })
-        )
-};
 export const resetPosts = () => dispatch => {
     dispatch({
         type: 'RESET'
@@ -81,4 +57,4 @@ export const fetchPostById = (id) => dispatch => {
             type: 'FETCHED_POST_BY_ID',
             payload: e
         }));
-}
+};
