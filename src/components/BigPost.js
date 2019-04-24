@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../styles/bigpost.scss';
 import {connect} from "react-redux";
-import {fetchPostById, getPostById} from "../action-creators/forumActionCreator";
+import {fetchPostById, getPostById} from "../action-creators/postActionCreator";
 import PropTypes from "prop-types";
 
 class BigPost extends Component {
@@ -48,7 +48,7 @@ class BigPost extends Component {
                 </div>
                     <div className="Bigpost-Form">
                         <form>
-                            <textarea  className="Textarea" rows="2" cols="90" placeholder="What are your thoughts about this?"></textarea>
+                            <textarea  className="Textarea" rows="2" cols="90" placeholder="What are your thoughts about this?"/>
                             <input type="submit" className="SubmitButton" value="Comment"/>
 
                         </form>

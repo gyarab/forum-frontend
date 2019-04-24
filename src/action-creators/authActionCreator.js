@@ -1,5 +1,6 @@
+//POST ACTIONS
+//Attempts a logIn with the credentials entered by the user, admin creds are commented down below.
 export const logIn = (creds) => dispatch => {
-    console.log("called");
     let formData = new FormData();
     //admin@example.com
     formData.append('username', creds.email);
@@ -26,6 +27,7 @@ export const logIn = (creds) => dispatch => {
         })
     )
 };
+//Attempts to register a new User with the creds provided.
 export const register = (creds) => dispatch => {
     fetch("http://localhost:7373/api/core/users", {
         headers: {

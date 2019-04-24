@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 import '../styles/auth.scss'
 import {Redirect} from "react-router-dom";
-import {resetPosts} from "../action-creators/forumActionCreator";
+import {resetPosts} from "../action-creators/postActionCreator";
 import connect from "react-redux/es/connect/connect";
 import {logIn, register} from "../action-creators/authActionCreator";
 

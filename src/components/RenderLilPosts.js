@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {fetchPosts, searchForumByName} from "../action-creators/forumActionCreator";
+import {searchForumByName} from "../action-creators/forumActionCreator";
+
 import connect from "react-redux/es/connect/connect";
 import '../styles/renderLilPosts.scss';
 import LilPost from "./LilPost";
 import CreatePost from "./CreatePost";
+import {fetchPosts} from "../action-creators/postActionCreator";
 
 class RenderLilPosts extends Component {
 

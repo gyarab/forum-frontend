@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {logIn} from "../action-creators/authActionCreator";
 import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
-import {resetPosts} from "../action-creators/forumActionCreator";
+import {resetPosts} from "../action-creators/postActionCreator";
 
 class Login extends Component {
     static defaultProps = {};

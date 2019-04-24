@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import '../styles/navigation.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import {connect} from "react-redux";
-import {fetchAllForumNames, resetPosts, searchForumByName} from "../action-creators/forumActionCreator";
+import {fetchAllForumNames, searchForumByName} from "../action-creators/forumActionCreator";
 import {NavLink} from 'react-router-dom'
 import AccountInfo from "./AccountInfo";
+import {resetPosts} from "../action-creators/postActionCreator";
 
 
 class Navigation extends Component {

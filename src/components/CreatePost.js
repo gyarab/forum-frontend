@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../styles/createPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import connect from "react-redux/es/connect/connect";
-import {createPost} from "../action-creators/forumActionCreator";
+import {createPost} from "../action-creators/postActionCreator";
 import PropTypes from "prop-types";
 import ReactQuill from 'react-quill';
 
