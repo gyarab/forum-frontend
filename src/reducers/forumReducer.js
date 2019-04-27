@@ -5,7 +5,7 @@ const initialState = {
     arrayOfForums: [],
     post: "",
     logged: false,
-
+    updated: {post:{},attitudeDto:{}}
 };
 
 export default function (state = initialState, action) {
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
                 ...state,
                 storage: action.payload
             };
-        case 'FETCH_FORUMS':
+        case 'FETCH_POSTS':
 
             return {
                 ...state,
@@ -37,20 +37,23 @@ export default function (state = initialState, action) {
                 posts: []
             };
         case 'POST_BY_ID':
-            let a = {};
+            let a;
             state.posts.forEach(e => {
                 if (parseInt(e.content[0].id) === parseInt(action.payload)) {
-                    a = {
-                        ...state,
-                        post: e.content[0]
-                    };
+                    a = e.content[0];
                 }
             });
-            return a;
+            return {...state, post: a};
         case 'FETCHED_POST_BY_ID':
             return {
                 ...state,
                 post: action.payload
+            };
+        case 'POST_UPDATE':
+            console.info(action.payload);
+            return {
+                ...state,
+                updated :action.payload
             };
         default:
             return state

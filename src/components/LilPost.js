@@ -11,10 +11,33 @@ class LilPost extends Component {
 
     static defaultProps = {};
 
-    static propTypes = {};
+    componentWillReceiveProps(nextProps) {
+        if (this.props.id === nextProps.updatedId) {
+            this.setState({
+                likes: nextProps.updatedLikes,
+                dislikes: nextProps.updatedDislikes,
+                attitude: nextProps.updatedAttitude
+            })
+        }
+    }
 
+
+    static propTypes = {};
+    state = {
+        likes: this.props.likes,
+        dislikes: this.props.dislikes,
+        attitude: this.props.attitude.attitude,
+        logged: this.props.attitude.lemonUserId
+    };
 
     render() {
+        let likeClass = "fas fa-angle-up fa-2x interactive-button";
+        if (this.state.attitude === "LIKE") likeClass += ' active';
+        else likeClass = "fas fa-angle-up fa-2x interactive-button";
+
+        let dislikeClass = "fas fa-angle-down fa-2x interactive-button";
+        if (this.state.attitude === "DISLIKE") dislikeClass += ' active';
+        else dislikeClass = "fas fa-angle-down fa-2x interactive-button";
 
         return (
 
@@ -27,21 +50,29 @@ class LilPost extends Component {
                             <div dangerouslySetInnerHTML={{__html: this.props.content}}/>
                         </div>
                     </NavLink>
-                        <div className="lilpost-footer">
+                    <button onClick={() => {
+                        console.info(this.state)
+                    }}>Hey
+                    </button>
+                    <div className="lilpost-footer">
+                        {this.state.logged ?
                             <ul>
-                                <li><i className="fas fa-comments fa-2x interactive-button"/></li>
-                                <li>2</li>
-                                <li onClick={()=>{this.props.updatePost("like", this.props.id)}}><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                                <li>{this.props.likes}</li>
+                                <li onClick={() => {
+                                    console.info("here");
+                                    this.props.updatePost("like", this.props.id)
+                                }}>
+                                    <i className={likeClass}/>
+                                </li>
+                                <li>{this.state.likes}</li>
 
-                                <li onClick={()=>{this.props.updatePost("dislike", this.props.id)}}><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                                    <li>{this.props.dislikes}</li>
-                            </ul>
-                            <button onClick={() => {
-                                console.log(this.props)
-                            }}>Ahoj
-                            </button>
-                        </div>
+                                <li onClick={() => {
+                                    this.props.updatePost("dislike", this.props.id)
+                                }}>
+                                    <i className={dislikeClass}/>
+                                </li>
+                                <li>{this.state.dislikes}</li>
+                            </ul> : ""}
+                    </div>
 
                 </div>
             </div>
@@ -50,4 +81,11 @@ class LilPost extends Component {
     }
 }
 
-export default connect(null, {updatePost})(LilPost);
+const mapStateToProps = state => ({
+    updatedId: state.forums.updated.post.id,
+    updatedLikes: state.forums.updated.post.likes,
+    updatedDislikes: state.forums.updated.post.dislikes,
+    updatedAttitude: state.forums.updated.attitudeDto.attitude
+});
+
+export default connect(mapStateToProps, {updatePost})(LilPost);

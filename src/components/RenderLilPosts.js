@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {searchForumByName} from "../action-creators/forumActionCreator";
-
 import connect from "react-redux/es/connect/connect";
 import '../styles/renderLilPosts.scss';
 import LilPost from "./LilPost";
@@ -12,6 +11,7 @@ class RenderLilPosts extends Component {
 
 
     componentDidMount() {
+        if(this.props.posts.length===0)
         this.load();
     }
 
@@ -55,10 +55,11 @@ class RenderLilPosts extends Component {
         let posts = "";
         let tillMax = 'block';
         if (this.props.posts[0]) {
+            console.log(this.props.posts[0]);
             posts = this.props.posts.map(post => (
-                <div key={post.content[0].id}>
-                    <LilPost id={post.content[0].id} title={post.content[0].title} likes={post.content[0].likes}
-                             dislikes={post.content[0].dislikes} content={post.content[0].content}/>
+                <div key={post.content[0].post.id}>
+                    <LilPost id={post.content[0].post.id} title={post.content[0].post.title} attitude={post.content[0].attitudeDto} likes={post.content[0].post.likes}
+                             dislikes={post.content[0].post.dislikes} content={post.content[0].post.content}/>
                 </div>
             ));
             tillMax = !this.props.posts[this.props.posts.length - 1].last ? 'block' : 'none';
@@ -75,7 +76,7 @@ class RenderLilPosts extends Component {
                         posts
                     </button>
                 </div>
-                {!localStorage.getItem("logged") ? "" : <CreatePost match={this.props.match}/>}
+                {localStorage.getItem("logged") ? <CreatePost match={this.props.match}/>:""}
             </div>
         );
     }

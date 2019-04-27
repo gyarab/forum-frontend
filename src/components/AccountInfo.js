@@ -6,18 +6,25 @@ class AccountInfo extends Component {
 
     constructor() {
         super();
+
         this.state = {
-            userName: "Placeholder",
-            role: "Placeholder",
+            userJson: JSON.parse(atob(localStorage.getItem("auth").split(".")[1])),
+
         };
+    }
+    componentDidMount(){
+        this.props.history.listen(() => {
+            // Detecting, user has changed URL
+            console.info(this.props.history.location.pathname);
+        });
     }
 
     render() {
 
         return (
             <div className="accountinfo">
-                <div className="username-wrapper">You are logged in as {this.state.userName}</div>
-                <div className="role-wrapper">Your role is {this.state.role}</div>
+                <div className="username-wrapper">You are logged in as {this.state.userJson.sub}</div>
+
             </div>
         );
     }

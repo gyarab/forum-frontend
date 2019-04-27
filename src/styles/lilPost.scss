@@ -78,7 +78,9 @@
   color: black;
   margin: auto 0.6rem auto 1.8rem;
 }
-
+i.active{
+  color: $primary-color;
+}
 .interactive-button:hover{
   color: $primary-color;
 }

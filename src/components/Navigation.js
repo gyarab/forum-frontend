@@ -12,7 +12,7 @@ import {resetPosts} from "../action-creators/postActionCreator";
 class Navigation extends Component {
 
     componentDidMount() {
-        this.props.fetchForumNames()
+        this.props.fetchForumNames();
     }
 
     constructor() {
@@ -63,7 +63,7 @@ class Navigation extends Component {
         ));
         let searchedForums = this.state.searchedKeys.map(key => (
             <div key={this.props.arrayOfForums[key]}>
-                <NavLink to={"/" + this.props.arrayOfForums[key]} className="sidebar-item">{key}</NavLink>
+                <NavLink to={"/forum/" + this.props.arrayOfForums[key]} className="sidebar-item">{key}</NavLink>
             </div>
         ));
 
@@ -155,7 +155,8 @@ class Navigation extends Component {
                             {this.state.searchMode ? searchedForums : forumNames}
 
                         </div>
-                        <AccountInfo style={{display: localStorage.getItem("logged") ? "none" : "block"}}/>
+
+                        {localStorage.getItem("logged") ?  <AccountInfo history={this.props.history}style={{display: localStorage.getItem("logged") ? "none" : "block"}}/> : ""}
 
                     </div>
 

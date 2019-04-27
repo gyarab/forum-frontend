@@ -1,16 +1,20 @@
 //FETCH ACTIONS
 //Fetch a page of posts from a specific forum
 export const fetchPosts = (forumId, forumPage) => dispatch => {
-    fetch('http://localhost:7373/post/forum/' + forumId + '/posts?page=' + forumPage + '&size=1')
+    fetch('http://localhost:7373/post/forum/' + forumId + '/posts?page=' + forumPage + '&size=1', {
+        headers: {
+            'Authorization': localStorage.getItem('auth')
+        },
+    })
         .then(response => response.json())
         .then(forums =>
             dispatch({
-                type: 'FETCH_FORUMS',
+                type: 'FETCH_POSTS',
                 payload: forums
             })
         ).catch(e => {
         dispatch({
-            type: 'FETCH_FORUMS',
+            type: 'FETCH_POSTS',
             payload: ""
         })
     });
@@ -55,10 +59,13 @@ export const createPost = (post) => dispatch => {
 //PUT ACTIONS
 //Like/Dislike a post.
 export const updatePost = (liked, commentId) => dispatch => {
-    fetch('http://localhost:7373/post/update/'+liked+'/' + commentId, {
+    fetch('http://localhost:7373/post/update/' + liked + '/' + commentId, {
         method: 'PUT',
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
-    }).then(res => console.log(res))
+    }).then(res=>res.json()).then(res => dispatch({
+        type: 'POST_UPDATE',
+        payload: res
+    }))
 };
