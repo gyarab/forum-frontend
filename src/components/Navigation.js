@@ -156,7 +156,7 @@ class Navigation extends Component {
 
                         </div>
 
-                        {localStorage.getItem("logged") ?  <AccountInfo history={this.props.history}style={{display: localStorage.getItem("logged") ? "none" : "block"}}/> : ""}
+                        {localStorage.getItem("logged") ?  <AccountInfo history={this.props.history}/> : ""}
 
                     </div>
 

@@ -50,10 +50,6 @@ class LilPost extends Component {
                             <div dangerouslySetInnerHTML={{__html: this.props.content}}/>
                         </div>
                     </NavLink>
-                    <button onClick={() => {
-                        console.info(this.state)
-                    }}>Hey
-                    </button>
                     <div className="lilpost-footer">
                         {this.state.logged ?
                             <ul>

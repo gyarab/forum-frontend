@@ -5,7 +5,8 @@ const initialState = {
     arrayOfForums: [],
     post: "",
     logged: false,
-    updated: {post:{},attitudeDto:{}}
+    updated: {post:{},attitudeDto:{}},
+    comments: ""
 };
 
 export default function (state = initialState, action) {
@@ -54,6 +55,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 updated :action.payload
+            };
+        case 'FETCH_COMMENTS':
+            return{
+                ...state,
+                comments:action.payload
             };
         default:
             return state

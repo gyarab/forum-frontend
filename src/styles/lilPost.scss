@@ -78,11 +78,16 @@
   color: black;
   margin: auto 0.6rem auto 1.8rem;
 }
+
+.interactive-button:hover{
+  color: $primary-color;
+}
+
 i.active{
   color: $primary-color;
 }
-.interactive-button:hover{
-  color: $primary-color;
+i.active:hover{
+  cursor:default;
 }
 
 //a:hover, a:link, a:active, a:visited{

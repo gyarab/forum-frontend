@@ -1,7 +1,7 @@
 //FETCH ACTIONS
 //Fetch a page of posts from a specific forum
 export const fetchComments = (postId, postPage) => dispatch => {
-    fetch('http://localhost:7373/comments/' + postId + '/post?page=' + postPage + '&size=1')
+    fetch('http://localhost:7373/comments/' + postId + '/post?page=' + postPage + '&size=2')
         .then(response => response.json())
         .then(comments =>
             dispatch({
