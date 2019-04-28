@@ -16,3 +16,13 @@ export const fetchComments = (postId, postPage) => dispatch => {
     });
 };
 
+export const createComment = (comment) => dispatch => {
+    fetch('http://localhost:7373/comment/create', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': localStorage.getItem('auth')
+        },
+        body: JSON.stringify(comment)
+    }).then(res => console.log(res))
+};

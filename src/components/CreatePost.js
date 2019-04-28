@@ -52,7 +52,7 @@ class CreatePost extends Component {
             title: this.state.title,
             content: this.state.content,
             forum: this.state.forum,
-            likes: 1,
+            likes: 0,
             dislikes: 0
         };
         this.props.createPost(post);
