@@ -5,10 +5,12 @@ import {connect} from "react-redux";
 import {fetchPostById, getPostById} from "../action-creators/postActionCreator";
 import PropTypes from "prop-types";
 import {fetchComments, createComment} from "../action-creators/commentActionCreator";
+import Comment from "./Comment";
 
 class BigPost extends Component {
 
     componentDidMount() {
+        console.log(this.props);
         this.props.getPostById(this.props.match.params.postId);
         this.props.fetchComments(this.props.match.params.postId, 1)
     }
@@ -26,45 +28,34 @@ class BigPost extends Component {
 
     };
 
-    handleSubmit(event){
+    handleSubmit(event) {
         event.preventDefault();
         let babyComment = {
             content: this.state.content,
             likes: 0,
             dislikes: 0,
-            postid:this.props.match.params.postId
-        }
-        console.log(babyComment)
+            // post:this.props.match.params.postId
+        };
+        this.props.createComment(babyComment, this.props.match.params.postId);
     }
 
     handleChange(event) {
         event.preventDefault();
         this.setState({
-            content : event.target.value
+            content: event.target.value
         });
     }
 
     render() {
         let a = typeof (this.props.post) === "undefined" ? "" : this.props.post;
-        let commentElements = this.props.comments.content.map(comment => {
-            return <div className="comment" key={comment.id}>
-                <div className="comment-header">Author placeholder</div>
-                <div className="comment-body">{comment.content}</div>
-                <div className="comment-footer">
-                    <ul>
-                        <li>
-                            <i className="fas fa-angle-up fa-2x interactive-button"/>
-                        </li>
-                        <li>{comment.likes}</li>
-
-                        <li>
-                            <i className="fas fa-angle-down fa-2x interactive-button"/>
-                        </li>
-                        <li>{comment.dislikes}</li>
-                    </ul>
-                </div>
-            </div>
-        });
+        let commentElements = "";
+        if (typeof this.props.comments.content !== "undefined") {
+            commentElements = this.props.comments.content.map(comment => {
+                    console.log(comment.comment.id);
+                    return < Comment idr={comment.comment.id} content={comment.comment.content} likes={comment.comment.likes} dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}/>
+                }
+            );
+        }
         return (
             <div className="Bigpost-Wrapper">
                 <div className="Bigpost">
@@ -83,13 +74,14 @@ class BigPost extends Component {
                 </div>
                 <div className="Bigpost-Form">
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <textarea className="Textarea" rows="2" cols="90"
-                                  placeholder="What are your thoughts about this?" onChange={this.handleChange.bind(this)}/>
+                        <textarea className="Textarea" rows="7"
+                                  placeholder="What are your thoughts about this?"
+                                  onChange={this.handleChange.bind(this)}/>
                         <input type="submit" className="SubmitButton" value="Comment"/>
                     </form>
 
                     <button onClick={() => {
-                        console.log(this.props)
+                        console.log(typeof this.props.comments.content)
                     }}>Ahoj
                     </button>
                 </div>
@@ -105,7 +97,7 @@ BigPost.propTypes = {
     getPostById: PropTypes.func.isRequired,
     fetchPostById: PropTypes.func.isRequired,
     fetchComments: PropTypes.func.isRequired,
-    createComment : PropTypes.func.isRequired,
+    createComment: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -124,8 +116,8 @@ const mapDispatchToProps = (dispatch) => ({
     fetchComments: (id, page) => {
         dispatch(fetchComments(id, page))
     },
-    createComment: (comment) =>{
-        dispatch()
+    createComment: (comment, postId) => {
+        dispatch(createComment(comment, postId))
     }
 });
 

@@ -78,10 +78,10 @@ class LilPost extends Component {
 }
 
 const mapStateToProps = state => ({
-    updatedId: state.forums.updated.post.id,
-    updatedLikes: state.forums.updated.post.likes,
-    updatedDislikes: state.forums.updated.post.dislikes,
-    updatedAttitude: state.forums.updated.attitudeDto.attitude
+    updatedId: state.forums.updatedPost.post.id,
+    updatedLikes: state.forums.updatedPost.post.likes,
+    updatedDislikes: state.forums.updatedPost.post.dislikes,
+    updatedAttitude: state.forums.updatedPost.attitudeDto.attitude
 });
 
 export default connect(mapStateToProps, {updatePost})(LilPost);
