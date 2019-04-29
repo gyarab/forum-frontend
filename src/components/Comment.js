@@ -20,7 +20,7 @@ class Comment extends Component {
         likes:this.props.likes,
         dislikes:this.props.dislikes,
         attitude: this.props.attitude.attitude,
-        user: this.props.attitude.lemonUserId,
+        username: this.props.attitude.username,
     };
 
     render() {
@@ -34,7 +34,7 @@ class Comment extends Component {
 
         return (
             <div className="comment" key={this.props.idr}>
-                <div className="comment-header">Author placeholder</div>
+                <div className="comment-header">{this.state.username}</div>
                 <div className="comment-body">{this.props.content}</div>
                 <div className="comment-footer">
                     <ul>
@@ -53,7 +53,7 @@ class Comment extends Component {
                         <li>{this.state.dislikes}</li>
                     </ul>
                 </div>
-                <button onClick={()=>{console.log(this.state)}}>Ahoj</button>
+                <button onClick={()=>{console.log(this.props)}}>Ahoj</button>
             </div>
         );
     }

@@ -49,7 +49,9 @@ class BigPost extends Component {
         let commentElements = "";
         if (typeof this.props.comments.content !== "undefined") {
             commentElements = this.props.comments.content.map(comment => {
-                    return <Comment key={comment.comment.id} idr={comment.comment.id} content={comment.comment.content} likes={comment.comment.likes} dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}/>
+                    return <Comment key={comment.comment.id} idr={comment.comment.id}
+                                    content={comment.comment.content} likes={comment.comment.likes}
+                                    dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}/>
                 }
             );
         }

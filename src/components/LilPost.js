@@ -27,7 +27,8 @@ class LilPost extends Component {
         likes: this.props.likes,
         dislikes: this.props.dislikes,
         attitude: this.props.attitude.attitude,
-        logged: this.props.attitude.lemonUserId
+        logged: this.props.attitude.lemonUserId,
+        username: this.props.attitude.username
     };
 
     render() {
@@ -45,7 +46,7 @@ class LilPost extends Component {
                 <div className="lilpost">
                     <NavLink to={"/bigpost/" + this.props.id} style={{textDecoration: "none", color: "black"}}>
                         <div className="lilpost-header">{this.props.title}</div>
-
+                        {this.state.username}
                         <div className="lilpost-body">
                             <div dangerouslySetInnerHTML={{__html: this.props.content}}/>
                         </div>
