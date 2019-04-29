@@ -1,7 +1,11 @@
 //FETCH ACTIONS
 //Fetch a page of posts from a specific forum
 export const fetchComments = (postId, postPage) => dispatch => {
-    fetch('http://localhost:7373/comments/' + postId + '/post?page=' + 0 + '&size=10')
+    fetch('http://localhost:7373/comments/' + postId + '/post?page=' + 0 + '&size=10', {
+        headers: {
+            'Authorization': localStorage.getItem('auth')
+        },
+    })
         .then(response => response.json())
         .then(comments =>
             dispatch({
@@ -16,8 +20,8 @@ export const fetchComments = (postId, postPage) => dispatch => {
     });
 };
 
-export const createComment = (comment,postId) => dispatch => {
-    fetch('http://localhost:7373/comments/create/'+postId, {
+export const createComment = (comment, postId) => dispatch => {
+    fetch('http://localhost:7373/comments/create/' + postId, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -35,8 +39,10 @@ export const updateComment = (attitude, commentId) => dispatch => {
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
-    }).then(res=>res.json()).then(res => dispatch({
-        type: 'COMMENT_UPDATE',
-        payload: res
-    }))
+    }).then(res => res.json()).then(res => {
+        dispatch({
+            type: 'COMMENT_UPDATE',
+            payload: res
+        })
+    })
 };

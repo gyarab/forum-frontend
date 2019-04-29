@@ -6,8 +6,6 @@ import {updateComment} from "../action-creators/commentActionCreator";
 class Comment extends Component {
     static defaultProps = {};
 
-    static propTypes = {};
-
     componentWillReceiveProps(nextProps) {
         if (this.props.idr === nextProps.updatedId) {
             this.setState({
@@ -59,7 +57,12 @@ class Comment extends Component {
             </div>
         );
     }
+
 }
+Comment.propTypes = {
+    updateComment: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => ({
     updatedId: state.forums.updatedComment.comment.id,
     updatedLikes: state.forums.updatedComment.comment.likes,

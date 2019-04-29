@@ -10,13 +10,11 @@ import Comment from "./Comment";
 class BigPost extends Component {
 
     componentDidMount() {
-        console.log(this.props);
         this.props.getPostById(this.props.match.params.postId);
         this.props.fetchComments(this.props.match.params.postId, 1)
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.info(this.props);
         if (this.props.post === undefined) {
             this.props.fetchPostById(this.props.match.params.postId);
         }
@@ -51,8 +49,7 @@ class BigPost extends Component {
         let commentElements = "";
         if (typeof this.props.comments.content !== "undefined") {
             commentElements = this.props.comments.content.map(comment => {
-                    console.log(comment.comment.id);
-                    return < Comment idr={comment.comment.id} content={comment.comment.content} likes={comment.comment.likes} dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}/>
+                    return <Comment key={comment.comment.id} idr={comment.comment.id} content={comment.comment.content} likes={comment.comment.likes} dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}/>
                 }
             );
         }

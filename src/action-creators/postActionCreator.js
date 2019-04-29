@@ -58,13 +58,13 @@ export const createPost = (post) => dispatch => {
 
 //PUT ACTIONS
 //Like/Dislike a post.
-export const updatePost = (liked, commentId) => dispatch => {
-    fetch('http://localhost:7373/post/update/' + liked + '/' + commentId, {
+export const updatePost = (attitude, commentId) => dispatch => {
+    fetch('http://localhost:7373/post/update/' + attitude + '/' + commentId, {
         method: 'PUT',
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
-    }).then(res=>res.json()).then(res => dispatch({
+    }).then(res => res.json()).then(res => dispatch({
         type: 'POST_UPDATE',
         payload: res
     }))
