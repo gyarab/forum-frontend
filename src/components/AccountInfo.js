@@ -23,8 +23,8 @@ class AccountInfo extends Component {
 
         return (
             <div className="accountinfo">
+                {/*Shows the email if logged in*/}
                 <div className="username-wrapper">You are logged in as {this.state.userJson.sub}</div>
-
             </div>
         );
     }

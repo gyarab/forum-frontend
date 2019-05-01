@@ -1,15 +1,16 @@
 @import "themes";
 
+//Disables selecting of text inside buttons
 .createpost-wrapper{
-  padding: 1.25rem 0 2.5rem 0;
-  background: #f5f6fa;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background: $background;
 }
 
+//Styles the overlay beneath the modal
 .createpost-overlay{
   visibility: visible;
   top: 0;
@@ -22,6 +23,7 @@
   opacity: 1;
 }
 
+//Defines position, size, margin and padding of the modal, styles its border
 .createpost {
   top: 0;
   right: 0;
@@ -47,6 +49,7 @@
 
 }
 
+//Styles all the buttons
 .submit, .createpost-open, .createpost-slider, .close-modal{
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
@@ -56,6 +59,7 @@
   display: block;
 }
 
+//Styles the close button, centers the symbol inside, fixes it to the top right corner of the modal
 .close-modal{
   position:absolute;
   float:right;
@@ -72,6 +76,7 @@
   line-height: 3rem;
 }
 
+//Styles the title input field and its border, defines its size
 .title{
   width:100%;
   border: none;
@@ -81,14 +86,7 @@
   margin:0 0 1rem 0;
 }
 
-
-.content-label, .title-label{
-  width: 100%;
-  font-size: 1.25rem;
-  font-family: 'Poppins', sans-serif;
-  background: #fff;
-}
-
+//Styles the submit button, defines its size
 .submit{
   height: 2.5rem;
   width: 20rem;
@@ -96,6 +94,7 @@
   background-color: $primary-color;
 }
 
+//Styles the open button, centers the symbol inside, fixes it to the bottom right corner
 .createpost-open{
   position: fixed;
   right: 1.5rem;
@@ -111,6 +110,7 @@
   line-height: 3rem;
 }
 
+//Styles the slider and the text within, fixes it under the open button
 .createpost-slider{
   background-color: white;
   height: 1.1rem;
@@ -128,23 +128,22 @@
   overflow: hidden;
 }
 
-.ql-formats:hover{
-  color: $primary-color;
-}
-
+//Styles the quill textfield border
 .ql-container.ql-snow, .ql-toolbar.ql-snow {
   border: 1px solid $primary-color;
 }
 
-//Shows grey shadow wehenever user hovers over the button
+//Shows grey shadow whenever user hovers over the buttons
 .submit:hover, .createpost-open:hover{
   box-shadow: 4px 4px 4px grey;
 }
 
+//Changes the color of close button upon hover
 .close-modal:hover{
   background-color: darken($primary-color, 7%);
 }
 
+//Changes the size of the slider upon open button hover
 .createpost-open:hover + .createpost-slider{
   width: 10rem;
 }
@@ -154,10 +153,12 @@
   outline: none;
 }
 
+//Styles the border of the title input field on focus
 .title:focus{
   border-bottom: solid 1px $primary-color;
 }
 
+//Defines the size of the react-quill textfield
 .ql-editor{
   height: 400px;
 }

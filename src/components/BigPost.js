@@ -45,6 +45,7 @@ class BigPost extends Component {
     }
 
     render() {
+        {/*Creating html of comments received in props*/}
         let a = typeof (this.props.post) === "undefined" ? "" : this.props.post;
         let commentElements = "";
         if (typeof this.props.comments.content !== "undefined") {
@@ -57,6 +58,7 @@ class BigPost extends Component {
         }
         return (
             <div className="Bigpost-Wrapper">
+                {/*Dominikuv kod :)*/}
                 <div className="Bigpost">
                     <div className="Bigpost-Header">{a.title}</div>
                     <div dangerouslySetInnerHTML={{__html: a.content}} className="Bigpost-Body"/>
@@ -84,6 +86,7 @@ class BigPost extends Component {
                     }}>Ahoj
                     </button>
                 </div>
+                {/*Displaying the comments html*/}
                 <div className="comments-wrapper">
                     {commentElements}
                 </div>

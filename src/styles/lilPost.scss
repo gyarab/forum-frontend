@@ -1,5 +1,6 @@
 @import "themes";
 
+//Defines the size, shadow, font, border and background of the lilpost, centers it in the browser
 .lilpost {
   transition: 0.2s;
   background: #fff;
@@ -21,6 +22,7 @@
 
 }
 
+//Defines size, padding and margin, styles the text in the header, adds border on the bottom
 .lilpost-header{
   font-size: 20px;
   text-align: center;
@@ -30,6 +32,7 @@
   padding: .5rem 0;
 }
 
+//Defines size, styles the text in the body, adds border on the bottom
 .lilpost-body {
   margin: 0 auto;
   width: 80%;
@@ -39,6 +42,7 @@
   border-bottom: solid 2px #192a56;
 }
 
+//Defines size, margin and padding of the footer
 .lilpost-footer{
   width: 80%;
   margin: 1px auto;
@@ -46,6 +50,7 @@
   padding: 0.5rem;
 }
 
+//Disables copying of the contents of a lilpost, adds space between lilposts and other components
 .lilpost-wrapper {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -56,41 +61,47 @@
   padding: 1.25rem;
 }
 
-
+//Shows shadow and changes cursor upon hover
 .lilpost:hover{
-  /*Shadow requires some feedback from you*/
   box-shadow: 4px 4px 4px grey;
   cursor: pointer;
 }
 
+//Changes the style of the list in footer
 .lilpost-footer ul{
   list-style: none;
   display: flex;
   justify-content: flex-end;
 }
 
+//Centers vertically contents of the list in footer
 .lilpost-footer li {
   margin: auto 0;
  }
 
-
+//Adds margin to the buttons, sets their default color
 .interactive-button{
   color: black;
   margin: auto 0.6rem auto 1.8rem;
 }
 
+//Changes the color of the buttons upon hover
 .interactive-button:hover{
   color: $primary-color;
 }
 
+//Buttons stay in color after being clicked on
 i.active{
   color: $primary-color;
 }
+
+//Changes the cursor upon button hover if already liked/disliked
 i.active:hover{
   cursor:default;
 }
 
-//a:hover, a:link, a:active, a:visited{
-//  text-decoration: none;
-//  color: $primary-color;
-//}
+//Fixes username to the top left corner in footer
+.lilpost-username-wrapper{
+  position: relative;
+  top:-3rem;
+}

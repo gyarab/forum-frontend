@@ -11,6 +11,7 @@ class LilPost extends Component {
 
     static defaultProps = {};
 
+
     componentWillReceiveProps(nextProps) {
         if (this.props.id === nextProps.updatedId) {
             this.setState({
@@ -32,6 +33,7 @@ class LilPost extends Component {
     };
 
     render() {
+        {/*Style of like and dislike button dependant on attitude*/}
         let likeClass = "fas fa-angle-up fa-2x interactive-button";
         if (this.state.attitude === "LIKE") likeClass += ' active';
         else likeClass = "fas fa-angle-up fa-2x interactive-button";
@@ -41,35 +43,52 @@ class LilPost extends Component {
         else dislikeClass = "fas fa-angle-down fa-2x interactive-button";
 
         return (
-
             <div className="lilpost-wrapper">
+                {/*The lilpost itself*/}
                 <div className="lilpost">
+                    {/*Header and body wrapped in link to the corresponding BigPost*/}
                     <NavLink to={"/bigpost/" + this.props.id} style={{textDecoration: "none", color: "black"}}>
+                        {/*Header*/}
                         <div className="lilpost-header">{this.props.title}</div>
-                        {this.state.username}
+                        {/*Body*/}
                         <div className="lilpost-body">
                             <div dangerouslySetInnerHTML={{__html: this.props.content}}/>
                         </div>
                     </NavLink>
+                    {/*Footer*/}
                     <div className="lilpost-footer">
+                        {/*Likes, dislikes and author visible only if logged*/}
                         {this.state.logged ?
-                            <ul>
-                                <li onClick={() => {
-                                    console.info("here");
-                                    this.props.updatePost("like", this.props.id)
-                                }}>
-                                    <i className={likeClass}/>
-                                </li>
-                                <li>{this.state.likes}</li>
+                            <div>
+                                {/*List of buttons and numbers*/}
+                                <ul>
+                                    {/*Like button*/}
+                                    <li onClick={() => {
+                                        console.info("here");
+                                        this.props.updatePost("like", this.props.id)
+                                    }}>
+                                        <i className={likeClass}/>
+                                    </li>
+                                    {/*Number of likes*/}
+                                    <li>{this.state.likes}</li>
 
-                                <li onClick={() => {
-                                    this.props.updatePost("dislike", this.props.id)
-                                }}>
-                                    <i className={dislikeClass}/>
-                                </li>
-                                <li>{this.state.dislikes}</li>
-                            </ul> : ""}
+                                    {/*Dislike button*/}
+                                    <li onClick={() => {
+                                        this.props.updatePost("dislike", this.props.id)
+                                    }}>
+                                        <i className={dislikeClass}/>
+                                    </li>
+                                    {/*Number of dislikes*/}
+                                    <li>{this.state.dislikes}</li>
+                                </ul>
+                                {/*Displays name of the author of the post*/}
+                                <div className="lilpost-username-wrapper"> Post by: {this.state.username}</div>
+                            </div> : ""}
                     </div>
+                    <button onClick={() => {
+                        console.log(this.state.username)
+                    }}>Ahoj
+                    </button>
 
                 </div>
             </div>

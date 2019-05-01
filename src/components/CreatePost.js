@@ -61,22 +61,31 @@ class CreatePost extends Component {
 
     render() {
 
+        {/*Style toggle for modal*/}
         let modalToggle = !this.state.modalOpened ? 'none' : 'block';
 
         return (
             <div className="createpost-wrapper">
+                {/*Button which opens the modal*/}
                 <button className="createpost-open" onClick={this.toggleModal.bind(this)}>+</button>
+                {/*Slider*/}
                 <span className="createpost-slider">Create a post</span>
+                {/*Overlay under the modal*/}
                 <div className="createpost-overlay" style={{display: modalToggle}}
                      onClick={this.toggleModal.bind(this)}/>
+                {/*Modal itself*/}
                 <div className="createpost" style={{display: modalToggle}}>
+                    {/*Form for creating a post*/}
                     <form className="createpost-form" onSubmit={this.handleSubmit.bind(this)}>
+                        {/*Close button*/}
                         <button className="close-modal" onClick={this.toggleModal.bind(this)}>&#x00D7;</button>
+                        {/*Title input field*/}
                         <input type="text" className="title" placeholder="What is the title of your post"
                                onChange={this.handleChange.bind(this)}/>
-
+                        {/*Input field for content of the post, rich text editor*/}
                         <ReactQuill modules={CreatePost.modules} value={this.state.content}
                                     onChange={this.handleQuill.bind(this)}/>
+                        {/*Submit button*/}
                         <button className="submit">Submit</button>
                     </form>
                     <div dangerouslySetInnerHTML= {{__html:this.state.content}}></div>
