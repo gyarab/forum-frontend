@@ -17,7 +17,7 @@
 //Creates some space between the button and other components, removes white background and user can't select text inside of the button
 .load-more-wrapper{
   padding: 1.25rem 0 2.5rem 0;
-  background: #f5f6fa;
+  background: $background;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;

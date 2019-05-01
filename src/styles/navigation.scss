@@ -92,7 +92,7 @@
 //Styles for sidebar-item's behaviour on hover
 .sidebar-item:hover {
     text-decoration: none;
-    background-color: #f5f6fa;
+    background-color: $background;
     color: $primary-color;
 }
 //Styling for the button shown only when the sidebar is closed

@@ -14,6 +14,7 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name:'',
             email: '',
             password: '',
             rePassword: '',
@@ -38,7 +39,7 @@ class Register extends Component {
 
     submit() {
         if (this.state.password === this.state.rePassword && this.state.password.length > 5) {
-            let creds = {email: this.state.email, password: this.state.password}
+            let creds = {email: this.state.email, password: this.state.password, name: this.state.name};
             this.props.register(creds);
         }
         else this.setState({error: "Password doesn't match or isn't at least 6 characters long."})
@@ -52,6 +53,9 @@ class Register extends Component {
                         {this.redirect()}
                         {this.state.error}
                         {this.props.status ? <p style={{color: "red"}}>{this.props.status}</p> : ""}
+                        <input type="text" className="input" name="name" placeholder="Username"
+                               onChange={this.onChange}
+                               value={this.state.name}/>
                         <input type="email" className="input" name="email" placeholder="E-mail"
                                onChange={this.onChange}
                                value={this.state.email}/>
