@@ -58,12 +58,12 @@ class Navigation extends Component {
                     this.reset(key);
 
                 }}
-                         to={"/forum/" + this.props.forums[key]} className="sidebar-item">{key}</NavLink>
+                         to={"/forums/" + this.props.forums[key]} className="sidebar-item">{key}</NavLink>
             </div>
         ));
         let searchedForums = this.state.searchedKeys.map(key => (
             <div key={this.props.arrayOfForums[key]}>
-                <NavLink to={"/forum/" + this.props.arrayOfForums[key]} className="sidebar-item">{key}</NavLink>
+                <NavLink to={"/forums/" + this.props.arrayOfForums[key]} className="sidebar-item">{key}</NavLink>
             </div>
         ));
 

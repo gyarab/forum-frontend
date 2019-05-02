@@ -16,7 +16,7 @@ class ForumRouter extends Component {
                 <Route path="/" exact component={RenderLilPosts}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/register" exact component={Register}/>
-                <Route path={`/forum/:forumId`} exact component={RenderLilPosts}/>
+                <Route path={`/forums/:forumId`} exact component={RenderLilPosts}/>
                 <Route path={`/bigpost/:postId`} component={BigPost}/>
             </div>
         );
