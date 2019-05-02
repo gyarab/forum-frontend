@@ -54,8 +54,8 @@ class RenderLilPosts extends Component {
     render() {
         let posts = "";
         let tillMax = 'block';
-        if (this.props.posts[0]) {
-            console.log(this.props.posts[0]);
+        console.log(this.props)
+        if (typeof this.props.posts.content !== "undefined" && this.props.posts.content[0].length>0) {
             posts = this.props.posts.map(post => (
                 <div key={post.content[0].post.id}>
                     <LilPost id={post.content[0].post.id} title={post.content[0].post.title} attitude={post.content[0].attitudeDto} likes={post.content[0].post.likes}
