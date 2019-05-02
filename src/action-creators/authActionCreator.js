@@ -1,5 +1,7 @@
 //POST ACTIONS
 //Attempts a logIn with the credentials entered by the user, admin creds are commented down below.
+import {url} from "./url";
+
 export const logIn = (creds) => dispatch => {
     let formData = new FormData();
     //admin@example.com
@@ -7,7 +9,7 @@ export const logIn = (creds) => dispatch => {
     //admin!
     formData.append('password', creds.password);
 
-    fetch("http://localhost:7373/api/core/login", {
+    fetch(url+"/api/core/login", {
         body: formData,
         mode: 'cors',
         method: "post"
@@ -29,7 +31,7 @@ export const logIn = (creds) => dispatch => {
 };
 //Attempts to register a new User with the creds provided.
 export const register = (creds) => dispatch => {
-    fetch("http://localhost:7373/api/core/users", {
+    fetch(url+"/api/core/users", {
         headers: {
             'Content-Type': 'application/json'
         },

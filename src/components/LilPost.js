@@ -33,7 +33,7 @@ class LilPost extends Component {
     };
 
     render() {
-        {/*Style of like and dislike button dependant on attitude*/}
+        /*Style of like and dislike button dependant on attitude*/
         let likeClass = "fas fa-angle-up fa-2x interactive-button";
         if (this.state.attitude === "LIKE") likeClass += ' active';
         else likeClass = "fas fa-angle-up fa-2x interactive-button";

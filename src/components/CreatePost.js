@@ -47,21 +47,19 @@ class CreatePost extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
         let post = {
             title: this.state.title,
             content: this.state.content,
-            forum: this.state.forum,
             likes: 0,
             dislikes: 0
         };
-        this.props.createPost(post);
+        this.props.createPost(post,this.state.forumId);
         this.toggleModal(event);
     }
 
     render() {
 
-        {/*Style toggle for modal*/}
+        /*Style toggle for modal*/
         let modalToggle = !this.state.modalOpened ? 'none' : 'block';
 
         return (

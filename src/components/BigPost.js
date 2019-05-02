@@ -45,7 +45,7 @@ class BigPost extends Component {
     }
 
     render() {
-        {/*Creating html of comments received in props*/}
+        /*Creating html of comments received in props*/
         let a = typeof (this.props.post) === "undefined" ? "" : this.props.post;
         let commentElements = "";
         if (typeof this.props.comments.content !== "undefined") {

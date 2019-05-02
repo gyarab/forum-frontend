@@ -1,7 +1,9 @@
 //FETCH ACTIONS
 //Fetch a page of posts from a specific forum
+import {url} from "./url";
+
 export const fetchComments = (postId, postPage) => dispatch => {
-    fetch('http://localhost:7373/comments/' + postId + '/post?page=' + 0 + '&size=10', {
+    fetch(url+'/comments/' + postId + '/post?page=' + 0 + '&size=10', {
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
@@ -21,7 +23,7 @@ export const fetchComments = (postId, postPage) => dispatch => {
 };
 
 export const createComment = (comment, postId) => dispatch => {
-    fetch('http://localhost:7373/comments/create/' + postId, {
+    fetch(url+'/comments/create/' + postId, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -34,7 +36,7 @@ export const createComment = (comment, postId) => dispatch => {
 //PUT ACTIONS
 //Like/Dislike a comment.
 export const updateComment = (attitude, commentId) => dispatch => {
-    fetch('http://localhost:7373/comments/update/' + attitude + '/' + commentId, {
+    fetch(url+'/comments/update/' + attitude + '/' + commentId, {
         method: 'PUT',
         headers: {
             'Authorization': localStorage.getItem('auth')

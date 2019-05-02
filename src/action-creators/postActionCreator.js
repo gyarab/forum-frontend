@@ -1,7 +1,9 @@
 //FETCH ACTIONS
 //Fetch a page of posts from a specific forum
+import {url} from "./url";
+
 export const fetchPosts = (forumId, forumPage) => dispatch => {
-    fetch('http://localhost:7373/post/forum/' + forumId + '/posts?page=' + forumPage + '&size=1', {
+    fetch(url+'/post/forum/' + forumId + '/posts?page=' + forumPage + '&size=1', {
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
@@ -21,7 +23,7 @@ export const fetchPosts = (forumId, forumPage) => dispatch => {
 };
 //Fetch a specific post by its unique id
 export const fetchPostById = (id) => dispatch => {
-    fetch("http://localhost:7373/post/id/" + id).then(response => response.json()).then(e =>
+    fetch(url+"/post/id/" + id).then(response => response.json()).then(e =>
         dispatch({
             type: 'FETCHED_POST_BY_ID',
             payload: e
@@ -45,8 +47,8 @@ export const resetPosts = () => dispatch => {
 
 //POST ACTIONS
 //Creates a post (Auth required).
-export const createPost = (post) => dispatch => {
-    fetch('http://localhost:7373/post/create', {
+export const createPost = (post,forumId) => dispatch => {
+    fetch(url+'/post/create/'+forumId, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -59,7 +61,7 @@ export const createPost = (post) => dispatch => {
 //PUT ACTIONS
 //Like/Dislike a post.
 export const updatePost = (attitude, commentId) => dispatch => {
-    fetch('http://localhost:7373/post/update/' + attitude + '/' + commentId, {
+    fetch(url+'/post/update/' + attitude + '/' + commentId, {
         method: 'PUT',
         headers: {
             'Authorization': localStorage.getItem('auth')
