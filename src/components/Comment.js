@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {updateComment} from "../action-creators/commentActionCreator";
+import '../styles/comment.scss';
 
 class Comment extends Component {
     static defaultProps = {};
@@ -34,7 +35,7 @@ class Comment extends Component {
 
         return (
             <div className="comment" key={this.props.idr}>
-                <div className="comment-header">{this.state.username}</div>
+                <div className="comment-header"> Author: {this.state.username}</div>
                 <div className="comment-body">{this.props.content}</div>
                 <div className="comment-footer">
                     <ul>
