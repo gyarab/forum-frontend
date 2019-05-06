@@ -85,10 +85,6 @@ class LilPost extends Component {
                                 <div className="lilpost-username-wrapper"> Post by: {this.state.username}</div>
                             </div> : ""}
                     </div>
-                    <button onClick={() => {
-                        console.log(this.state.username)
-                    }}>Ahoj
-                    </button>
 
                 </div>
             </div>

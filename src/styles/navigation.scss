@@ -90,7 +90,7 @@
     font-size: 12pt;
 }
 //Styles for sidebar-item's behaviour on hover
-.sidebar-item:hover {
+.sidebar-item:hover, .create-input:hover, .create-submit:hover {
     text-decoration: none;
     background-color: $background;
     color: $primary-color;
@@ -112,4 +112,34 @@
     z-index: 100;
     width: 51px;
     height: 100vh;
+}
+.create-input{
+    background:$primary-color;
+    border: none;
+    text-decoration: none;
+    display: block;
+    font-size: 15pt;
+    position: relative;
+    padding: 10px;
+    color: white;
+    width:93%;
+}
+.create-input:focus, .create-submit:focus{
+    outline: none;
+    border:none;
+}
+.create-input::placeholder{
+    color: white;
+}
+.create-submit {
+    padding: 10px;
+    color: white;
+    background: $primary-color;
+    border: none;
+    font-size: 15pt;
+    width:100%;
+    text-align: left;
+}
+.create-submit:hover{
+    cursor:pointer;
 }

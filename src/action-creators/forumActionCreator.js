@@ -19,3 +19,14 @@ export const fetchAllForumNames = () => dispatch => {
             payload: forumMap,
         }))
 };
+
+export const createForum = (forum) => dispatch => {
+    fetch(url+'/forum/create', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': localStorage.getItem('auth')
+        },
+        body: JSON.stringify(forum)
+    }).then(res => console.log(res))
+};
