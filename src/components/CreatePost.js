@@ -54,10 +54,6 @@ class CreatePost extends Component {
                 inTag = false;
             } else if(!inTag && content.charAt(x)==='<'){
                 inTag = true;
-            } else if(inTag && content.charAt(x)==='<') {
-                isntWhitespace = true;
-            } else if(!inTag && content.charAt(x)==='>') {
-                isntWhitespace = true;
             } else if(!inTag && content.charAt(x)!==' '){
                 isntWhitespace = true;
             }
@@ -112,6 +108,7 @@ class CreatePost extends Component {
                         <ReactQuill modules={CreatePost.modules} value={this.state.content}
                                     onChange={this.handleQuill.bind(this)}/>
                         {/*Submit button*/}
+                        <div className="user-tip">*The input fields must contain non whitespace characters in order to submit your post</div>
                         <button className="submit">Submit</button>
                     </form>
                     <div dangerouslySetInnerHTML= {{__html:this.state.content}}></div>

@@ -170,6 +170,8 @@ class Navigation extends Component {
                         <div className="forums">
 
                             {this.state.searchMode ? searchedForums : forumNames}
+
+                            {/*Create forum*/}
                             <div className style={{display: localStorage.getItem("logged") ? "block" : "none"}}>
                                 <form><input type="text" placeholder="+ Create a forum"
                                              className="create-input" onChange={this.handleInput.bind(this)}

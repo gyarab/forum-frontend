@@ -113,6 +113,7 @@
     width: 51px;
     height: 100vh;
 }
+//Styling for the input of the create-forum form
 .create-input{
     background:$primary-color;
     border: none;
@@ -124,13 +125,16 @@
     color: white;
     width:93%;
 }
+//Removes outline and border whenever focused
 .create-input:focus, .create-submit:focus{
     outline: none;
     border:none;
 }
+//Changes color of the placeholder in input
 .create-input::placeholder{
     color: white;
 }
+//Styles the submit button of the create-forum form
 .create-submit {
     padding: 10px;
     color: white;
@@ -140,6 +144,7 @@
     width:100%;
     text-align: left;
 }
+//Changes the cursor upon hover over create-forum submit button
 .create-submit:hover{
     cursor:pointer;
 }
