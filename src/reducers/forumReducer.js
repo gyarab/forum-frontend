@@ -23,7 +23,6 @@ export default function (state = initialState, action) {
                 storage: action.payload
             };
         case 'FETCH_POSTS':
-
             return {
                 ...state,
                 posts: state.posts.concat(action.payload)

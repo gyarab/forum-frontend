@@ -90,7 +90,7 @@
     font-size: 12pt;
 }
 //Styles for sidebar-item's behaviour on hover
-.sidebar-item:hover {
+.sidebar-item:hover, .create-input:hover, .create-submit:hover {
     text-decoration: none;
     background-color: $background;
     color: $primary-color;
@@ -112,4 +112,39 @@
     z-index: 100;
     width: 51px;
     height: 100vh;
+}
+//Styling for the input of the create-forum form
+.create-input{
+    background:$primary-color;
+    border: none;
+    text-decoration: none;
+    display: block;
+    font-size: 15pt;
+    position: relative;
+    padding: 10px;
+    color: white;
+    width:93%;
+}
+//Removes outline and border whenever focused
+.create-input:focus, .create-submit:focus{
+    outline: none;
+    border:none;
+}
+//Changes color of the placeholder in input
+.create-input::placeholder{
+    color: white;
+}
+//Styles the submit button of the create-forum form
+.create-submit {
+    padding: 10px;
+    color: white;
+    background: $primary-color;
+    border: none;
+    font-size: 15pt;
+    width:100%;
+    text-align: left;
+}
+//Changes the cursor upon hover over create-forum submit button
+.create-submit:hover{
+    cursor:pointer;
 }

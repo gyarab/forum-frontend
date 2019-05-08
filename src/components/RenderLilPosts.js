@@ -52,14 +52,15 @@ class RenderLilPosts extends Component {
     }
 
     render() {
-        let posts = "";
-        let tillMax = 'block';
-        console.log(typeof this.props.posts[0] !== "undefined")
+        let posts = <div className="noposts">No posts in this forum yet</div>;
+        let tillMax = 'none';
+        console.log(typeof this.props.posts[0] !== "undefined");
         if (typeof this.props.posts[0] !== "undefined" ) {
             if (typeof this.props.posts[0].content !== "undefined" ) {
             posts = this.props.posts.map(post => (
                 <div key={post.content[0].post.id}>
-                    <LilPost id={post.content[0].post.id} title={post.content[0].post.title} attitude={post.content[0].attitudeDto} likes={post.content[0].post.likes}
+                    <LilPost id={post.content[0].post.id} title={post.content[0].post.title}
+                             attitude={post.content[0].attitudeDto} likes={post.content[0].post.likes}
                              dislikes={post.content[0].post.dislikes} content={post.content[0].post.content}/>
                 </div>
             ));

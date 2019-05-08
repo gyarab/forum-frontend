@@ -28,7 +28,7 @@
   top: 0;
   right: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   z-index: 106;
   transition: 0.2s;
   font-family: "adelle-sans", sans-serif;
@@ -161,4 +161,11 @@
 //Defines the size of the react-quill textfield
 .ql-editor{
   height: 400px;
+}
+
+//Styles the user-tip
+.user-tip{
+  margin: 15px 0;
+  color: $primary-color;
+  font-size: 12px;
 }

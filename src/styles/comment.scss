@@ -1,0 +1,71 @@
+@import "themes";
+
+//Defines the size, shadow, font, border and background of the comment, centers it horizontally in the browser
+.comment{
+  transition: 0.2s;
+  background: #fff;
+  box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
+  font-family: "adelle-sans", sans-serif;
+  margin: 0 auto;
+  width: 20rem;
+  z-index: -1;
+  border: solid 2px #fff;
+  @media screen and (min-width: 480px) {
+    width: 28rem;
+  }
+  @media screen and (min-width: 767px) {
+    width: 40rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 50rem;
+  }
+}
+
+//Defines size, padding and margin, styles the text in the header, adds border on the bottom
+.comment-header{
+  font-size: 18px;
+  text-align: left;
+  border-bottom: solid 2px #192a56;
+  width: 80%;
+  margin: 1px auto;
+  padding: .5rem 0;
+}
+
+//Styles the text in the body, adds border on the bottom, centers it horizontally
+.comment-body{
+  margin: 0 auto;
+  width: 80%;
+  text-align: justify;
+  border-bottom: solid 2px #192a56;
+}
+
+//Changes the style of the list in footer
+.comment-footer ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+//Centers vertically contents of the list in footer
+.comment-footer li {
+  margin: auto 0;
+}
+
+//Defines size, margin and padding of the footer
+.comment-footer{
+  font-size: 0.9rem;
+  width: 80%;
+  margin: 1px auto;
+  min-height: 3rem;
+  padding: 0.2rem;
+}
+
+//Defines margin between two comments
+.comment+.comment{
+  margin: 1rem auto;
+}
+
+//Defines margin between comments section and other components
+.comments-wrapper{
+  padding: 1rem;
+}
