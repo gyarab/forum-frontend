@@ -7,6 +7,7 @@ import {fetchAllForumNames, searchForumByName} from "../action-creators/forumAct
 import {NavLink} from 'react-router-dom'
 import AccountInfo from "./AccountInfo";
 import {resetPosts} from "../action-creators/postActionCreator";
+import {createForum} from "../action-creators/forumActionCreator";
 
 
 class Navigation extends Component {
@@ -23,6 +24,7 @@ class Navigation extends Component {
             allKeys: [],
             searchedKeys: [],
             id: '',
+            newForumName: "",
         };
 
     }
@@ -47,6 +49,21 @@ class Navigation extends Component {
     reset(key) {
         if (this.props.forums[key] !== parseInt(this.props.location.pathname.split("/").pop())) {
             this.props.postsReset();
+        }
+    }
+
+    handleInput(event){
+        this.setState({newForumName:event.target.value})
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        if (/\S/.test(this.state.newForumName)) {
+            let forum = {
+                name:this.state.newForumName,
+            };
+            this.setState({newForumName: "", toggle: !this.state.toggle});
+            this.props.createForum(forum);
         }
     }
 
@@ -154,6 +171,15 @@ class Navigation extends Component {
 
                             {this.state.searchMode ? searchedForums : forumNames}
 
+                            {/*Create forum*/}
+                            <div className style={{display: localStorage.getItem("logged") ? "block" : "none"}}>
+                                <form><input type="text" placeholder="+ Create a forum"
+                                             className="create-input" onChange={this.handleInput.bind(this)}
+                                             value={this.state.newForumName} />
+                                    <i className="fas fa-share create-submit" onClick={this.handleSubmit.bind(this)}/>
+                                </form>
+                            </div>
+
                         </div>
 
                         {localStorage.getItem("logged") ?  <AccountInfo history={this.props.history}/> : ""}
@@ -170,7 +196,8 @@ class Navigation extends Component {
 Navigation.propTypes = {
     fetchForumNames: PropTypes.func.isRequired,
     searchForumByName: PropTypes.func.isRequired,
-    postsReset: PropTypes.func.isRequired
+    postsReset: PropTypes.func.isRequired,
+    createForum: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -188,6 +215,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     postsReset: () => {
         dispatch(resetPosts())
+    },
+    createForum: (forum) => {
+        dispatch(createForum(forum))
     }
 });
 

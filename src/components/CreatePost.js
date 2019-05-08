@@ -32,7 +32,6 @@ class CreatePost extends Component {
     }
 
     handleChange(event) {
-
         this.setState({[event.target.className]: event.target.value});
     }
 
@@ -46,15 +45,40 @@ class CreatePost extends Component {
         this.setState({modalOpened: !this.state.modalOpened});
     }
 
+    whitespaceHtmlTest(){
+        let content = this.state.content;
+        let isntWhitespace = false;
+        let inTag = true;
+        for(let x = 0; x<content.length; x++){
+            if(inTag && content.charAt(x)==='>'){
+                inTag = false;
+            } else if(!inTag && content.charAt(x)==='<'){
+                inTag = true;
+            } else if(!inTag && content.charAt(x)!==' '){
+                isntWhitespace = true;
+            }
+        }
+        return isntWhitespace;
+    }
+
     handleSubmit(event) {
-        let post = {
-            title: this.state.title,
-            content: this.state.content,
-            likes: 0,
-            dislikes: 0
-        };
-        this.props.createPost(post,this.state.forumId);
-        this.toggleModal(event);
+        event.preventDefault();
+        if (/\S/.test(this.state.title) && this.whitespaceHtmlTest()) {
+            let post = {
+                title: this.state.title,
+                content: this.state.content,
+                likes: 0,
+                dislikes: 0
+            };
+            this.props.createPost(post, this.state.forumId);
+            this.toggleModal(event);
+            this.setState({
+                title:"",
+                content: ""
+            })
+        } else{
+            console.log(this.state.content);
+        }
     }
 
     render() {
@@ -79,11 +103,12 @@ class CreatePost extends Component {
                         <button className="close-modal" onClick={this.toggleModal.bind(this)}>&#x00D7;</button>
                         {/*Title input field*/}
                         <input type="text" className="title" placeholder="What is the title of your post"
-                               onChange={this.handleChange.bind(this)}/>
+                               onChange={this.handleChange.bind(this)} value={this.state.title}/>
                         {/*Input field for content of the post, rich text editor*/}
                         <ReactQuill modules={CreatePost.modules} value={this.state.content}
                                     onChange={this.handleQuill.bind(this)}/>
                         {/*Submit button*/}
+                        <div className="user-tip">*The input fields must contain non whitespace characters in order to submit your post</div>
                         <button className="submit">Submit</button>
                     </form>
                     <div dangerouslySetInnerHTML= {{__html:this.state.content}}></div>
