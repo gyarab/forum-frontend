@@ -9,7 +9,8 @@
   margin: 0 auto;
   width: 20rem;
   z-index: -1;
-  border: solid 2px #fff;
+  color: $secondary-color;
+
   @media screen and (min-width: 480px) {
     width: 28rem;
   }
@@ -21,22 +22,21 @@
   }
 }
 
-//Defines size, padding and margin, styles the text in the header, adds border on the bottom
+//Defines size, padding and margin, styles the text in the header
 .comment-header{
-  font-size: 18px;
+  font-size: 13px;
   text-align: left;
-  border-bottom: solid 2px #192a56;
-  width: 80%;
+  width: 95%;
   margin: 1px auto;
   padding: .5rem 0;
 }
 
-//Styles the text in the body, adds border on the bottom, centers it horizontally
+//Styles the text in the body, centers it horizontally
 .comment-body{
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   text-align: justify;
-  border-bottom: solid 2px #192a56;
+  font-size:17px;
 }
 
 //Changes the style of the list in footer
@@ -54,7 +54,7 @@
 //Defines size, margin and padding of the footer
 .comment-footer{
   font-size: 0.9rem;
-  width: 80%;
+  width: 90%;
   margin: 1px auto;
   min-height: 3rem;
   padding: 0.2rem;
@@ -62,7 +62,7 @@
 
 //Defines margin between two comments
 .comment+.comment{
-  margin: 1rem auto;
+  margin: 1.5rem auto;
 }
 
 //Defines margin between comments section and other components

@@ -54,7 +54,7 @@ class Comment extends Component {
                         <li>{this.state.dislikes}</li>
                     </ul>
                 </div>
-                <button onClick={()=>{console.log(this.props)}}>Ahoj</button>
+
             </div>
         );
     }
