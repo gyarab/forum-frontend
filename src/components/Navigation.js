@@ -175,8 +175,8 @@ class Navigation extends Component {
                             <div className style={{display: localStorage.getItem("logged") ? "block" : "none"}}>
                                 <form><input type="text" placeholder="+ Create a forum"
                                              className="create-input" onChange={this.handleInput.bind(this)}
-                                             value={this.state.newForumName}/>
-                                    <button className="create-submit" onClick={this.handleSubmit.bind(this)}>Submit</button>
+                                             value={this.state.newForumName} />
+                                    <i className="fas fa-share create-submit" onClick={this.handleSubmit.bind(this)}/>
                                 </form>
                             </div>
 

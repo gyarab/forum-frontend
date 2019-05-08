@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {searchForumByName} from "../action-creators/forumActionCreator";
 import connect from "react-redux/es/connect/connect";
 import '../styles/renderLilPosts.scss';
 import LilPost from "./LilPost";
@@ -85,20 +84,14 @@ class RenderLilPosts extends Component {
 }
 
 RenderLilPosts.propTypes = {
-    fetchForumById: PropTypes.func.isRequired,
-    singleItem: PropTypes.object
+    fetchPosts: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-    posts: state.forums.posts,
-    forums: state.forums.storage,
-    singleItem: state.forums.singleItem
+    posts: state.forums.posts
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchForumById: (id) => {
-        dispatch(searchForumByName(id))
-    },
     fetchPosts: (forumId, forumPage) => {
         dispatch(fetchPosts(forumId, forumPage))
     }

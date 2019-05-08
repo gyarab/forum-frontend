@@ -118,13 +118,14 @@
     background:$primary-color;
     border: none;
     text-decoration: none;
-    display: block;
+    display: inline-block;
     font-size: 15pt;
     position: relative;
     padding: 10px;
     color: white;
-    width:93%;
+    width: 80%;
 }
+
 //Removes outline and border whenever focused
 .create-input:focus, .create-submit:focus{
     outline: none;
@@ -136,12 +137,11 @@
 }
 //Styles the submit button of the create-forum form
 .create-submit {
-    padding: 10px;
+    padding: 3.3%;
     color: white;
     background: $primary-color;
     border: none;
     font-size: 15pt;
-    width:100%;
     text-align: left;
 }
 //Changes the cursor upon hover over create-forum submit button
