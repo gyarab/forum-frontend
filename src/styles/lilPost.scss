@@ -72,6 +72,7 @@
   list-style: none;
   display: flex;
   justify-content: flex-end;
+  padding: 0;
 }
 
 //Centers vertically contents of the list in footer
@@ -88,23 +89,28 @@
 //Changes the color of the buttons upon hover
 .interactive-button:hover{
   color: $primary-color;
+  cursor: pointer;
 }
 
 //Buttons stay in color after being clicked on
-i.active{
+.lilpost-wrapper i.active{
   color: $primary-color;
 }
 
 //Changes the cursor upon button hover if already liked/disliked
-i.active:hover{
+.lilpost-wrapper i.active:hover{
   cursor:default;
 }
 
 //Fixes username to the top left corner in footer
 .lilpost-username-wrapper{
   position: relative;
-  top:-3rem;
+  right: 100%;
+  margin: auto 0;
 }
+
+//Changes the color of the trash can upon hover
 .hover:hover{
   color:$primary-color;
+  cursor: pointer;
 }

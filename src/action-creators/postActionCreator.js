@@ -64,8 +64,8 @@ export const createPost = (post, forumId) => dispatch => {
 
 //PUT ACTIONS
 //Like/Dislike a post.
-export const updatePost = (attitude, commentId) => dispatch => {
-    fetch(url + '/post/update/' + attitude + '/' + commentId, {
+export const updatePost = (attitude, postId) => dispatch => {
+    fetch(url + '/post/update/' + attitude + '/' + postId, {
         method: 'PUT',
         headers: {
             'Authorization': localStorage.getItem('auth')

@@ -83,13 +83,14 @@ class LilPost extends Component {
                                     </li>
                                     {/*Number of dislikes*/}
                                     <li>{this.state.dislikes}</li>
+                                    <div className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
+                                        <i onClick={()=>{
+                                            this.props.delete(this.props.id)
+                                        }} className="hover fas fa-trash"/>
+                                        : "Post by:"+ this.state.username}</div>
                                 </ul>
                                 {/*Displays name of the author of the post*/}
-                                <div className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
-                                    <i onClick={()=>{
-                                        this.props.delete(this.props.id)
-                                    }} className="hover fas fa-trash"/>
-                                    : "Post by:"+ this.state.username}</div>
+
                             </div> : ""}
                     </div>
                 </div>
