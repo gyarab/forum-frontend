@@ -75,3 +75,17 @@ export const updatePost = (attitude, commentId) => dispatch => {
         payload: res
     }))
 };
+
+//DELETE ACTIONS
+//Delete a post.
+export const deletePost = (postId) => dispatch =>{
+    fetch(url + '/post/delete/' + postId, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': localStorage.getItem('auth')
+        },
+    }).then(res => dispatch({
+        type: 'DELETED_POST',
+        payload: postId
+    }))
+}

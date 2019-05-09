@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {NavLink} from 'react-router-dom';
-import {updatePost} from "../action-creators/postActionCreator";
+import {deletePost, resetPosts, updatePost} from "../action-creators/postActionCreator";
 import {connect} from "react-redux";
+
 
 
 class LilPost extends Component {
@@ -49,7 +50,9 @@ class LilPost extends Component {
                     {/*Header and body wrapped in link to the corresponding BigPost*/}
                     <NavLink to={"/bigpost/" + this.props.id} style={{textDecoration: "none", color: "black"}}>
                         {/*Header*/}
-                        <div className="lilpost-header">{this.props.title}</div>
+                        <div className="lilpost-header">
+                            {this.props.title}
+                        </div>
                         {/*Body*/}
                         <div className="lilpost-body">
                             <div dangerouslySetInnerHTML={{__html: this.props.content}}/>
@@ -82,7 +85,11 @@ class LilPost extends Component {
                                     <li>{this.state.dislikes}</li>
                                 </ul>
                                 {/*Displays name of the author of the post*/}
-                                <div className="lilpost-username-wrapper"> Post by: {this.state.username}</div>
+                                <div className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
+                                    <i onClick={()=>{
+                                        this.props.delete(this.props.id)
+                                    }} className="hover fas fa-trash"/>
+                                    : "Post by:"+ this.state.username}</div>
                             </div> : ""}
                     </div>
                 </div>
@@ -98,5 +105,13 @@ const mapStateToProps = state => ({
     updatedDislikes: state.forums.updatedPost.post.dislikes,
     updatedAttitude: state.forums.updatedPost.attitudeDto.attitude
 });
+const mapDispatchToProps = (dispatch) => ({
+    updatePost: (type,id) => {
+        dispatch(updatePost(type,id))
+    },
+    delete: (id) =>{
+        dispatch(deletePost(id))
+    },
+});
 
-export default connect(mapStateToProps, {updatePost})(LilPost);
+export default connect(mapStateToProps, mapDispatchToProps)(LilPost);

@@ -79,6 +79,17 @@ export default function (state = initialState, action) {
                 ...state,
                 storage:map
             };
+        case 'DELETED_POST':
+            let possts = JSON.parse(JSON.stringify(state.posts));
+            console.log(possts)
+            possts = possts.filter(u=>{
+                console.log(u)
+                if(u.content[0].post.id!==action.payload){return true;}
+                    else return false
+            });
+            return {...state,posts:possts};
+
+
         default:
             return state
     }
