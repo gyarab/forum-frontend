@@ -20,11 +20,14 @@ class BigPost extends Component {
         }
     }
 
-    state = {
-        comments: "",
-        content: ""
+    constructor(props){
+        super(props);
+        this.state = {
+            comments: this.props.comments,
+            content: ""
 
-    };
+        };
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -32,9 +35,10 @@ class BigPost extends Component {
             content: this.state.content,
             likes: 0,
             dislikes: 0,
-            // post:this.props.match.params.postId
         };
+        this.setState({content:""});
         this.props.createComment(babyComment, this.props.match.params.postId);
+
     }
 
     handleChange(event) {
@@ -52,7 +56,8 @@ class BigPost extends Component {
             commentElements = this.props.comments.content.map(comment => {
                     return <Comment key={comment.comment.id} idr={comment.comment.id}
                                     content={comment.comment.content} likes={comment.comment.likes}
-                                    dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}/>
+                                    dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}
+                                    owner={comment.comment.owner}/>
                 }
             );
         }
@@ -75,16 +80,14 @@ class BigPost extends Component {
                 </div>
                 <div className="Bigpost-Form">
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <textarea className="Textarea" rows="7"
+                        <textarea className="Textarea" rows="3"
                                   placeholder="What are your thoughts about this?"
-                                  onChange={this.handleChange.bind(this)}/>
+                                  onChange={this.handleChange.bind(this)}
+                        value={this.state.content}/>
                         <input type="submit" className="SubmitButton" value="Comment"/>
                     </form>
 
-                    <button onClick={() => {
-                        console.log(typeof this.props.comments.content)
-                    }}>Ahoj
-                    </button>
+
                 </div>
                 {/*Displaying the comments html*/}
                 <div className="comments-wrapper">
@@ -104,7 +107,7 @@ BigPost.propTypes = {
 
 const mapStateToProps = state => ({
     post: state.forums.post,
-    comments: state.forums.comments
+    comments: state.forums.comments,
 });
 
 

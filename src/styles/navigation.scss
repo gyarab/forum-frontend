@@ -119,7 +119,7 @@
     border: none;
     text-decoration: none;
     display: inline-block;
-    font-size: 15pt;
+    font-size: 12pt;
     position: relative;
     padding: 10px;
     color: white;
@@ -130,6 +130,14 @@
 .create-input:focus, .create-submit:focus{
     outline: none;
     border:none;
+}
+.create-input:hover{
+    background: $primary-color;
+    color: white;
+}
+.create-submit:hover{
+    background: $primary-color;
+    color: white;
 }
 //Changes color of the placeholder in input
 .create-input::placeholder{

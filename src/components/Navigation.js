@@ -21,7 +21,6 @@ class Navigation extends Component {
         this.state = {
             searchMode: false,
             toggle: false,
-            allKeys: [],
             searchedKeys: [],
             id: '',
             newForumName: "",
@@ -36,8 +35,7 @@ class Navigation extends Component {
             this.setState({searchMode: true, searchedKeys: []}, () => {
                 this.handleClick.bind(this);
             });
-        }
-        else {
+        } else {
             this.setState({searchMode: false, searchedKeys: []});
         }
     }
@@ -52,23 +50,23 @@ class Navigation extends Component {
         }
     }
 
-    handleInput(event){
-        this.setState({newForumName:event.target.value})
+    handleInput(event) {
+        this.setState({newForumName: event.target.value})
     }
 
-    handleSubmit(event){
+    handleSubmit(event) {
         event.preventDefault();
         if (/\S/.test(this.state.newForumName)) {
             let forum = {
-                name:this.state.newForumName,
+                name: this.state.newForumName,
             };
-            this.setState({newForumName: "", toggle: !this.state.toggle});
+            this.setState({newForumName: ""});
             this.props.createForum(forum);
         }
     }
 
     render() {
-        let forumNames = this.state.allKeys.map(key => (
+        let forumNames = Object.keys(this.props.forums).map(key => (
             <div key={this.props.forums[key]}>
                 <NavLink onClick={() => {
                     this.setState({toggle: false});
@@ -96,7 +94,6 @@ class Navigation extends Component {
                     <div className="sider" style={{display: reversed}}>
                         <i onClick={() => this.setState({
                             toggle: !this.state.toggle,
-                            allKeys: Object.keys(this.props.forums)
                         })}
                            className="sbtn sopen fas fa-arrow-right"/>
                     </div>
@@ -172,17 +169,17 @@ class Navigation extends Component {
                             {this.state.searchMode ? searchedForums : forumNames}
 
                             {/*Create forum*/}
-                            <div className style={{display: localStorage.getItem("logged") ? "block" : "none"}}>
+                            {!localStorage.getItem("logged") ? "" :
                                 <form><input type="text" placeholder="+ Create a forum"
                                              className="create-input" onChange={this.handleInput.bind(this)}
-                                             value={this.state.newForumName} />
+                                             value={this.state.newForumName}/>
                                     <i className="fas fa-share create-submit" onClick={this.handleSubmit.bind(this)}/>
                                 </form>
-                            </div>
+                            }
 
                         </div>
 
-                        {localStorage.getItem("logged") ?  <AccountInfo history={this.props.history}/> : ""}
+                        {localStorage.getItem("logged") ? <AccountInfo history={this.props.history}/> : ""}
 
                     </div>
 

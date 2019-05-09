@@ -21,7 +21,7 @@ class Comment extends Component {
         likes:this.props.likes,
         dislikes:this.props.dislikes,
         attitude: this.props.attitude.attitude,
-        username: this.props.attitude.username,
+        username: this.props.owner,
     };
 
     render() {

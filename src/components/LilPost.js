@@ -29,7 +29,7 @@ class LilPost extends Component {
         dislikes: this.props.dislikes,
         attitude: this.props.attitude.attitude,
         logged: this.props.attitude.lemonUserId,
-        username: this.props.attitude.username
+        username: this.props.owner
     };
 
     render() {
@@ -85,7 +85,6 @@ class LilPost extends Component {
                                 <div className="lilpost-username-wrapper"> Post by: {this.state.username}</div>
                             </div> : ""}
                     </div>
-
                 </div>
             </div>
 

@@ -6,8 +6,8 @@ const initialState = {
     post: "",
     logged: false,
     updatedPost: {post: {}, attitudeDto: {}},
-    updatedComment: {comment:{},attitudeDto: {}},
-    comments: ""
+    updatedComment: {comment: {}, attitudeDto: {}},
+    comments: "",
 };
 
 export default function (state = initialState, action) {
@@ -51,7 +51,6 @@ export default function (state = initialState, action) {
                 post: action.payload
             };
         case 'POST_UPDATE':
-            console.info(action.payload);
             return {
                 ...state,
                 updatedPost: action.payload
@@ -65,6 +64,20 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 comments: action.payload
+            };
+        case 'CREATED_COMMENT':
+            let arr = JSON.parse(JSON.stringify(state.comments));
+            arr.content.push(action.payload);
+            return {
+                ...state,
+                comments: arr,
+            };
+        case 'CREATED_FORUM':
+            let map = JSON.parse(JSON.stringify(state.storage));
+            map[Object.keys(action.payload)[0]]=action.payload[Object.keys(action.payload)[0]]
+            return {
+                ...state,
+                storage:map
             };
         default:
             return state

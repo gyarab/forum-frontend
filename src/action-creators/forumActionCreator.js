@@ -28,5 +28,10 @@ export const createForum = (forum) => dispatch => {
             'Authorization': localStorage.getItem('auth')
         },
         body: JSON.stringify(forum)
-    }).then(res => console.log(res))
+    }).then(res=>res.json()).then(res=>
+        dispatch({
+        type:'CREATED_FORUM',
+        payload: res
+    })
+    )
 };

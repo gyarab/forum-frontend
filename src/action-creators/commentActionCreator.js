@@ -3,7 +3,7 @@
 import {url} from "./url";
 
 export const fetchComments = (postId, postPage) => dispatch => {
-    fetch(url+'/comments/' + postId + '/post?page=' + 0 + '&size=10', {
+    fetch(url+'/comments/' + postId + '/post', {
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
@@ -30,7 +30,11 @@ export const createComment = (comment, postId) => dispatch => {
             'Authorization': localStorage.getItem('auth')
         },
         body: JSON.stringify(comment)
-    }).then(res => console.log(res))
+    }).then(response=>response.json())
+        .then(res => dispatch({
+        type:'CREATED_COMMENT',
+        payload:res
+    }))
 };
 
 //PUT ACTIONS

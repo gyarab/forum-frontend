@@ -45,16 +45,16 @@ class CreatePost extends Component {
         this.setState({modalOpened: !this.state.modalOpened});
     }
 
-    whitespaceHtmlTest(){
+    whitespaceHtmlTest() {
         let content = this.state.content;
         let isntWhitespace = false;
         let inTag = true;
-        for(let x = 0; x<content.length; x++){
-            if(inTag && content.charAt(x)==='>'){
+        for (let x = 0; x < content.length; x++) {
+            if (inTag && content.charAt(x) === '>') {
                 inTag = false;
-            } else if(!inTag && content.charAt(x)==='<'){
+            } else if (!inTag && content.charAt(x) === '<') {
                 inTag = true;
-            } else if(!inTag && content.charAt(x)!==' '){
+            } else if (!inTag && content.charAt(x) !== ' ') {
                 isntWhitespace = true;
             }
         }
@@ -73,10 +73,10 @@ class CreatePost extends Component {
             this.props.createPost(post, this.state.forumId);
             this.toggleModal(event);
             this.setState({
-                title:"",
+                title: "",
                 content: ""
             })
-        } else{
+        } else {
             console.log(this.state.content);
         }
     }
@@ -108,10 +108,12 @@ class CreatePost extends Component {
                         <ReactQuill modules={CreatePost.modules} value={this.state.content}
                                     onChange={this.handleQuill.bind(this)}/>
                         {/*Submit button*/}
-                        <div className="user-tip">*The input fields must contain non whitespace characters in order to submit your post</div>
+                        <div className="user-tip">*The input fields must contain non whitespace characters in order to
+                            submit your post
+                        </div>
                         <button className="submit">Submit</button>
                     </form>
-                    <div dangerouslySetInnerHTML= {{__html:this.state.content}}></div>
+                    <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>
                 </div>
             </div>
         );
@@ -124,16 +126,16 @@ CreatePost.modules = {
         ['blockquote', 'code-block'],
 
         // custom button values
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-        [{ 'direction': 'rtl' }],                         // text direction
+        [{'list': 'ordered'}, {'list': 'bullet'}],
+        [{'script': 'sub'}, {'script': 'super'}],      // superscript/subscript
+        [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
+        [{'direction': 'rtl'}],                         // text direction
 
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{'header': [1, 2, 3, 4, 5, 6, false]}],
 
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        [{ 'font': [] }],
-        [{ 'align': [] }],
+        [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+        [{'font': []}],
+        [{'align': []}],
 
         ['clean']                                         // remove formatting button
     ]
