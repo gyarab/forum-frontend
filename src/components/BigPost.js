@@ -20,7 +20,7 @@ class BigPost extends Component {
         }
     }
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             comments: this.props.comments,
@@ -36,7 +36,7 @@ class BigPost extends Component {
             likes: 0,
             dislikes: 0,
         };
-        this.setState({content:""});
+        this.setState({content: ""});
         this.props.createComment(babyComment, this.props.match.params.postId);
 
     }
@@ -57,7 +57,7 @@ class BigPost extends Component {
                     return <Comment key={comment.comment.id} idr={comment.comment.id}
                                     content={comment.comment.content} likes={comment.comment.likes}
                                     dislikes={comment.comment.dislikes} attitude={comment.attitudeDto}
-                                    owner={comment.comment.owner}/>
+                                    owner={comment.comment.owner} userId={comment.comment.userId}/>
                 }
             );
         }
@@ -65,7 +65,9 @@ class BigPost extends Component {
             <div className="Bigpost-Wrapper">
                 {/*Dominikuv kod :)*/}
                 <div className="Bigpost">
-                    <div className="Bigpost-Header">{a.title}</div>
+                    <div className="Bigpost-Header"><i onClick={() => {
+                        this.props.delete(this.props.id)
+                    }} className="hover fas fa-trash"/>{a.title}</div>
                     <div dangerouslySetInnerHTML={{__html: a.content}} className="Bigpost-Body"/>
 
                     <div className="Bigpost-Footer">
@@ -75,6 +77,7 @@ class BigPost extends Component {
                             <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
                             <li className="Dislike">{a.dislikes}</li>
                         </ul>
+
                     </div>
 
                 </div>
@@ -83,7 +86,7 @@ class BigPost extends Component {
                         <textarea className="Textarea" rows="3"
                                   placeholder="What are your thoughts about this?"
                                   onChange={this.handleChange.bind(this)}
-                        value={this.state.content}/>
+                                  value={this.state.content}/>
                         <input type="submit" className="SubmitButton" value="Comment"/>
                     </form>
 
