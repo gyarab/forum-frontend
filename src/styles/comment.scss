@@ -11,14 +11,23 @@
   z-index: -1;
   color: $secondary-color;
 
+  @media screen and (min-width: 320px) {
+    width: 17.5rem;
+  }
+  @media screen and (min-width: 370px) {
+    width: 21.2rem;
+  }
+  @media screen and (min-width: 440px) {
+    width: 24rem;
+  }
   @media screen and (min-width: 480px) {
-    width: 28rem;
+    width: 27rem;
   }
   @media screen and (min-width: 767px) {
-    width: 40rem;
+    width: 38rem;
   }
   @media screen and (min-width: 959px) {
-    width: 50rem;
+    width: 46rem;
   }
 }
 
@@ -72,4 +81,10 @@
 .hover{
   position: relative;
   left: 95%;
+  @media screen and (min-width: 320px) {
+    left: 90%;
+  }
+  @media screen and (min-width: 767px) {
+    left: 95%;
+  }
 }

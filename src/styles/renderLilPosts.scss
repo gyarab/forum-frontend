@@ -12,6 +12,12 @@
   transition: 0.2s;
   border: none;
   display: block;
+  @media screen and (min-width: 320px) {
+    width: 17.5rem;
+  }
+  @media screen and (min-width: 380px) {
+    width: 21.2rem;
+  }
 }
 
 //Creates some space between the button and other components, removes white background and user can't select text inside of the button
@@ -29,7 +35,6 @@
 .noposts{
   background-color: $primary-color;
   height: 2.5rem;
-  width: 20rem;
   color: white;
   border: none;
   display: block;
@@ -40,6 +45,24 @@
   left:0; right:0;
   top:0; bottom:0;
   margin:auto;
+  @media screen and (min-width: 320px) {
+    width: 17.5rem;
+  }
+  @media screen and (min-width: 380px) {
+    width: 21.2rem;
+  }
+  @media screen and (min-width: 440px) {
+    width: 24rem;
+  }
+  @media screen and (min-width: 480px) {
+    width: 28rem;
+  }
+  @media screen and (min-width: 767px) {
+    width: 40rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 50rem;
+  }
 }
 
 //Does not change cursor upon hover over noposts div

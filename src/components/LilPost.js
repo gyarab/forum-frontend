@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {NavLink} from 'react-router-dom';
-import {deletePost, resetPosts, updatePost} from "../action-creators/postActionCreator";
+import {deletePost, updatePost} from "../action-creators/postActionCreator";
 import {connect} from "react-redux";
 
 
@@ -62,9 +62,15 @@ class LilPost extends Component {
                     <div className="lilpost-footer">
                         {/*Likes, dislikes and author visible only if logged*/}
                         {this.state.logged ?
-                            <div>
+                            <div className="footer-auth-wrapper">
                                 {/*List of buttons and numbers*/}
                                 <ul>
+                                    {/*Displays name of the author of the post*/}
+                                    <li className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
+                                        <i onClick={()=>{
+                                            this.props.delete(this.props.id)
+                                        }} className="hover fas fa-trash"/>
+                                        : "Post by: "+ this.state.username}</li>
                                     {/*Like button*/}
                                     <li onClick={() => {
                                         console.info("here");
@@ -83,14 +89,7 @@ class LilPost extends Component {
                                     </li>
                                     {/*Number of dislikes*/}
                                     <li>{this.state.dislikes}</li>
-                                    <div className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
-                                        <i onClick={()=>{
-                                            this.props.delete(this.props.id)
-                                        }} className="hover fas fa-trash"/>
-                                        : "Post by:"+ this.state.username}</div>
                                 </ul>
-                                {/*Displays name of the author of the post*/}
-
                             </div> : ""}
                     </div>
                 </div>

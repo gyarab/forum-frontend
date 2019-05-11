@@ -62,34 +62,33 @@ class BigPost extends Component {
             );
         }
         return (
-            <div className="Bigpost-Wrapper">
+            <div className="bigpost-wrapper">
                 {/*Dominikuv kod :)*/}
-                <div className="Bigpost">
-                    <div className="Bigpost-Header"><i onClick={() => {
+                <div className="bigpost">
+                    <div className="bigpost-header"><i onClick={() => {
                         this.props.delete(this.props.id)
                     }} className="hover fas fa-trash"/>{a.title}</div>
-                    <div dangerouslySetInnerHTML={{__html: a.content}} className="Bigpost-Body"/>
+                    <div dangerouslySetInnerHTML={{__html: a.content}} className="bigpost-body"/>
 
-                    <div className="Bigpost-Footer">
+                    <div className="bigpost-footer">
                         <ul>
                             <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                            <li className="Like">{a.likes}</li>
+                            <li className="bigpost-like">{a.likes}</li>
                             <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                            <li className="Dislike">{a.dislikes}</li>
+                            <li className="bigpost-dislike">{a.dislikes}</li>
                         </ul>
 
                     </div>
 
                 </div>
-                <div className="Bigpost-Form">
+                <div className="bigpost-form">
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <textarea className="Textarea" rows="3"
+                        <textarea className="bigpost-textarea" rows="3"
                                   placeholder="What are your thoughts about this?"
                                   onChange={this.handleChange.bind(this)}
                                   value={this.state.content}/>
-                        <input type="submit" className="SubmitButton" value="Comment"/>
+                        <input type="submit" className="bigpost-submit-button" value="Comment"/>
                     </form>
-
 
                 </div>
                 {/*Displaying the comments html*/}

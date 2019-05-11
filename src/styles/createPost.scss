@@ -36,17 +36,35 @@
   margin: 5rem auto 0 auto;
   padding: 2rem;
   border-radius: 1rem;
-
+  scroll-snap-margin-bottom: 30rem;
+  @media screen and (min-height: 550px) {
+    margin: 1.2rem auto 0 auto;
+  }
+  @media screen and (min-height: 620px) {
+    margin: 2rem auto 0 auto;
+  }
+  @media screen and (min-height: 750px) {
+    margin: 3rem auto 0 auto;
+  }
+  @media screen and (min-height: 950px) {
+    margin: 5rem auto 0 auto;
+  }
+  @media screen and (min-width: 320px) {
+    width: 13.8rem;
+  }
+  @media screen and (min-width: 380px) {
+    width: 17.5rem;
+  }
   @media screen and (min-width: 480px) {
-    width: 28rem;
+    width: 23.3rem;
+    margin: 2rem auto 0 auto;
   }
   @media screen and (min-width: 767px) {
-    width: 40rem;
+    width: 37rem;
   }
   @media screen and (min-width: 959px) {
-    width: 50rem;
+    width: 52rem;
   }
-
 }
 
 //Styles all the buttons
@@ -81,17 +99,33 @@
   width:100%;
   border: none;
   border-bottom: solid 1px $primary-color;
-  font-size: 1.5rem;
   padding:0;
   margin:0 0 1rem 0;
+  @media screen and (min-width: 320px) {
+    font-size: 1.1rem;
+  }
+  @media screen and (min-width: 480px) {
+    font-size: 1.2rem;
+  }
+  @media screen and (min-width: 767px) {
+    font-size: 1.5rem;
+  }
 }
 
 //Styles the submit button, defines its size
 .submit{
   height: 2.5rem;
-  width: 20rem;
   margin: 1rem auto 0 auto;
   background-color: $primary-color;
+  @media screen and (min-width: 320px) {
+    width:14rem;
+  }
+  @media screen and (min-width: 480px) {
+    width: 17rem;
+  }
+  @media screen and (min-width: 767px) {
+    width:20rem;
+  }
 }
 
 //Styles the open button, centers the symbol inside, fixes it to the bottom right corner
@@ -160,7 +194,27 @@
 
 //Defines the size of the react-quill textfield
 .ql-editor{
-  height: 400px;
+  @media screen and (min-height: 550px) {
+    height:8rem;
+  }
+  @media screen and (min-height: 590px) {
+    height: 10rem;
+  }
+  @media screen and (min-height: 620px) {
+    height: 12rem;
+  }
+  @media screen and (min-height: 690px) {
+    height: 16rem;
+  }
+  @media screen and (min-height: 750px) {
+    height: 19rem;
+  }
+  @media screen and (min-height: 850px) {
+    height: 25rem;
+  }
+  @media screen and (min-height: 950px) {
+    height: 30rem;
+  }
 }
 
 //Styles the user-tip
