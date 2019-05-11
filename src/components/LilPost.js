@@ -61,17 +61,18 @@ class LilPost extends Component {
                     <div className="lilpost-footer">
                         {/*Likes, dislikes and author visible only if logged*/}
                         {this.state.logged ?
-                            <div>
+                            <div className="footer-auth-wrapper">
                                 {/*List of buttons and numbers*/}
                                 <ul>
-
+                                    {/*Displays name of the author of the post*/}
                                     <li className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
-                                        <i onClick={() => {
+                                        <i onClick={()=>{
                                             this.props.delete(this.props.id)
-                                        }} className="liltrash fas fa-trash"/>
-                                        : "Post by:" + this.state.username}</li>
+                                        }} className="hover fas fa-trash"/>
+                                        : "Post by: "+ this.state.username}</li>
                                     {/*Like button*/}
                                     <li onClick={() => {
+                                        console.info("here");
                                         this.props.updatePost("like", this.props.id)
                                     }}>
                                         <i className={likeClass}/>
@@ -89,8 +90,6 @@ class LilPost extends Component {
                                     <li>{this.state.dislikes}</li>
 
                                 </ul>
-                                {/*Displays name of the author of the post*/}
-
                             </div> : ""}
                     </div>
                 </div>
@@ -107,10 +106,10 @@ const mapStateToProps = state => ({
     updatedAttitude: state.forums.updatedPost.attitudeDto.attitude
 });
 const mapDispatchToProps = (dispatch) => ({
-    updatePost: (type, id) => {
-        dispatch(updatePost(type, id))
+    updatePost: (type,id) => {
+        dispatch(updatePost(type,id))
     },
-    delete: (id) => {
+    delete: (id) =>{
         dispatch(deletePost(id))
     },
 });

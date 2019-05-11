@@ -73,17 +73,23 @@ class BigPost extends Component {
         if (this.state.attitude === "DISLIKE") dislikeClass += ' active';
         else dislikeClass = "fas fa-angle-down fa-2x interactive-button";
         return (
+            <div className="bigpost-wrapper">
 
             <div className="Bigpost-Wrapper">
                 {console.log(this.props.post, this.props.match.params.postId)}
                 {/*Dominikuv kod :)*/}
+                <div className="bigpost">
+                    <div className="bigpost-header"><i onClick={() => {
+                        this.props.delete(this.props.id)
+                    }} className="hover fas fa-trash"/>{a.title}</div>
+                    <div dangerouslySetInnerHTML={{__html: a.content}} className="bigpost-body"/>
                 <div className="Bigpost">
                     <div className="Bigpost-Header"><i onClick={() => {
                         this.props.delete(this.props.post.id)
                     }} className="hover fas fa-trash"/>{this.props.post.title}</div>
                     <div dangerouslySetInnerHTML={{__html: this.props.post.content}} className="Bigpost-Body"/>
 
-                    <div className="Bigpost-Footer">
+                    <div className="bigpost-footer">
                         <ul>
                             <li onClick={() => {
                                 this.props.updatePost("like", this.props.post.id)
@@ -93,18 +99,22 @@ class BigPost extends Component {
                             <li onClick={() => {
                                 this.props.updatePost("dislike", this.props.post.id)
                             }} className="Dislike">{this.state.dislikes}</li>
+                            <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
+                            <li className="bigpost-like">{a.likes}</li>
+                            <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
+                            <li className="bigpost-dislike">{a.dislikes}</li>
                         </ul>
 
                     </div>
 
                 </div>
-                <div className="Bigpost-Form">
+                <div className="bigpost-form">
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <textarea className="Textarea" rows="3"
+                        <textarea className="bigpost-textarea" rows="3"
                                   placeholder="What are your thoughts about this?"
                                   onChange={this.handleChange.bind(this)}
                                   value={this.state.content}/>
-                        <input type="submit" className="SubmitButton" value="Comment"/>
+                        <input type="submit" className="bigpost-submit-button" value="Comment"/>
                     </form>
 
                     <button onClick={() => {

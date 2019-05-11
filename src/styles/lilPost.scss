@@ -7,9 +7,17 @@
   box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
   font-family: "adelle-sans", sans-serif;
   margin: 0 auto;
-  width: 20rem;
   z-index: -1;
   border: solid 2px #fff;
+  @media screen and (min-width: 320px) {
+    width: 17.5rem;
+  }
+  @media screen and (min-width: 380px) {
+    width: 21.2rem;
+  }
+  @media screen and (min-width: 440px) {
+    width: 24rem;
+  }
   @media screen and (min-width: 480px) {
       width: 28rem;
   }
@@ -59,6 +67,9 @@
   user-select: none;
   background:   $background;
   padding: 1.25rem;
+  @media screen and (min-width: 480px) {
+    padding: 1rem 0.5rem;
+  }
 }
 
 //Shows shadow and changes cursor upon hover
@@ -71,8 +82,10 @@
 .lilpost-footer ul{
   list-style: none;
   display: flex;
+  width: 100%;
   justify-content: flex-end;
   padding: 0;
+  position: relative;
 }
 
 //Centers vertically contents of the list in footer
@@ -104,12 +117,23 @@
 
 //Fixes username to the top left corner in footer
 .lilpost-username-wrapper{
-  float: left;
-  text-align: left;
+  position: relative;
+  margin: auto 0;
+  display: inline-block;
 }
 
 //Changes the color of the trash can upon hover
-.liltrash:hover{
-  color: $primary-color;
-  cursor:pointer;
+.hover:hover{
+  color:$primary-color;
+  cursor: pointer;
+}
+
+//Styles the first item in ul differently
+.lilpost-footer ul>li:first-child{
+  padding:0;
+  margin: auto 0;
+  position: absolute;
+  left:0;
+  width:0;
+  white-space: nowrap;
 }

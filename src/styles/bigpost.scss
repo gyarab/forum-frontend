@@ -1,21 +1,43 @@
 @import "themes";
-.Bigpost-Wrapper{
+
+.bigpost-wrapper{
   padding-top:10px;
   background: $background;
   color:$secondary-color;
 }
-.Bigpost{
+
+.bigpost{
   background: #ffffff;
   z-index: -1;
   font-family: "adelle-sans", sans-serif;
-  width:50rem;
-  align:center;
+  @media screen and (min-width: 320px) {
+    width: 18.5rem;
+  }
+  @media screen and (min-width: 350px) {
+    width: 21.2rem;
+  }
+  @media screen and (min-width: 390px) {
+    width: 22.8rem;
+  }
+  @media screen and (min-width: 440px) {
+    width: 24rem;
+  }
+  @media screen and (min-width: 480px) {
+    width: 27rem;
+  }
+  @media screen and (min-width: 767px) {
+    width: 38rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 46rem;
+  }
   margin:0 auto;
   padding-top:0.5rem;
   border: 1.5px solid $secondary-color;
   box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
 }
-.Bigpost-Header {
+
+.bigpost-header {
   width:90%;
   text-align: left;
   font-size: 1.6rem;
@@ -25,7 +47,8 @@
   font-weight:bold;
   margin:0 auto;
 }
-.Bigpost-Body{
+
+.bigpost-body{
   font-size:1rem;
   overflow:hidden;
   width:85%;
@@ -35,51 +58,69 @@
   padding: 10px 0px 0px 10px;
 }
 
-.Bigpost-Footer{
+.bigpost-footer{
   font-size: 0.9rem;
   width: 90%;
   margin: auto 0;
   min-height: 3rem;
   padding: 0.2rem;
 }
-.Bigpost-Footer li{
+.bigpost-footer li{
   margin: auto 0;
 }
-.Bigpost-Footer ul{
+.bigpost-footer ul{
   list-style: none;
- display: flex;
+  display: flex;
   justify-content: flex-end;
-  align:right;
- font-size:0.8rem;
+  font-size:0.8rem;
   // font-weight:bold;
 }
-.Bigpost-Form{
-
+.bigpost-form{
   margin:0 auto;
   z-index: -1;
-  width:50rem;
-
   font-family: "adelle-sans", sans-serif;
   padding-top:1rem;
-  padding-left:0rem;
+  @media screen and (min-width: 320px) {
+    width: 16.8rem;
+  }
+  @media screen and (min-width: 370px) {
+    width: 19rem;
+  }
+  @media screen and (min-width: 440px) {
+    width: 24rem;
+  }
+  @media screen and (min-width: 480px) {
+    width: 27rem;
+  }
+  @media screen and (min-width: 767px) {
+    width: 35.6rem;
+  }
+  @media screen and (min-width: 959px) {
+    width: 44rem;
+  }
 }
-.Textarea {
+
+.bigpost-textarea {
   padding-top:.5rem;
   padding-left:.5rem;
   display:block;
   outline: none;
   resize:none;
   overflow:auto;
-  width:49.5rem;
+  @media screen and (min-width: 320px) {
+    width:100%;
+  }
   background:#ffffff;
   box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
 }
-.Textarea:focus{
+
+.bigpost-textarea:focus{
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
 }
-.SubmitButton{
-  margin-left:85%;
+
+.bigpost-submit-button{
+
   background: $secondary-color;
   color:white;
   padding: 8.5px 17px;
@@ -91,25 +132,34 @@
   font-family: Georgia, serif;
   vertical-align: middle;
   font-weight:bold;
+  @media screen and (min-width: 320px) {
+    margin-left:67%;
+  }
+  @media screen and (min-width: 370px) {
+    margin-left:71%;
+  }
+  @media screen and (min-width: 767px) {
+    margin-left:85%;
+  }
 }
-.SubmitButton:hover{
+
+.bigpost-submit-button:hover{
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-
   text-decoration: none;
 }
-.SubmitButton:active{
-  position: relative;
- // top:3px;
- // left:2px;
 
+.bigpost-submit-button:active{
+  position: relative;
 }
-.Dislike{
+
+.bigpost-dislike{
   color:dodgerblue;
 }
-.Like{
+
+.bigpost-like{
   color:red;
 }

@@ -8,7 +8,22 @@
 .auth-wrapper {
   display: block;
   margin:auto;
-  width: 500px;
+  @media screen and (min-width: 320px) {
+    width: 300px;
+  }
+  @media screen and (min-width: 380px) {
+    width: 350px;
+  }
+  @media screen and (min-width: 440px) {
+    width: 410px;
+  }
+  @media screen and (min-width: 480px) {
+    width: 430px;
+  }
+  @media screen and (min-width: 767px) {
+    width: 500px;
+  }
+
 }
 
 .input{
@@ -20,6 +35,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 .input:after {
   content: ""; /* This is necessary for the pseudo element to work. */
   display: block; /* This will put the pseudo element on its own line. */
@@ -34,7 +50,6 @@ input:focus{
 
 }
 
-
 .button-submit{
   padding: 15px;
   width: 100%;
@@ -47,6 +62,7 @@ input:focus{
   color: white;
   cursor: pointer;
 }
+
 .button-register{
   padding: 15px;
   width: 100%;
@@ -54,6 +70,7 @@ input:focus{
   color:white;
   cursor: pointer;
 }
+
 a:link{
   text-decoration: none;
 }
