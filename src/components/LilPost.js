@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {NavLink} from 'react-router-dom';
-import {deletePost, resetPosts, updatePost} from "../action-creators/postActionCreator";
+import {deletePost, updatePost} from "../action-creators/postActionCreator";
 import {connect} from "react-redux";
-
 
 
 class LilPost extends Component {
@@ -65,9 +64,14 @@ class LilPost extends Component {
                             <div>
                                 {/*List of buttons and numbers*/}
                                 <ul>
+
+                                    <li className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
+                                        <i onClick={() => {
+                                            this.props.delete(this.props.id)
+                                        }} className="liltrash fas fa-trash"/>
+                                        : "Post by:" + this.state.username}</li>
                                     {/*Like button*/}
                                     <li onClick={() => {
-                                        console.info("here");
                                         this.props.updatePost("like", this.props.id)
                                     }}>
                                         <i className={likeClass}/>
@@ -83,11 +87,7 @@ class LilPost extends Component {
                                     </li>
                                     {/*Number of dislikes*/}
                                     <li>{this.state.dislikes}</li>
-                                    <div className="lilpost-username-wrapper"> {this.props.userId === this.props.attitude.lemonUserId ?
-                                        <i onClick={()=>{
-                                            this.props.delete(this.props.id)
-                                        }} className="hover fas fa-trash"/>
-                                        : "Post by:"+ this.state.username}</div>
+
                                 </ul>
                                 {/*Displays name of the author of the post*/}
 
@@ -107,10 +107,10 @@ const mapStateToProps = state => ({
     updatedAttitude: state.forums.updatedPost.attitudeDto.attitude
 });
 const mapDispatchToProps = (dispatch) => ({
-    updatePost: (type,id) => {
-        dispatch(updatePost(type,id))
+    updatePost: (type, id) => {
+        dispatch(updatePost(type, id))
     },
-    delete: (id) =>{
+    delete: (id) => {
         dispatch(deletePost(id))
     },
 });

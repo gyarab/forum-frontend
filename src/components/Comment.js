@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {updateComment} from "../action-creators/commentActionCreator";
+import {deleteComment, updateComment} from "../action-creators/commentActionCreator";
 import '../styles/comment.scss';
 
 class Comment extends Component {
@@ -37,8 +37,8 @@ class Comment extends Component {
                 <div className="comment" key={this.props.idr}>
                     {this.props.userId === this.props.attitude.lemonUserId ?
                         <i onClick={() => {
-                            this.props.delete(this.props.id)
-                        }} className="hover fas fa-trash"/>
+                            this.props.delete(this.props.idr)
+                        }} className="commentTrash fas fa-trash"/>
                         : ""}
                     <div className="comment-header"> Author: {this.state.username + " "}
 
@@ -81,4 +81,12 @@ const mapStateToProps = state => ({
     updatedDislikes: state.forums.updatedComment.comment.dislikes,
     updatedAttitude: state.forums.updatedComment.attitudeDto.attitude
 });
-export default connect(mapStateToProps, {updateComment})(Comment);
+const mapDispatchToProps = (dispatch) => ({
+    updateComment: (type, id) => {
+        dispatch(updateComment(type, id))
+    },
+    delete: (id) => {
+        dispatch(deleteComment(id))
+    },
+});
+export default connect(mapStateToProps,mapDispatchToProps )(Comment);

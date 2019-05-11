@@ -30,7 +30,7 @@ export const createForum = (forum) => dispatch => {
         body: JSON.stringify(forum)
     }).then(res=>res.json()).then(res=>
         dispatch({
-        type:'CREATED_FORUM',
+        type:'CREATE_FORUM',
         payload: res
     })
     )

@@ -23,9 +23,13 @@ export const fetchPosts = (forumId, forumPage) => dispatch => {
 };
 //Fetch a specific post by its unique id
 export const fetchPostById = (id) => dispatch => {
-    fetch(url + "/post/id/" + id).then(response => response.json()).then(e =>
+    fetch(url + "/post/id/" + id, {
+        headers: {
+            'Authorization': localStorage.getItem('auth')
+        }})
+        .then(response => response.json()).then(e =>
         dispatch({
-            type: 'FETCHED_POST_BY_ID',
+            type: 'FETCH_POST_BY_ID',
             payload: e
         }));
 };
@@ -57,7 +61,7 @@ export const createPost = (post, forumId) => dispatch => {
         body: JSON.stringify(post)
     }).then(res => res.json())
         .then(res => dispatch({
-            type: 'CREATED_POST',
+            type: 'CREATE_POST',
             payload: res
         }))
 };
@@ -75,17 +79,24 @@ export const updatePost = (attitude, postId) => dispatch => {
         payload: res
     }))
 };
+export const a = () => dispatch => {
+    console.log("tady");
+    dispatch({
+        type: 'A',
+        payload: 'ahoj'
+    })
+}
 
 //DELETE ACTIONS
 //Delete a post.
-export const deletePost = (postId) => dispatch =>{
+export const deletePost = (postId) => dispatch => {
     fetch(url + '/post/delete/' + postId, {
         method: 'DELETE',
         headers: {
             'Authorization': localStorage.getItem('auth')
         },
     }).then(res => dispatch({
-        type: 'DELETED_POST',
+        type: 'DELETE_POST',
         payload: postId
     }))
-}
+};

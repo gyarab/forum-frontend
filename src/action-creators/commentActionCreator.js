@@ -32,7 +32,7 @@ export const createComment = (comment, postId) => dispatch => {
         body: JSON.stringify(comment)
     }).then(response=>response.json())
         .then(res => dispatch({
-        type:'CREATED_COMMENT',
+        type:'CREATE_COMMENT',
         payload:res
     }))
 };
@@ -51,4 +51,18 @@ export const updateComment = (attitude, commentId) => dispatch => {
             payload: res
         })
     })
+};
+
+//DELETE ACTIONS
+//Delete a comment.
+export const deleteComment = (commentId) => dispatch =>{
+    fetch(url + '/comments/delete/' + commentId, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': localStorage.getItem('auth')
+        },
+    }).then(() => dispatch({
+        type: 'DELETE_COMMENT',
+        payload: commentId
+    }))
 };

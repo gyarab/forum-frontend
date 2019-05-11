@@ -104,13 +104,12 @@
 
 //Fixes username to the top left corner in footer
 .lilpost-username-wrapper{
-  position: relative;
-  right: 100%;
-  margin: auto 0;
+  float: left;
+  text-align: left;
 }
 
 //Changes the color of the trash can upon hover
-.hover:hover{
-  color:$primary-color;
-  cursor: pointer;
+.liltrash:hover{
+  color: $primary-color;
+  cursor:pointer;
 }

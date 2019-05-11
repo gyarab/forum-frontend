@@ -2,31 +2,36 @@ import React, {Component} from 'react';
 import '../styles/bigpost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {connect} from "react-redux";
-import {fetchPostById, getPostById} from "../action-creators/postActionCreator";
+import {a, fetchPostById, getPostById, updatePost} from "../action-creators/postActionCreator";
 import PropTypes from "prop-types";
 import {fetchComments, createComment} from "../action-creators/commentActionCreator";
 import Comment from "./Comment";
 
 class BigPost extends Component {
 
+    state = {
+        comments: this.props.comments,
+        content: "",
+        likes: 0,
+        dislikes: 0,
+        attitude: this.props.attitude.attitude
+    };
+
     componentDidMount() {
-        this.props.getPostById(this.props.match.params.postId);
         this.props.fetchComments(this.props.match.params.postId, 1)
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.post === undefined) {
+        if (this.props.post.id !== parseInt(this.props.match.params.postId)) {
             this.props.fetchPostById(this.props.match.params.postId);
         }
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            comments: this.props.comments,
-            content: ""
-
-        };
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            likes: nextProps.post.likes,
+            dislikes: nextProps.post.dislikes,
+        })
     }
 
     handleSubmit(event) {
@@ -50,7 +55,6 @@ class BigPost extends Component {
 
     render() {
         /*Creating html of comments received in props*/
-        let a = typeof (this.props.post) === "undefined" ? "" : this.props.post;
         let commentElements = "";
         if (typeof this.props.comments.content !== "undefined") {
             commentElements = this.props.comments.content.map(comment => {
@@ -61,21 +65,34 @@ class BigPost extends Component {
                 }
             );
         }
+        let likeClass = "fas fa-angle-up fa-2x interactive-button";
+        if (this.state.attitude === "LIKE") likeClass += ' active';
+        else likeClass = "fas fa-angle-up fa-2x interactive-button";
+
+        let dislikeClass = "fas fa-angle-down fa-2x interactive-button";
+        if (this.state.attitude === "DISLIKE") dislikeClass += ' active';
+        else dislikeClass = "fas fa-angle-down fa-2x interactive-button";
         return (
+
             <div className="Bigpost-Wrapper">
+                {console.log(this.props.post, this.props.match.params.postId)}
                 {/*Dominikuv kod :)*/}
                 <div className="Bigpost">
                     <div className="Bigpost-Header"><i onClick={() => {
-                        this.props.delete(this.props.id)
-                    }} className="hover fas fa-trash"/>{a.title}</div>
-                    <div dangerouslySetInnerHTML={{__html: a.content}} className="Bigpost-Body"/>
+                        this.props.delete(this.props.post.id)
+                    }} className="hover fas fa-trash"/>{this.props.post.title}</div>
+                    <div dangerouslySetInnerHTML={{__html: this.props.post.content}} className="Bigpost-Body"/>
 
                     <div className="Bigpost-Footer">
                         <ul>
-                            <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                            <li className="Like">{a.likes}</li>
-                            <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                            <li className="Dislike">{a.dislikes}</li>
+                            <li onClick={() => {
+                                this.props.updatePost("like", this.props.post.id)
+                            }}><i className={likeClass}/></li>
+                            <li className="Like">{this.state.likes}</li>
+                            <li><i className={dislikeClass}/></li>
+                            <li onClick={() => {
+                                this.props.updatePost("dislike", this.props.post.id)
+                            }} className="Dislike">{this.state.dislikes}</li>
                         </ul>
 
                     </div>
@@ -90,7 +107,10 @@ class BigPost extends Component {
                         <input type="submit" className="SubmitButton" value="Comment"/>
                     </form>
 
-
+                    <button onClick={() => {
+                        console.log(this.props.post)
+                    }}>Ahoj
+                    </button>
                 </div>
                 {/*Displaying the comments html*/}
                 <div className="comments-wrapper">
@@ -106,11 +126,16 @@ BigPost.propTypes = {
     fetchPostById: PropTypes.func.isRequired,
     fetchComments: PropTypes.func.isRequired,
     createComment: PropTypes.func.isRequired,
+    updatePost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-    post: state.forums.post,
+    post: state.forums.post.post,
     comments: state.forums.comments,
+    attitude: state.forums.post.attitudeDto,
+    updatedLikes: state.forums.updatedPost.post.likes,
+    updatedDislikes: state.forums.updatedPost.post.dislikes,
+    updatedAttitude: state.forums.updatedPost.attitudeDto.attitude
 });
 
 
@@ -126,7 +151,10 @@ const mapDispatchToProps = (dispatch) => ({
     },
     createComment: (comment, postId) => {
         dispatch(createComment(comment, postId))
-    }
+    },
+    updatePost: (type, id) => {
+        dispatch(updatePost(type, id))
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BigPost);

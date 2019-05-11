@@ -69,7 +69,11 @@
 .comments-wrapper{
   padding: 1rem;
 }
-.hover{
+.commentTrash{
   position: relative;
   left: 95%;
+  &:hover{
+    color: $primary-color;
+    cursor: pointer;
+  }
 }

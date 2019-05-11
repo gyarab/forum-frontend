@@ -3,7 +3,7 @@ const initialState = {
     storage: [],
     posts: [],
     arrayOfForums: [],
-    post: "",
+    post: {post: {}, attitudeDto: {}},
     logged: false,
     updatedPost: {post: {}, attitudeDto: {}},
     updatedComment: {comment: {}, attitudeDto: {}},
@@ -40,12 +40,13 @@ export default function (state = initialState, action) {
         case 'POST_BY_ID':
             let a;
             state.posts.forEach(e => {
-                if (parseInt(e.content[0].id) === parseInt(action.payload)) {
+                if (parseInt(e.content[0].post.id) === parseInt(action.payload)) {
                     a = e.content[0];
                 }
+                console.log("post_by_id")
             });
             return {...state, post: a};
-        case 'FETCHED_POST_BY_ID':
+        case 'FETCH_POST_BY_ID':
             return {
                 ...state,
                 post: action.payload
@@ -65,31 +66,41 @@ export default function (state = initialState, action) {
                 ...state,
                 comments: action.payload
             };
-        case 'CREATED_COMMENT':
+        case 'CREATE_COMMENT':
             let arr = JSON.parse(JSON.stringify(state.comments));
             arr.content.push(action.payload);
             return {
                 ...state,
                 comments: arr,
             };
-        case 'CREATED_FORUM':
+        case 'CREATE_FORUM':
             let map = JSON.parse(JSON.stringify(state.storage));
-            map[Object.keys(action.payload)[0]]=action.payload[Object.keys(action.payload)[0]]
+            map[Object.keys(action.payload)[0]] = action.payload[Object.keys(action.payload)[0]];
             return {
                 ...state,
-                storage:map
+                storage: map
             };
-        case 'DELETED_POST':
-            let possts = JSON.parse(JSON.stringify(state.posts));
-            console.log(possts)
-            possts = possts.filter(u=>{
-                console.log(u)
-                if(u.content[0].post.id!==action.payload){return true;}
-                    else return false
+        case 'CREATE_POST':
+            return {
+                ...state,
+                posts: []
+            };
+        case 'DELETE_POST':
+            return {
+                ...state,
+                posts: []
+            };
+        case 'DELETE_COMMENT':
+            let commentArr = JSON.parse(JSON.stringify(state.comments));
+            let cArr = commentArr.content.filter((element, index, array) => {
+                return element.comment.id !== action.payload;
             });
-            return {...state,posts:possts};
-
-
+            commentArr.content = cArr;
+            return {...state, comments:commentArr};
+        case 'A':
+            let b = JSON.parse(JSON.stringify(state.post));
+            b.likes = 9;
+            return{...state, post: b};
         default:
             return state
     }
