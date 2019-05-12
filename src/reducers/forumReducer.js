@@ -56,6 +56,8 @@ export default function (state = initialState, action) {
                 ...state,
                 updatedPost: action.payload
             };
+        case 'RESET_POST':
+            return {...state, post:{post: {}, attitudeDto: {}}};
         case 'COMMENT_UPDATE':
             return {
                 ...state,
@@ -83,7 +85,6 @@ export default function (state = initialState, action) {
         case 'CREATE_POST':
             return {
                 ...state,
-                posts: []
             };
         case 'DELETE_POST':
             return {

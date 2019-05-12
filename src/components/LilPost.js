@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../styles/lilPost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {NavLink} from 'react-router-dom';
-import {deletePost, updatePost} from "../action-creators/postActionCreator";
+import {deletePost, resetPost, updatePost} from "../action-creators/postActionCreator";
 import {connect} from "react-redux";
 
 
@@ -49,7 +49,7 @@ class LilPost extends Component {
                     {/*Header and body wrapped in link to the corresponding BigPost*/}
                     <NavLink to={"/bigpost/" + this.props.id} style={{textDecoration: "none", color: "black"}}>
                         {/*Header*/}
-                        <div className="lilpost-header">
+                        <div onClick={()=>{this.props.resetPost();}} className="lilpost-header">
                             {this.props.title}
                         </div>
                         {/*Body*/}
@@ -72,7 +72,6 @@ class LilPost extends Component {
                                         : "Post by: "+ this.state.username}</li>
                                     {/*Like button*/}
                                     <li onClick={() => {
-                                        console.info("here");
                                         this.props.updatePost("like", this.props.id)
                                     }}>
                                         <i className={likeClass}/>
@@ -112,6 +111,9 @@ const mapDispatchToProps = (dispatch) => ({
     delete: (id) =>{
         dispatch(deletePost(id))
     },
+    resetPost:()=>{
+        dispatch(resetPost())
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LilPost);

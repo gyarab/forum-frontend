@@ -42,6 +42,11 @@ export const getPostById = (id) => dispatch => {
         payload: id
     })
 };
+export const resetPost = () => dispatch =>{
+    dispatch({
+        type:'RESET_POST'
+    })
+}
 //Used by Navigation component to revert store state and prevent posts from one forum leaking to another forum's page.
 export const resetPosts = () => dispatch => {
     dispatch({

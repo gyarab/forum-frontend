@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import '../styles/bigpost.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {connect} from "react-redux";
-import {a, fetchPostById, getPostById, updatePost} from "../action-creators/postActionCreator";
+import {deletePost, fetchPostById, getPostById, updatePost} from "../action-creators/postActionCreator";
 import PropTypes from "prop-types";
 import {fetchComments, createComment} from "../action-creators/commentActionCreator";
 import Comment from "./Comment";
+import {Redirect} from "react-router-dom";
 
 class BigPost extends Component {
 
@@ -14,7 +15,8 @@ class BigPost extends Component {
         content: "",
         likes: 0,
         dislikes: 0,
-        attitude: this.props.attitude.attitude
+        attitude: this.props.attitude.attitude,
+        redirect: false,
     };
 
     componentDidMount() {
@@ -31,7 +33,14 @@ class BigPost extends Component {
         this.setState({
             likes: nextProps.post.likes,
             dislikes: nextProps.post.dislikes,
-        })
+        });
+        if (nextProps.updatedLikes !== undefined) {
+            this.setState({
+                likes: nextProps.updatedLikes,
+                dislikes: nextProps.updatedDislikes,
+                attitude: nextProps.updatedAttitude
+            })
+        }
     }
 
     handleSubmit(event) {
@@ -51,6 +60,12 @@ class BigPost extends Component {
         this.setState({
             content: event.target.value
         });
+    }
+
+    renderRedirect ()  {
+        if (this.state.redirect) {
+            return <Redirect to="/"/>
+        }
     }
 
     render() {
@@ -73,36 +88,39 @@ class BigPost extends Component {
         if (this.state.attitude === "DISLIKE") dislikeClass += ' active';
         else dislikeClass = "fas fa-angle-down fa-2x interactive-button";
         return (
-            <div className="bigpost-wrapper">
 
-            <div className="Bigpost-Wrapper">
-                {console.log(this.props.post, this.props.match.params.postId)}
+            <div className="bigpost-wrapper">
+                {this.renderRedirect()}
                 {/*Dominikuv kod :)*/}
                 <div className="bigpost">
-                    <div className="bigpost-header"><i onClick={() => {
-                        this.props.delete(this.props.id)
-                    }} className="hover fas fa-trash"/>{a.title}</div>
-                    <div dangerouslySetInnerHTML={{__html: a.content}} className="bigpost-body"/>
-                <div className="Bigpost">
-                    <div className="Bigpost-Header"><i onClick={() => {
-                        this.props.delete(this.props.post.id)
-                    }} className="hover fas fa-trash"/>{this.props.post.title}</div>
-                    <div dangerouslySetInnerHTML={{__html: this.props.post.content}} className="Bigpost-Body"/>
+
+                    <div className="bigpost-header">{this.props.post.owner === this.props.attitude.username ?
+                        <i onClick={() => {
+                            this.props.delete(this.props.post.id);
+                            this.setState({redirect:true})
+                        }} className="hover fas fa-trash"/> :
+                        <i className="hover">{this.props.post.owner}</i>}<span>{this.props.post.title}</span></div>
+                    <div dangerouslySetInnerHTML={{__html: this.props.post.content}} className="bigpost-body"/>
 
                     <div className="bigpost-footer">
                         <ul>
                             <li onClick={() => {
                                 this.props.updatePost("like", this.props.post.id)
-                            }}><i className={likeClass}/></li>
-                            <li className="Like">{this.state.likes}</li>
-                            <li><i className={dislikeClass}/></li>
+                            }}>
+                                <i className={likeClass}/>
+                            </li>
+
+                            <li className="bigpost-like">{this.state.likes}</li>
+
                             <li onClick={() => {
                                 this.props.updatePost("dislike", this.props.post.id)
-                            }} className="Dislike">{this.state.dislikes}</li>
-                            <li><i className="fas fa-angle-up fa-2x interactive-button"/></li>
-                            <li className="bigpost-like">{a.likes}</li>
-                            <li><i className="fas fa-angle-down fa-2x interactive-button"/></li>
-                            <li className="bigpost-dislike">{a.dislikes}</li>
+                            }}>
+                                <i className={dislikeClass}/>
+                            </li>
+
+                            <li className="bigpost-dislike">
+                                {this.state.dislikes}
+                            </li>
                         </ul>
 
                     </div>
@@ -165,6 +183,9 @@ const mapDispatchToProps = (dispatch) => ({
     updatePost: (type, id) => {
         dispatch(updatePost(type, id))
     },
+    delete: (id) => {
+        dispatch(deletePost(id))
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BigPost);

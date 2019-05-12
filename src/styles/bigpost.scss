@@ -39,13 +39,16 @@
 
 .bigpost-header {
   width:90%;
-  text-align: left;
-  font-size: 1.6rem;
   padding-left:1rem;
   padding-top:0.5rem;
   border-bottom: solid 1px black;
-  font-weight:bold;
+
   margin:0 auto;
+}
+.bigpost-header span{
+  text-align: left;
+  font-size: 1.6rem;
+  font-weight:bold;
 }
 
 .bigpost-body{
@@ -156,10 +159,12 @@
   position: relative;
 }
 
-.bigpost-dislike{
-  color:dodgerblue;
+.bigpost-footer i.active{
+  color: $primary-color;
 }
 
-.bigpost-like{
-  color:red;
+
+.bigpost-footer i.active:hover{
+  cursor:default;
 }
+

@@ -38,7 +38,7 @@ class Comment extends Component {
                     {this.props.userId === this.props.attitude.lemonUserId ?
                         <i onClick={() => {
                             this.props.delete(this.props.idr)
-                        }} className="commentTrash fas fa-trash"/>
+                        }} className="hover fas fa-trash"/>
                         : ""}
                     <div className="comment-header"> Author: {this.state.username + " "}
 
