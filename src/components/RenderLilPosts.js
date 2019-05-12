@@ -29,7 +29,7 @@ class RenderLilPosts extends Component {
             page: 1,
         });
         if (this.props.match.params.forumId === undefined) {
-            this.props.fetchPosts(1, 0);
+            this.props.fetchPosts(2, 0);
         } else {
             this.props.fetchPosts(parseInt(this.props.match.params.forumId), 0);
         }

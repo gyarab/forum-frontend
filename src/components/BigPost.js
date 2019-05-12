@@ -31,6 +31,7 @@ class BigPost extends Component {
 
     componentWillReceiveProps(nextProps, nextContext) {
         this.setState({
+            attitude: nextProps.attitude.attitude,
             likes: nextProps.post.likes,
             dislikes: nextProps.post.dislikes,
         });
@@ -135,10 +136,6 @@ class BigPost extends Component {
                         <input type="submit" className="bigpost-submit-button" value="Comment"/>
                     </form>
 
-                    <button onClick={() => {
-                        console.log(this.props.post)
-                    }}>Ahoj
-                    </button>
                 </div>
                 {/*Displaying the comments html*/}
                 <div className="comments-wrapper">

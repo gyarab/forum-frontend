@@ -76,8 +76,6 @@ class CreatePost extends Component {
                 title: "",
                 content: ""
             })
-        } else {
-            console.log(this.state.content);
         }
     }
 
@@ -113,7 +111,7 @@ class CreatePost extends Component {
                         </div>
                         <button className="submit">Submit</button>
                     </form>
-                    <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+                    <div dangerouslySetInnerHTML={{__html: this.state.content}}/>
                 </div>
             </div>
         );

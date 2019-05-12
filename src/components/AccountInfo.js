@@ -12,12 +12,6 @@ class AccountInfo extends Component {
 
         };
     }
-    componentDidMount(){
-        this.props.history.listen(() => {
-            // Detecting, user has changed URL
-            console.info(this.props.history.location.pathname);
-        });
-    }
 
     render() {
 

@@ -85,7 +85,6 @@ export const updatePost = (attitude, postId) => dispatch => {
     }))
 };
 export const a = () => dispatch => {
-    console.log("tady");
     dispatch({
         type: 'A',
         payload: 'ahoj'

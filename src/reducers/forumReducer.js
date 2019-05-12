@@ -43,7 +43,6 @@ export default function (state = initialState, action) {
                 if (parseInt(e.content[0].post.id) === parseInt(action.payload)) {
                     a = e.content[0];
                 }
-                console.log("post_by_id")
             });
             return {...state, post: a};
         case 'FETCH_POST_BY_ID':
