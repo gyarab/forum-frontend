@@ -1,0 +1,3 @@
+[submodule "forum-backend"]
+	path = forum-backend
+	url = https://github.com/gyarab/forum-backend
